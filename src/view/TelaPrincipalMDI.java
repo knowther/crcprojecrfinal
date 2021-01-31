@@ -30,6 +30,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 
@@ -55,6 +56,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jRadioButtonApelido.setSelected(true);
         desabilitarBotoes();
         resetTabela();
+        numPaciente();
     }
 
     /**
@@ -95,6 +97,8 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jButtonAttTable = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabelNumPaciente = new javax.swing.JLabel();
         pacienteUnicPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         cpfLabel = new javax.swing.JLabel();
@@ -305,6 +309,12 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         });
         pacienteTable.add(jButtonAttTable);
         jButtonAttTable.setBounds(100, 710, 130, 23);
+
+        jLabel7.setText("Total de Pacientes:");
+        pacienteTable.add(jLabel7);
+        jLabel7.setBounds(1410, 710, 120, 14);
+        pacienteTable.add(jLabelNumPaciente);
+        jLabelNumPaciente.setBounds(1530, 700, 80, 30);
 
         parentPanel.add(pacienteTable, "card3");
 
@@ -1067,6 +1077,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         query = entityManager.createQuery("SELECT p from Paciente p order by p.nome");
         list.clear();
         list.addAll(query.getResultList());
+        numPaciente();
     }//GEN-LAST:event_jButtonAttTableActionPerformed
 
     private void desabilitarBotoes(){
@@ -1113,6 +1124,12 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             list.clear();
             list.addAll(query.getResultList());
      }
+     
+     private void numPaciente(){
+         int numPac = masterTable.getRowCount();
+         jLabelNumPaciente.setText(Integer.toString(numPac));
+     }
+     
      
     /**
      * @param args the command line arguments
@@ -1184,7 +1201,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelFoto;
+    private javax.swing.JLabel jLabelNumPaciente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
