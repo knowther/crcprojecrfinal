@@ -5,6 +5,8 @@
     <class>bean.Cidade</class>
     <class>bean.Profissao</class>
     <class>bean.Paciente</class>
+    <class>bean.PacienteRealizouSessao</class>
+    <class>bean.Sessao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinica_crc?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
