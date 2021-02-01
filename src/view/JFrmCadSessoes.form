@@ -67,13 +67,13 @@
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="107" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" alignment="1" min="-2" pref="583" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jMonthChooser1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel1" alignment="1" min="-2" pref="583" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -125,7 +125,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="245" max="32767" attributes="0"/>
+              <EmptySpace pref="187" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

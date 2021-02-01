@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Sessao.findAll", query = "SELECT s FROM Sessao s")
-    , @NamedQuery(name = "Sessao.findByIdsessao", query = "SELECT s FROM Sessao s WHERE s.idsessao = :idsessao")})
+    , @NamedQuery(name = "Sessao.findByIdsessao", query = "SELECT s FROM Sessao s WHERE s.idsessao = :idsessao")
+    , @NamedQuery(name = "Sessao.findByDatasessao", query = "SELECT s FROM Sessao s WHERE s.datasessao = :datasessao")})
 public class Sessao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,6 +36,9 @@ public class Sessao implements Serializable {
     @Basic(optional = false)
     @Column(name = "idsessao")
     private Integer idsessao;
+    @Column(name = "datasessao")
+    @Temporal(TemporalType.DATE)
+    private Date datasessao;
 
     public Sessao() {
     }
@@ -46,6 +53,14 @@ public class Sessao implements Serializable {
 
     public void setIdsessao(Integer idsessao) {
         this.idsessao = idsessao;
+    }
+
+    public Date getDatasessao() {
+        return datasessao;
+    }
+
+    public void setDatasessao(Date datasessao) {
+        this.datasessao = datasessao;
     }
 
     @Override

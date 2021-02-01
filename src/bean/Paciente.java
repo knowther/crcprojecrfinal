@@ -85,6 +85,8 @@ public class Paciente implements Serializable {
     private Medico medico;
     
   
+    
+  
    
     
     public Paciente() {
@@ -244,6 +246,7 @@ public class Paciente implements Serializable {
         
     }
 
+    
     
 
 
