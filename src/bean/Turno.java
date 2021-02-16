@@ -5,59 +5,64 @@
  */
 package bean;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author johnn
  */
 @Entity
-@Table(name = "turno", catalog = "clinica_crc", schema = "")
+@Table(name = "turno")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Turno.findAll", query = "SELECT t FROM Turno t")
+    , @NamedQuery(name = "Turno.findByIdturno", query = "SELECT t FROM Turno t WHERE t.idturno = :idturno")
+    , @NamedQuery(name = "Turno.findByDiaturnoIddiaturno", query = "SELECT t FROM Turno t WHERE t.diaturnoIddiaturno = :diaturnoIddiaturno")
+    , @NamedQuery(name = "Turno.findByNome", query = "SELECT t FROM Turno t WHERE t.nome = :nome")})
 public class Turno implements Serializable {
-
-    @Transient
-    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idturno")
-    private Integer id;
+    private Integer idturno;
+    @Column(name = "diaturno_iddiaturno")
+    private Integer diaturnoIddiaturno;
     @Column(name = "nome")
     private String nome;
-    
-    @OneToMany(mappedBy = "turno")
-    private List<Paciente> pacientes = new ArrayList<>();
 
     public Turno() {
     }
 
-    public Turno(Integer id) {
-        this.id = id;
+    public Turno(Integer idturno) {
+        this.idturno = idturno;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdturno() {
+        return idturno;
     }
 
-    public void setId(Integer id) {
-        Integer oldId = this.id;
-        this.id = id;
-        changeSupport.firePropertyChange("id", oldId, id);
+    public void setIdturno(Integer idturno) {
+        this.idturno = idturno;
+    }
+
+    public Integer getDiaturnoIddiaturno() {
+        return diaturnoIddiaturno;
+    }
+
+    public void setDiaturnoIddiaturno(Integer diaturnoIddiaturno) {
+        this.diaturnoIddiaturno = diaturnoIddiaturno;
     }
 
     public String getNome() {
@@ -65,23 +70,13 @@ public class Turno implements Serializable {
     }
 
     public void setNome(String nome) {
-        String oldNome = this.nome;
         this.nome = nome;
-        changeSupport.firePropertyChange("nome", oldNome, nome);
-    }
-
-    public List<Paciente> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idturno != null ? idturno.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +87,7 @@ public class Turno implements Serializable {
             return false;
         }
         Turno other = (Turno) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idturno == null && other.idturno != null) || (this.idturno != null && !this.idturno.equals(other.idturno))) {
             return false;
         }
         return true;
@@ -100,15 +95,7 @@ public class Turno implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
-    }
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.addPropertyChangeListener(listener);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.removePropertyChangeListener(listener);
+        return "bean.Turno[ idturno=" + idturno + " ]";
     }
     
 }

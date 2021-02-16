@@ -30,7 +30,6 @@ import bean.Cidade;
 import bean.Estado;
 import bean.Medico;
 import bean.Profissao;
-import bean.Turno;
 
 /**
  *
@@ -79,7 +78,10 @@ public class Paciente implements Serializable {
     private Profissao profissao;
     
     @ManyToOne
-    private Turno turno;
+    private MedicoTurno medicoturno;
+    
+   // @ManyToOne
+    //private Turno turno;
 
     @ManyToOne
     private Medico medico;
@@ -100,15 +102,15 @@ public class Paciente implements Serializable {
       changeSupport.firePropertyChange("medico", oldMedico, medico);
     }
     
- public Turno getTurno() {
-        return turno;
-    }
+ //public Turno getTurno() {
+   //     return turno;
+   // }
 
-    public void setTurno(Turno turno) {
-         Turno oldTurno = this.turno;
-        this.turno = turno;
-        changeSupport.firePropertyChange("turno", oldTurno, turno);
-    }
+    //public void setTurno(Turno turno) {
+   //      Turno oldTurno = this.turno;
+     //   this.turno = turno;
+    //    changeSupport.firePropertyChange("turno", oldTurno, turno);
+   // }
     public Paciente(Integer idpaciente) {
         this.idpaciente = idpaciente;
     }

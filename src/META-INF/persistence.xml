@@ -5,8 +5,11 @@
     <class>bean.Cidade</class>
     <class>bean.Profissao</class>
     <class>bean.Paciente</class>
-    <class>bean.PacienteRealizouSessao</class>
     <class>bean.Sessao</class>
+    <class>bean.Turno</class>
+    <class>bean.Diaturno</class>
+    <class>bean.PacienteTemSessao</class>
+    <class>bean.MedicoTurno</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinica_crc?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

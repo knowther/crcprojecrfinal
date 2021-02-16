@@ -182,14 +182,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         columnBinding.setColumnName("Apelido");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${turno}"));
-        columnBinding.setColumnName("Turno");
-        columnBinding.setColumnClass(bean.Turno.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${medico}"));
-        columnBinding.setColumnName("Medico");
-        columnBinding.setColumnClass(bean.Medico.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cpf}"));
         columnBinding.setColumnName("CPF");
         columnBinding.setColumnClass(String.class);
@@ -241,7 +233,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             masterTable.getColumnModel().getColumn(2).setResizable(false);
             masterTable.getColumnModel().getColumn(3).setResizable(false);
             masterTable.getColumnModel().getColumn(4).setResizable(false);
-            masterTable.getColumnModel().getColumn(4).setPreferredWidth(280);
             masterTable.getColumnModel().getColumn(5).setResizable(false);
             masterTable.getColumnModel().getColumn(6).setResizable(false);
             masterTable.getColumnModel().getColumn(7).setResizable(false);
@@ -249,8 +240,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             masterTable.getColumnModel().getColumn(9).setResizable(false);
             masterTable.getColumnModel().getColumn(10).setResizable(false);
             masterTable.getColumnModel().getColumn(11).setResizable(false);
-            masterTable.getColumnModel().getColumn(12).setResizable(false);
-            masterTable.getColumnModel().getColumn(13).setResizable(false);
         }
 
         pacienteTable.add(masterScrollPane);
