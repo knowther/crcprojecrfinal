@@ -27,8 +27,7 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "medico", catalog = "clinica_crc", schema = "")
-
+@Table(name = "medico", catalog = "testemodeldb2", schema = "")
 public class Medico implements Serializable {
 
     @Transient
@@ -42,21 +41,14 @@ public class Medico implements Serializable {
     private Integer idmedico;
     @Column(name = "nome")
     private String nome;
-
-    @OneToMany(mappedBy = "medico")
-    private List<Paciente> pacientes = new ArrayList<>();
+    @Column(name = "crm")
+    private String crm;
     
+    @OneToMany(mappedBy = "medico")
+    private List<Paciente> pacientes = new ArrayList<Paciente>();
+
     public Medico() {
     }
-
-    public List<Paciente> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
-    }
-    
 
     public Medico(Integer idmedico) {
         this.idmedico = idmedico;
@@ -80,6 +72,16 @@ public class Medico implements Serializable {
         String oldNome = this.nome;
         this.nome = nome;
         changeSupport.firePropertyChange("nome", oldNome, nome);
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        String oldCrm = this.crm;
+        this.crm = crm;
+        changeSupport.firePropertyChange("crm", oldCrm, crm);
     }
 
     @Override

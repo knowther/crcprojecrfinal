@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -25,8 +24,12 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "turno", catalog = "testemodeldb2", schema = "")
-public class Turno implements Serializable {
+@Table(name = "duracaohd", catalog = "testemodeldb2", schema = "")
+@NamedQueries({
+    @NamedQuery(name = "Duracaohd.findAll", query = "SELECT d FROM Duracaohd d")
+    , @NamedQuery(name = "Duracaohd.findByIdduracaohd", query = "SELECT d FROM Duracaohd d WHERE d.idduracaohd = :idduracaohd")
+    , @NamedQuery(name = "Duracaohd.findByDuracao", query = "SELECT d FROM Duracaohd d WHERE d.duracao = :duracao")})
+public class Duracaohd implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -35,76 +38,53 @@ public class Turno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idturno")
-    private Integer idturno;
-    @Basic(optional = false)
-    
-   @ManyToOne
-    private Dia dia;
-    
-    
-    @Basic(optional = false)
-    @Column(name = "nome")
-    private String nome;
+    @Column(name = "idduracaohd")
+    private Integer idduracaohd;
+    @Column(name = "duracao")
+    private String duracao;
 
-    public Turno() {
+    public Duracaohd() {
     }
 
-    public Turno(Integer idturno) {
-        this.idturno = idturno;
+    public Duracaohd(Integer idduracaohd) {
+        this.idduracaohd = idduracaohd;
     }
 
-    public Turno(Integer idturno, int diaIddia, String nome) {
-        this.idturno = idturno;
-        this.dia = dia;
-        this.nome = nome;
+    public Integer getIdduracaohd() {
+        return idduracaohd;
     }
 
-    public Integer getIdturno() {
-        return idturno;
+    public void setIdduracaohd(Integer idduracaohd) {
+        Integer oldIdduracaohd = this.idduracaohd;
+        this.idduracaohd = idduracaohd;
+        changeSupport.firePropertyChange("idduracaohd", oldIdduracaohd, idduracaohd);
     }
 
-    public void setIdturno(Integer idturno) {
-        Integer oldIdturno = this.idturno;
-        this.idturno = idturno;
-        changeSupport.firePropertyChange("idturno", oldIdturno, idturno);
+    public String getDuracao() {
+        return duracao;
     }
 
-    public Dia getDia() {
-        return dia;
-    }
-
-    public void setDia(Dia dia) {
-        Dia oldDia = this.dia;
-        this.dia= dia;
-        changeSupport.firePropertyChange("dia", oldDia, dia);
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        String oldNome = this.nome;
-        this.nome = nome;
-        changeSupport.firePropertyChange("nome", oldNome, nome);
+    public void setDuracao(String duracao) {
+        String oldDuracao = this.duracao;
+        this.duracao = duracao;
+        changeSupport.firePropertyChange("duracao", oldDuracao, duracao);
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idturno != null ? idturno.hashCode() : 0);
+        hash += (idduracaohd != null ? idduracaohd.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Turno)) {
+        if (!(object instanceof Duracaohd)) {
             return false;
         }
-        Turno other = (Turno) object;
-        if ((this.idturno == null && other.idturno != null) || (this.idturno != null && !this.idturno.equals(other.idturno))) {
+        Duracaohd other = (Duracaohd) object;
+        if ((this.idduracaohd == null && other.idduracaohd != null) || (this.idduracaohd != null && !this.idduracaohd.equals(other.idduracaohd))) {
             return false;
         }
         return true;
@@ -112,7 +92,7 @@ public class Turno implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return "bean.Duracaohd[ idduracaohd=" + idduracaohd + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

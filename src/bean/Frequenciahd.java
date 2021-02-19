@@ -27,9 +27,8 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "estado", catalog = "testemodeldb2", schema = "")
-
-public class Estado implements Serializable {
+@Table(name = "frequenciahd", catalog = "testemodeldb2", schema = "")
+public class Frequenciahd implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -38,59 +37,66 @@ public class Estado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idestado")
-    private Integer idestado;
-    @Column(name = "nome")
-    private String nome;
-    
-    @OneToMany(mappedBy = "estado")
+    @Column(name = "idfrequenciahd")
+    private Integer idfrequenciahd;
+    @Column(name = "frequencia")
+    private String frequencia;
+
+    @OneToMany(mappedBy = "frequenciahd")
     private List<Paciente> pacientes = new ArrayList<Paciente>();
     
-    @OneToMany(mappedBy = "estado")
-    private List<Cidade> cidade = new ArrayList<Cidade>();
-
-    public Estado() {
+    public Frequenciahd() {
     }
 
-    public Estado(Integer idestado) {
-        this.idestado = idestado;
+    public Frequenciahd(Integer idfrequenciahd) {
+        this.idfrequenciahd = idfrequenciahd;
     }
 
-    public Integer getIdestado() {
-        return idestado;
+    public Integer getIdfrequenciahd() {
+        return idfrequenciahd;
     }
 
-    public void setIdestado(Integer idestado) {
-        Integer oldIdestado = this.idestado;
-        this.idestado = idestado;
-        changeSupport.firePropertyChange("idestado", oldIdestado, idestado);
+    public void setIdfrequenciahd(Integer idfrequenciahd) {
+        Integer oldIdfrequenciahd = this.idfrequenciahd;
+        this.idfrequenciahd = idfrequenciahd;
+        changeSupport.firePropertyChange("idfrequenciahd", oldIdfrequenciahd, idfrequenciahd);
     }
 
-    public String getNome() {
-        return nome;
+    public String getFrequencia() {
+        return frequencia;
     }
 
-    public void setNome(String nome) {
-        String oldNome = this.nome;
-        this.nome = nome;
-        changeSupport.firePropertyChange("nome", oldNome, nome);
+    public void setFrequencia(String frequencia) {
+        String oldFrequencia = this.frequencia;
+        this.frequencia = frequencia;
+        changeSupport.firePropertyChange("frequencia", oldFrequencia, frequencia);
     }
+
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(List<Paciente> pacientes) {
+        this.pacientes = pacientes;
+    }
+    
+    
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idestado != null ? idestado.hashCode() : 0);
+        hash += (idfrequenciahd != null ? idfrequenciahd.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Estado)) {
+        if (!(object instanceof Frequenciahd)) {
             return false;
         }
-        Estado other = (Estado) object;
-        if ((this.idestado == null && other.idestado != null) || (this.idestado != null && !this.idestado.equals(other.idestado))) {
+        Frequenciahd other = (Frequenciahd) object;
+        if ((this.idfrequenciahd == null && other.idfrequenciahd != null) || (this.idfrequenciahd != null && !this.idfrequenciahd.equals(other.idfrequenciahd))) {
             return false;
         }
         return true;
@@ -98,7 +104,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return "bean.Frequenciahd[ idfrequenciahd=" + idfrequenciahd + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

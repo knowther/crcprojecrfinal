@@ -20,6 +20,7 @@
         <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
           <ComponentRef name="query"/>
         </Property>
+        <Property name="observable" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;bean.Paciente&gt;"/>
@@ -38,9 +39,46 @@
         <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
           <ComponentRef name="profissaoQuery"/>
         </Property>
+        <Property name="observable" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;bean.Profissao&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="diaQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT d FROM Dia d"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="diaList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="diaQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;bean.Dia&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="turnoQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT t FROM Turno t"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="turnoList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="turnoQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;bean.Turno&gt;"/>
       </AuxValues>
     </Component>
   </NonVisualComponents>
@@ -92,7 +130,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="masterScrollPane" min="-2" pref="434" max="-2" attributes="0"/>
+                  <Component id="masterScrollPane" min="-2" pref="577" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButtonIrPrimeiro" min="-2" pref="61" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -120,13 +158,13 @@
                               <Component id="jButtonIrProximo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonIrUltimo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="masterScrollPane" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="masterScrollPane" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -622,7 +660,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox1" min="-2" pref="124" max="-2" attributes="0"/>
+                              <Component id="jComboBoxDia" min="-2" pref="124" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -643,16 +681,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxTurno" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxMedico" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxDia" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -661,6 +701,10 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JComboBox" name="jComboBoxTurno">
+                  <BindingProperties>
+                    <BindingProperty name="elements" source="turnoList" target="jComboBoxTurno" targetPath="elements" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="selectedItem" source="masterTable" sourcePath="${selectedElement.medicoHasTurnoIdmedicoHasTurno.turnoIdturno.nome}" target="jComboBoxTurno" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                  </BindingProperties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -680,17 +724,14 @@
                     <Property name="text" type="java.lang.String" value="M&#xe9;dico:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
+                <Component class="javax.swing.JComboBox" name="jComboBoxDia">
+                  <BindingProperties>
+                    <BindingProperty name="elements" source="diaList" target="jComboBoxDia" targetPath="elements" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="selectedItem" source="masterTable" sourcePath="${selectedElement.medicoHasTurnoIdmedicoHasTurno.turnoIdturno.diaIddia.nome}" target="jComboBoxDia" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                  </BindingProperties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxDiaItemStateChanged"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -817,6 +858,26 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                   </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -827,22 +888,6 @@
                 <BindingProperty name="elements" source="list" target="masterTable" targetPath="elements" updateStrategy="0" immediately="true">
                   <Subbinding sourcePath="${apelido}">
                     <BindingParameter name="NAME" value="Apelido"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${profissao}">
-                    <BindingParameter name="NAME" value="Profissao"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Profissao.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${estado}">
-                    <BindingParameter name="NAME" value="Estado"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Estado.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${cidade}">
-                    <BindingParameter name="NAME" value="Cidade"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Cidade.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${rua}">
-                    <BindingParameter name="NAME" value="Rua"/>
                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                   </Subbinding>
                   <Subbinding sourcePath="${numero}">
@@ -856,10 +901,6 @@
                   <Subbinding sourcePath="${foto}">
                     <BindingParameter name="NAME" value="Foto"/>
                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                  </Subbinding>
-                  <Subbinding sourcePath="${dataNascimento}">
-                    <BindingParameter name="NAME" value="Data Nascimento"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
                   </Subbinding>
                   <Subbinding sourcePath="${cpf}">
                     <BindingParameter name="NAME" value="Cpf"/>
@@ -877,9 +918,45 @@
                     <BindingParameter name="NAME" value="Idpaciente"/>
                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
                   </Subbinding>
-                  <Subbinding sourcePath="${medico}">
-                    <BindingParameter name="NAME" value="Medico"/>
-                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Medico.class"/>
+                  <Subbinding sourcePath="${cidadeIdcidade}">
+                    <BindingParameter name="NAME" value="Cidade Idcidade"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Cidade.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${datanascimento}">
+                    <BindingParameter name="NAME" value="Datanascimento"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${duracaohdIdduracaohd}">
+                    <BindingParameter name="NAME" value="Duracaohd Idduracaohd"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Duracaohd.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${endereco}">
+                    <BindingParameter name="NAME" value="Endereco"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${fichasalaCollection}">
+                    <BindingParameter name="NAME" value="Fichasala Collection"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Collection.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${frequenciahdIdfrequenciahd}">
+                    <BindingParameter name="NAME" value="Frequenciahd Idfrequenciahd"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Frequenciahd.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${profissaoIdprofissao}">
+                    <BindingParameter name="NAME" value="Profissao Idprofissao"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Profissao.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${sessaoHasPacienteCollection}">
+                    <BindingParameter name="NAME" value="Sessao Has Paciente Collection"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Collection.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${tiposanguineoIdtiposanguineo}">
+                    <BindingParameter name="NAME" value="Tiposanguineo Idtiposanguineo"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Tiposanguineo.class"/>
+                  </Subbinding>
+                  <Subbinding sourcePath="${tiposlogradouroIdtiposlogradouro}">
+                    <BindingParameter name="NAME" value="Tiposlogradouro Idtiposlogradouro"/>
+                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Tiposlogradouro.class"/>
                   </Subbinding>
                 </BindingProperty>
               </BindingProperties>

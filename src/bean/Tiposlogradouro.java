@@ -27,9 +27,9 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "estado", catalog = "testemodeldb2", schema = "")
+@Table(name = "tiposlogradouro", catalog = "testemodeldb2", schema = "")
 
-public class Estado implements Serializable {
+public class Tiposlogradouro implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -38,59 +38,56 @@ public class Estado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idestado")
-    private Integer idestado;
-    @Column(name = "nome")
-    private String nome;
+    @Column(name = "idtiposlogradouro")
+    private Integer idtiposlogradouro;
+    @Column(name = "tipologradouro")
+    private String tipologradouro;
     
-    @OneToMany(mappedBy = "estado")
+    @OneToMany(mappedBy = "tiposlogradouro")
     private List<Paciente> pacientes = new ArrayList<Paciente>();
-    
-    @OneToMany(mappedBy = "estado")
-    private List<Cidade> cidade = new ArrayList<Cidade>();
 
-    public Estado() {
+    public Tiposlogradouro() {
     }
 
-    public Estado(Integer idestado) {
-        this.idestado = idestado;
+    public Tiposlogradouro(Integer idtiposlogradouro) {
+        this.idtiposlogradouro = idtiposlogradouro;
     }
 
-    public Integer getIdestado() {
-        return idestado;
+    public Integer getIdtiposlogradouro() {
+        return idtiposlogradouro;
     }
 
-    public void setIdestado(Integer idestado) {
-        Integer oldIdestado = this.idestado;
-        this.idestado = idestado;
-        changeSupport.firePropertyChange("idestado", oldIdestado, idestado);
+    public void setIdtiposlogradouro(Integer idtiposlogradouro) {
+        Integer oldIdtiposlogradouro = this.idtiposlogradouro;
+        this.idtiposlogradouro = idtiposlogradouro;
+        changeSupport.firePropertyChange("idtiposlogradouro", oldIdtiposlogradouro, idtiposlogradouro);
     }
 
-    public String getNome() {
-        return nome;
+    public String getTipologradouro() {
+        return tipologradouro;
     }
 
-    public void setNome(String nome) {
-        String oldNome = this.nome;
-        this.nome = nome;
-        changeSupport.firePropertyChange("nome", oldNome, nome);
+    public void setTipologradouro(String tipologradouro) {
+        String oldTipologradouro = this.tipologradouro;
+        this.tipologradouro = tipologradouro;
+        changeSupport.firePropertyChange("tipologradouro", oldTipologradouro, tipologradouro);
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idestado != null ? idestado.hashCode() : 0);
+        hash += (idtiposlogradouro != null ? idtiposlogradouro.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Estado)) {
+        if (!(object instanceof Tiposlogradouro)) {
             return false;
         }
-        Estado other = (Estado) object;
-        if ((this.idestado == null && other.idestado != null) || (this.idestado != null && !this.idestado.equals(other.idestado))) {
+        Tiposlogradouro other = (Tiposlogradouro) object;
+        if ((this.idtiposlogradouro == null && other.idtiposlogradouro != null) || (this.idtiposlogradouro != null && !this.idtiposlogradouro.equals(other.idtiposlogradouro))) {
             return false;
         }
         return true;
@@ -98,7 +95,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return "bean.Tiposlogradouro[ idtiposlogradouro=" + idtiposlogradouro + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
