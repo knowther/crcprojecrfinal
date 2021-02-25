@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.persistence.EntityManager" name="ClinicaFprojectPUEntityManager">
+    <Component class="javax.persistence.EntityManager" name="entityManager">
       <Properties>
         <Property name="persistenceUnit" type="java.lang.String" value="ClinicaFprojectPU"/>
       </Properties>
@@ -11,7 +11,7 @@
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT p FROM PacienteHasTiposdeclaracao p"/>
         <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="ClinicaFprojectPUEntityManager"/>
+          <ComponentRef name="entityManager"/>
         </Property>
       </Properties>
     </Component>
@@ -29,7 +29,7 @@
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT p FROM Paciente p"/>
         <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="ClinicaFprojectPUEntityManager"/>
+          <ComponentRef name="entityManager"/>
         </Property>
       </Properties>
     </Component>
@@ -47,7 +47,7 @@
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT t FROM Tiposdeclaracao t"/>
         <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="ClinicaFprojectPUEntityManager"/>
+          <ComponentRef name="entityManager"/>
         </Property>
       </Properties>
     </Component>
@@ -166,10 +166,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="MasterTable">
+        <Component class="javax.swing.JTable" name="masterTable">
           <Properties>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -187,14 +192,18 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="pacienteHasTiposdeclaracaoList" target="MasterTable" targetPath="elements" updateStrategy="0" immediately="true">
-              <Subbinding sourcePath="${paciente.nome}">
-                <BindingParameter name="NAME" value="Nome"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+            <BindingProperty name="elements" source="pacienteHasTiposdeclaracaoList" target="masterTable" targetPath="elements" updateStrategy="0" immediately="true">
+              <Subbinding sourcePath="${idpacienteHasTiposdeclaracao}">
+                <BindingParameter name="NAME" value="Idpaciente Has Tiposdeclaracao"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
               </Subbinding>
-              <Subbinding sourcePath="${tiposdeclaracao.tipodadeclaracao}">
-                <BindingParameter name="NAME" value="Tipo Declara&#xe7;&#xe3;o"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              <Subbinding sourcePath="${paciente}">
+                <BindingParameter name="NAME" value="Paciente"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Paciente.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${tiposdeclaracao}">
+                <BindingParameter name="NAME" value="Tiposdeclaracao"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Tiposdeclaracao.class"/>
               </Subbinding>
             </BindingProperty>
           </BindingProperties>
@@ -204,7 +213,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <BindingProperties>
         <BindingProperty name="elements" source="pacienteList" target="jComboBox1" targetPath="elements" updateStrategy="0" immediately="false"/>
-        <BindingProperty name="selectedItem" source="MasterTable" sourcePath="${selectedElement.paciente}" target="jComboBox1" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="selectedItem" source="masterTable" sourcePath="${selectedElement.paciente}" target="jComboBox1" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
       </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
@@ -221,7 +230,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBox2">
       <BindingProperties>
         <BindingProperty name="elements" source="tiposdeclaracaoList" target="jComboBox2" targetPath="elements" updateStrategy="0" immediately="false"/>
-        <BindingProperty name="selectedItem" source="MasterTable" sourcePath="${selectedElement.tiposdeclaracao}" target="jComboBox2" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+        <BindingProperty name="selectedItem" source="masterTable" sourcePath="${selectedElement.tiposdeclaracao}" target="jComboBox2" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
       </BindingProperties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

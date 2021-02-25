@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -25,11 +27,6 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "sessao_has_paciente", catalog = "testemodeldb2", schema = "")
-@NamedQueries({
-    @NamedQuery(name = "SessaoHasPaciente.findAll", query = "SELECT s FROM SessaoHasPaciente s")
-    , @NamedQuery(name = "SessaoHasPaciente.findByIdsessaoHasPaciente", query = "SELECT s FROM SessaoHasPaciente s WHERE s.idsessaoHasPaciente = :idsessaoHasPaciente")
-    , @NamedQuery(name = "SessaoHasPaciente.findBySessaoIdsessao", query = "SELECT s FROM SessaoHasPaciente s WHERE s.sessaoIdsessao = :sessaoIdsessao")
-    , @NamedQuery(name = "SessaoHasPaciente.findByPacienteIdpaciente", query = "SELECT s FROM SessaoHasPaciente s WHERE s.pacienteIdpaciente = :pacienteIdpaciente")})
 public class SessaoHasPaciente implements Serializable {
 
     @Transient
@@ -41,10 +38,14 @@ public class SessaoHasPaciente implements Serializable {
     @Basic(optional = false)
     @Column(name = "idsessao_has_paciente")
     private Integer idsessaoHasPaciente;
-    @Column(name = "sessao_idsessao")
-    private Integer sessaoIdsessao;
-    @Column(name = "paciente_idpaciente")
-    private Integer pacienteIdpaciente;
+    
+    @ManyToOne
+    @JoinColumn(name = "sessao_idsessao")
+    private Sessao sessao;
+    
+    @ManyToOne
+    @JoinColumn(name = "paciente_idpaciente")
+    private Paciente paciente;
 
     public SessaoHasPaciente() {
     }
@@ -63,24 +64,24 @@ public class SessaoHasPaciente implements Serializable {
         changeSupport.firePropertyChange("idsessaoHasPaciente", oldIdsessaoHasPaciente, idsessaoHasPaciente);
     }
 
-    public Integer getSessaoIdsessao() {
-        return sessaoIdsessao;
+    public Sessao getSessao() {
+        return sessao;
     }
 
-    public void setSessaoIdsessao(Integer sessaoIdsessao) {
-        Integer oldSessaoIdsessao = this.sessaoIdsessao;
-        this.sessaoIdsessao = sessaoIdsessao;
-        changeSupport.firePropertyChange("sessaoIdsessao", oldSessaoIdsessao, sessaoIdsessao);
+    public void setSessao(Sessao sessao) {
+        Sessao oldSessao = this.sessao;
+        this.sessao = sessao;
+        changeSupport.firePropertyChange("sessao", oldSessao, sessao);
     }
 
-    public Integer getPacienteIdpaciente() {
-        return pacienteIdpaciente;
+        public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setPacienteIdpaciente(Integer pacienteIdpaciente) {
-        Integer oldPacienteIdpaciente = this.pacienteIdpaciente;
-        this.pacienteIdpaciente = pacienteIdpaciente;
-        changeSupport.firePropertyChange("pacienteIdpaciente", oldPacienteIdpaciente, pacienteIdpaciente);
+    public void setPaciente(Paciente paciente) {
+        Paciente oldPaciente = this.paciente;
+        this.paciente = paciente;
+        changeSupport.firePropertyChange("paciente", oldPaciente, paciente);
     }
 
     @Override
@@ -103,10 +104,11 @@ public class SessaoHasPaciente implements Serializable {
         return true;
     }
 
-    @Override
+      @Override
     public String toString() {
-        return "bean.SessaoHasPaciente[ idsessaoHasPaciente=" + idsessaoHasPaciente + " ]";
+        return "bean.SessaoHasPaciente[ idsessaohaspaciente=" + idsessaoHasPaciente + " ]";
     }
+  
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.addPropertyChangeListener(listener);

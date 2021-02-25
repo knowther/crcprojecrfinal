@@ -56,7 +56,7 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
 
     @Override
     public void internalFrameClosing(InternalFrameEvent e) {
-
+        if(flag ==1){
         int op = JOptionPane.showInternalConfirmDialog(getInstance(), "Quer mesmo fechar essa janela? As alterações não serão salvas.", "Fechar Janela",
                 JOptionPane.YES_NO_OPTION);
 
@@ -64,6 +64,10 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
             excluirQuery();
             dispose();
             
+        }
+        }
+        if(flag !=1){
+            dispose();
         }
     }
 });
@@ -91,6 +95,8 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
         diaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : diaQuery.getResultList();
         turnoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM Turno t");
         turnoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : turnoQuery.getResultList();
+        fichasalaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Fichasala f");
+        fichasalaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : fichasalaQuery.getResultList();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -744,6 +750,7 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
         try {
             entityManager.getTransaction().commit();
             entityManager.getTransaction().begin();
+            flag = 2;
         } catch (RollbackException rex) {
             rex.printStackTrace();
             entityManager.getTransaction().begin();
@@ -751,6 +758,8 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
             for (bean.Paciente p : list) {
                 merged.add(entityManager.merge(p));
             }
+ 
+            
             list.clear();
             list.addAll(merged);
         }
@@ -885,6 +894,8 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
     private javax.persistence.Query diaQuery;
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JLabel estadoIdestadoLabel;
+    private java.util.List<bean.Fichasala> fichasalaList;
+    private javax.persistence.Query fichasalaQuery;
     private javax.swing.JLabel fotoLabel;
     private javax.swing.JButton jButtonIrAnterior;
     private javax.swing.JButton jButtonIrPrimeiro;

@@ -8,6 +8,8 @@ package bean;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import static mondrian.olap.fun.vba.Vba.date;
 
 /**
  *
@@ -64,8 +67,11 @@ public class Sessao implements Serializable {
         changeSupport.firePropertyChange("idsessao", oldIdsessao, idsessao);
     }
 
-    public Date getDiasessao() {
-        return diasessao;
+    public String getDiasessao() {
+        Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+        formatter.format(diasessao);
+        String diasessaoS = formatter.format(diasessao);
+        return diasessaoS;
     }
 
     public void setDiasessao(Date diasessao) {
@@ -94,11 +100,11 @@ public class Sessao implements Serializable {
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "bean.Sessao[ idsessao=" + idsessao + " ]";
+        return this.getDiasessao();
     }
-
+  
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.addPropertyChangeListener(listener);
     }

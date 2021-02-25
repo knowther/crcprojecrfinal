@@ -82,6 +82,9 @@ public class Paciente implements Serializable {
     @OneToMany (mappedBy = "paciente")
     private List<Fichasala> fichasala = new ArrayList<Fichasala>();
     
+    @OneToMany (mappedBy = "paciente")
+    private List<SessaoHasPaciente> sessaohaspaciente = new ArrayList<SessaoHasPaciente>();
+    
     
     @Column(name = "nome")
     private String nome;
@@ -96,6 +99,11 @@ public class Paciente implements Serializable {
     @Column(name = "datanascimento")
     @Temporal(TemporalType.DATE)
     private Date datanascimento;
+    @Column(name = "datainiciohd")
+    @Temporal(TemporalType.DATE)
+    private Date datainiciohd;
+      @Column(name = "pesoseco")
+    private Float pesoseco;
     @Column(name = "endereco")
     private String endereco;
     @Column(name = "numero")
@@ -280,6 +288,29 @@ public class Paciente implements Serializable {
         changeSupport.firePropertyChange("datanascimento", oldDatanascimento, datanascimento);
     }
 
+    public Date getDatainiciohd() {
+        return datainiciohd;
+    }
+
+    public void setDatainiciohd(Date datainiciohd) {
+       Date oldDatainiciohd = this.datainiciohd;
+        this.datainiciohd = datainiciohd;
+        changeSupport.firePropertyChange("datainiciohd", oldDatainiciohd, datainiciohd);
+    }
+
+    public Float getPesoseco() {
+        return pesoseco;
+    }
+
+    public void setPesoseco(Float pesoseco) {
+        Float oldPesoseco = this.pesoseco;
+        this.pesoseco = pesoseco;
+        changeSupport.firePropertyChange("pesoseco", oldPesoseco, pesoseco);
+    }
+    
+    
+    
+    
     public String getEndereco() {
         return endereco;
     }

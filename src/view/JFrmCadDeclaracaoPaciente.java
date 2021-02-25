@@ -31,7 +31,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     public JFrmCadDeclaracaoPaciente() {
         initComponents();
         if (!Beans.isDesignTime()) {
-            ClinicaFprojectPUEntityManager.getTransaction().begin(); 
+            entityManager.getTransaction().begin(); 
         }
         jDateChooser2.getCalendarButton().setVisible(false);
     }
@@ -46,15 +46,15 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        ClinicaFprojectPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
-        pacienteHasTiposdeclaracaoQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM PacienteHasTiposdeclaracao p");
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
+        pacienteHasTiposdeclaracaoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM PacienteHasTiposdeclaracao p");
         pacienteHasTiposdeclaracaoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pacienteHasTiposdeclaracaoQuery.getResultList();
-        pacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM Paciente p");
+        pacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Paciente p");
         pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pacienteQuery.getResultList();
-        tiposdeclaracaoQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT t FROM Tiposdeclaracao t");
+        tiposdeclaracaoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM Tiposdeclaracao t");
         tiposdeclaracaoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : tiposdeclaracaoQuery.getResultList();
         jScrollPane1 = new javax.swing.JScrollPane();
-        MasterTable = new javax.swing.JTable();
+        masterTable = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -66,20 +66,23 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteHasTiposdeclaracaoList, MasterTable);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente.nome}"));
-        columnBinding.setColumnName("Nome");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tiposdeclaracao.tipodadeclaracao}"));
-        columnBinding.setColumnName("Tipo Declaração");
-        columnBinding.setColumnClass(String.class);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteHasTiposdeclaracaoList, masterTable);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idpacienteHasTiposdeclaracao}"));
+        columnBinding.setColumnName("Idpaciente Has Tiposdeclaracao");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
+        columnBinding.setColumnName("Paciente");
+        columnBinding.setColumnClass(bean.Paciente.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tiposdeclaracao}"));
+        columnBinding.setColumnName("Tiposdeclaracao");
+        columnBinding.setColumnClass(bean.Tiposdeclaracao.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jScrollPane1.setViewportView(MasterTable);
+        jScrollPane1.setViewportView(masterTable);
 
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteList, jComboBox1);
         bindingGroup.addBinding(jComboBoxBinding);
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, MasterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.paciente}"), jComboBox1, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.paciente}"), jComboBox1, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +95,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
 
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tiposdeclaracaoList, jComboBox2);
         bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, MasterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tiposdeclaracao}"), jComboBox2, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tiposdeclaracao}"), jComboBox2, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         jLabel2.setText("Tipo de declaração que deseja gerar:");
@@ -178,7 +181,14 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+
+        bean.PacienteHasTiposdeclaracao p = new bean.PacienteHasTiposdeclaracao();
+        entityManager.persist(p);
+        pacienteHasTiposdeclaracaoList.add(p);
+        int row = pacienteHasTiposdeclaracaoList.size() - 1;
+        masterTable.setRowSelectionInterval(row, row);
+        masterTable.scrollRectToVisible(masterTable.getCellRect(row, 0, true));
+        
          String caminho = new File("./relatorios/reportHDEXTRA.jrxml").getAbsolutePath();
          
              try {
@@ -200,8 +210,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager ClinicaFprojectPUEntityManager;
-    private javax.swing.JTable MasterTable;
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -211,6 +220,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable masterTable;
     private java.util.List<bean.PacienteHasTiposdeclaracao> pacienteHasTiposdeclaracaoList;
     private javax.persistence.Query pacienteHasTiposdeclaracaoQuery;
     private java.util.List<bean.Paciente> pacienteList;
