@@ -44,24 +44,28 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        ClinicaFprojectPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
-        cidadeQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT c FROM Cidade c");
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
+        cidadeQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT c FROM Cidade c");
         cidadeList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(cidadeQuery.getResultList());
-        diaQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT d FROM Dia d");
+        diaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT d FROM Dia d");
         diaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(diaQuery.getResultList());
-        fichasalaQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT f FROM Fichasala f");
+        fichasalaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Fichasala f");
         fichasalaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(fichasalaQuery.getResultList());
-        turnoQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT t FROM Turno t");
+        turnoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM Turno t");
         turnoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(turnoQuery.getResultList());
-        pacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM Paciente p");
+        pacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Paciente p");
         pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(pacienteQuery.getResultList());
-        sessaoHasPacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT s FROM SessaoHasPaciente s");
+        sessaoHasPacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT s FROM SessaoHasPaciente s");
         sessaoHasPacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(sessaoHasPacienteQuery.getResultList());
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jComboBoxDia = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDeclaracao = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jComboBoxMes = new javax.swing.JComboBox<>();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jComboBoxPaciente = new javax.swing.JComboBox<>();
 
         setClosable(true);
 
@@ -101,32 +105,66 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBoxMes.setMaximumRowCount(12);
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        jComboBoxMes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxMesItemStateChanged(evt);
+            }
+        });
+
+        jRadioButton1.setText("Todos pacientes");
+
+        jRadioButton2.setText("Paciente específico");
+
+        jComboBoxPaciente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(172, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(114, 114, 114))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(198, 198, 198)
+                .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(211, 211, 211))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton2)
+                            .addComponent(jRadioButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,7 +183,7 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
          if (evt.getStateChange() == ItemEvent.SELECTED) {
 
            Dia d = (Dia) jComboBoxDia.getSelectedItem();
-          turnoQuery = ClinicaFprojectPUEntityManager.createQuery("select t from Turno t where t.dia = :d");
+          turnoQuery = entityManager.createQuery("select t from Turno t where t.dia = :d");
            turnoQuery.setParameter("d", d);
           turnoList.clear();
             turnoList.addAll(turnoQuery.getResultList());
@@ -157,7 +195,7 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
 
            Turno t = (Turno) jComboBoxTurno.getSelectedItem();
-          sessaoHasPacienteQuery = ClinicaFprojectPUEntityManager.createQuery("select s from SessaoHasPaciente s INNER JOIN s.paciente where s.paciente.turno = :t");
+          sessaoHasPacienteQuery = entityManager.createQuery("select s from SessaoHasPaciente s INNER JOIN s.paciente where s.paciente.turno = :t");
            sessaoHasPacienteQuery.setParameter("t", t);
           sessaoHasPacienteList.clear();
             sessaoHasPacienteList.addAll(sessaoHasPacienteQuery.getResultList());
@@ -181,19 +219,34 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
              }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxMesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMesItemStateChanged
+
+        int m = jComboBoxMes.getSelectedIndex();
+
+        sessaoHasPacienteQuery = entityManager.createQuery("SELECT s from SessaoHasPaciente s where month(sessao.diasessao) = :m order by paciente, sessao.diasessao");
+        sessaoHasPacienteQuery.setParameter("m", m);
+        sessaoHasPacienteList.clear();
+        sessaoHasPacienteList.addAll(sessaoHasPacienteQuery.getResultList());
+
+    }//GEN-LAST:event_jComboBoxMesItemStateChanged
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager ClinicaFprojectPUEntityManager;
     private java.util.List<bean.Cidade> cidadeList;
     private javax.persistence.Query cidadeQuery;
     private java.util.List<bean.Dia> diaList;
     private javax.persistence.Query diaQuery;
+    private javax.persistence.EntityManager entityManager;
     private java.util.List<bean.Fichasala> fichasalaList;
     private javax.persistence.Query fichasalaQuery;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxDia;
+    private javax.swing.JComboBox<String> jComboBoxMes;
+    private javax.swing.JComboBox<String> jComboBoxPaciente;
     private javax.swing.JComboBox<String> jComboBoxTurno;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDeclaracao;
     private java.util.List<bean.Paciente> pacienteList;

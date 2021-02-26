@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report133" language="groovy" columnCount="31" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="17" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21128135-05cb-4d4f-84e3-5709296e5805">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="188"/>
+	<property name="ireport.y" value="192"/>
 	<queryString>
 		<![CDATA[SELECT
      sessao_has_paciente.`idsessao_has_paciente` AS idsessaoHasPaciente,
@@ -16,16 +16,18 @@
      paciente.`nome` AS `paciente.nome`
 FROM
      `paciente` paciente INNER JOIN `sessao_has_paciente` sessao_has_paciente ON paciente.`idpaciente` = sessao_has_paciente.`paciente_idpaciente`
-     INNER JOIN `sessao` sessao ON sessao_has_paciente.`sessao_idsessao` = sessao.`idsessao`]]>
+     INNER JOIN `sessao` sessao ON sessao_has_paciente.`sessao_idsessao` = sessao.`idsessao`
+
+	order by sessao.diasessao;]]>
 	</queryString>
 	<field name="idsessaoHasPaciente" class="java.lang.Integer"/>
 	<field name="sessao" class="java.lang.Integer"/>
-	<field name="paciente" class="java.lang.Object"/>
+	<field name="paciente" class="java.lang.String"/>
 	<field name="paciente.idpaciente" class="java.lang.Integer"/>
 	<field name="paciente.dia" class="java.lang.Integer"/>
 	<field name="paciente.turno" class="java.lang.Integer"/>
 	<field name="sessao.idsessao" class="java.lang.Integer"/>
-	<field name="sessao.diasessao" class="java.lang.String"/>
+	<field name="sessao.diasessao" class="java.sql.Date"/>
 	<field name="paciente.nome" class="java.lang.String"/>
 	<variable name="sessao_diasessao_1" class="java.lang.Integer" resetType="Page" calculation="Count">
 		<variableExpression><![CDATA[$F{sessao.diasessao}]]></variableExpression>
@@ -36,14 +38,14 @@ FROM
 	<group name="paciente">
 		<groupExpression><![CDATA[$F{paciente}]]></groupExpression>
 		<groupHeader>
-			<band height="58">
-				<textField evaluationTime="Page" pattern="###0.00" isBlankWhenNull="false">
-					<reportElement mode="Transparent" x="0" y="0" width="555" height="39" forecolor="#000000" backcolor="#FFFFFF" uuid="3df07601-8ce2-4289-ae52-25fe9308be1c"/>
+			<band height="71">
+				<textField evaluationTime="Page" pattern="" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="0" y="12" width="555" height="39" forecolor="#000000" backcolor="#FFFFFF" uuid="3df07601-8ce2-4289-ae52-25fe9308be1c"/>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="html">
 						<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression><![CDATA[" Declaro para os devidos fins o Sr.(a), " + "<b>" + $F{paciente.nome}.toUpperCase() + "</b>" + ", realizou nesta unidade " + "<b>" + $V{sessao_diasessao_2} + "</b>" + " sessões de hemodiálise no mês de " +  "</b>" + " de "  + " nas datas descriminadas:"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[" Declaro para os devidos fins o Sr.(a), " + "<b>" + $F{paciente.nome}.toUpperCase() + "</b>" + ", realizou nesta unidade " + "<b>" + $V{sessao_diasessao_2} + "</b>" + " sessões de hemodiálise no mês de " + "<b>" + new SimpleDateFormat("MMMMM").format($F{sessao.diasessao}).toUpperCase() + "</b>" + " de " + "<b>" +new SimpleDateFormat("YYYY").format($F{sessao.diasessao}).toUpperCase() + "</b>" + " nas datas descriminadas:"]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -111,8 +113,8 @@ FROM
 	</pageHeader>
 	<detail>
 		<band height="20">
-			<textField isStretchWithOverflow="true" pattern="dd,">
-				<reportElement x="162" y="0" width="26" height="20" uuid="83cf55cf-c4ff-4483-827d-b10a4c765534"/>
+			<textField pattern="dd,">
+				<reportElement x="168" y="0" width="20" height="20" uuid="825a57fc-9fff-42eb-8d37-101217e68e1d"/>
 				<textFieldExpression><![CDATA[$F{sessao.diasessao}]]></textFieldExpression>
 			</textField>
 		</band>

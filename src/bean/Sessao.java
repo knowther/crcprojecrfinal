@@ -67,7 +67,11 @@ public class Sessao implements Serializable {
         changeSupport.firePropertyChange("idsessao", oldIdsessao, idsessao);
     }
 
-    public String getDiasessao() {
+    public Date getDiasessao() {
+        return diasessao;
+    }
+    
+     public String getDiasessaoT() {
         
         Format formatter = new SimpleDateFormat("dd/MM/YY");
         formatter.format(diasessao);
@@ -104,7 +108,7 @@ public class Sessao implements Serializable {
      @Override
      
     public String toString() {
-       return this.getDiasessao();
+       return this.getDiasessaoT();
     }
     
   

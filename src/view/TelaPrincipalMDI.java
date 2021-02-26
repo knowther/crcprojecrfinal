@@ -48,6 +48,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
      int pesquisapornome = 0;
     int linhaSelecionada;
     int verificarmes;
+    int parentUnicpanelvisible;
     
     /**
      * Creates new form TelaPrincipalMDI
@@ -465,6 +466,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jComboBoxDia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxDiaItemStateChanged(evt);
+            }
+        });
+        jComboBoxDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDiaActionPerformed(evt);
             }
         });
 
@@ -1134,6 +1140,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             parentPanel.add(pacienteUnicPanel);
             parentPanel.repaint();
             parentPanel.revalidate();
+            parentUnicpanelvisible = 1;
         }
         if(ls >=0){
             Paciente p = list.get(ls);
@@ -1312,6 +1319,8 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         parentPanel.add(pacienteTable);
         parentPanel.repaint();
         parentPanel.revalidate();
+        
+        parentUnicpanelvisible = 0;
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1356,7 +1365,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jComboBoxDiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDiaItemStateChanged
-         if (evt.getStateChange() == ItemEvent.SELECTED) {
+        
+        if(parentUnicpanelvisible == 1){
+           if (evt.getStateChange() == ItemEvent.SELECTED) {
 
            Dia d = (Dia) jComboBoxDia.getSelectedItem();
           turnoQuery = entityManager.createQuery("select t from Turno t where t.dia = :d");
@@ -1365,6 +1376,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             turnoList.addAll(turnoQuery.getResultList());
 
        }
+        }
     }//GEN-LAST:event_jComboBoxDiaItemStateChanged
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -1397,7 +1409,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
          sessaoList.clear();
          sessaoList.addAll(sessaoQuery.getResultList());
          
-         sessaoHasPacienteQuery = entityManager.createQuery("SELECT s from SessaoHasPaciente s where month(sessao.diasessao) = :m and s.paciente = :p order by sessao.diasessao");
+         sessaoHasPacienteQuery = entityManager.createQuery("SELECT s from SessaoHasPaciente s where month(sessao.diasessao) = :m and s.paciente = :p ");
          sessaoHasPacienteQuery.setParameter("m", m);
          sessaoHasPacienteQuery.setParameter("p", p);
          sessaoHasPacienteList.clear();
@@ -1488,6 +1500,10 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jComboBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiaActionPerformed
+       
+    }//GEN-LAST:event_jComboBoxDiaActionPerformed
 
     public int getLinhaSelecionada() {
         return linhaSelecionada;
