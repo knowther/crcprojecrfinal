@@ -16,9 +16,7 @@
      paciente.`nome` AS `paciente.nome`
 FROM
      `paciente` paciente INNER JOIN `sessao_has_paciente` sessao_has_paciente ON paciente.`idpaciente` = sessao_has_paciente.`paciente_idpaciente`
-     INNER JOIN `sessao` sessao ON sessao_has_paciente.`sessao_idsessao` = sessao.`idsessao`
-
-	order by sessao.diasessao;]]>
+     INNER JOIN `sessao` sessao ON sessao_has_paciente.`sessao_idsessao` = sessao.`idsessao`]]>
 	</queryString>
 	<field name="idsessaoHasPaciente" class="java.lang.Integer"/>
 	<field name="sessao" class="java.lang.Integer"/>
