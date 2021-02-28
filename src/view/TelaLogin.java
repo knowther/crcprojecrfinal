@@ -5,6 +5,8 @@
  */
 package view;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.IntelliJTheme;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import view.TelaPrincipalMDI;
+
 
 /**
  *
@@ -168,15 +171,21 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws ParseException, UnsupportedLookAndFeelException {
         
-          
-          try 
-    {
-      UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel");
-    } 
-    catch (Exception e) 
-    {
-      e.printStackTrace();
-    }
+          try {
+              try {
+                  UIManager.setLookAndFeel("com.formdev.flatlaf.FlatIntelliJLaf");
+              } catch (ClassNotFoundException ex) {
+                  Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+              } catch (InstantiationException ex) {
+                 Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+              } catch (IllegalAccessException ex) {
+                 Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+              }
+            UIManager.put ( "TabbedPane.showTabSeparators" , false );
+            UIManager.put ( "Button.arc" , 15 );
+        }
+        catch (UnsupportedLookAndFeelException ex4) {}
+    
      
       
         

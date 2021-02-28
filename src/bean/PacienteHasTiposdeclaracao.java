@@ -43,7 +43,7 @@ public class PacienteHasTiposdeclaracao implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "paciente_idpaciente")
-    private Paciente paciente;
+        private Paciente paciente;
     
     @ManyToOne
     @JoinColumn(name = "tiposdeclaracao_idtiposdeclaracao")

@@ -6,6 +6,7 @@
             <name>ClinicaFproject</name>
             <source-roots>
                 <root id="src.relatorios.dir"/>
+                <root id="src.themes.dir"/>
                 <root id="src.fotos.dir"/>
                 <root id="src.dir"/>
             </source-roots>

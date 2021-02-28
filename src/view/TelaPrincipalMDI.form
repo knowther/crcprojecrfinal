@@ -426,7 +426,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="100" y="310" width="1540" height="390"/>
+                      <AbsoluteConstraints x="120" y="290" width="1540" height="390"/>
                     </Constraint>
                   </Constraints>
 
@@ -446,12 +446,12 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="80" minWidth="80" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="50" resizable="false">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -534,7 +534,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="410" y="250" width="670" height="30"/>
+                      <AbsoluteConstraints x="390" y="150" width="670" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -544,7 +544,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="410" y="230" width="160" height="-1"/>
+                      <AbsoluteConstraints x="390" y="130" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -554,7 +554,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="410" y="200" width="70" height="-1"/>
+                      <AbsoluteConstraints x="390" y="100" width="70" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -571,7 +571,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="480" y="200" width="70" height="20"/>
+                      <AbsoluteConstraints x="460" y="100" width="70" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -587,7 +587,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="550" y="200" width="70" height="20"/>
+                      <AbsoluteConstraints x="530" y="100" width="70" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -600,7 +600,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="620" y="200" width="70" height="-1"/>
+                      <AbsoluteConstraints x="600" y="100" width="70" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -610,7 +610,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="690" y="200" width="80" height="-1"/>
+                      <AbsoluteConstraints x="670" y="100" width="80" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -623,7 +623,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="100" y="710" width="130" height="-1"/>
+                      <AbsoluteConstraints x="160" y="720" width="130" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -644,6 +644,26 @@
                     </Constraint>
                   </Constraints>
                 </Component>
+                <Component class="javax.swing.JButton" name="jButton8">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Novo Paciente"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="390" y="220" width="130" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Excluir Paciente Selecionado"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="540" y="220" width="210" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pacienteUnicPanel">
@@ -661,7 +681,9 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="jButtonAlterar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="saveButton" min="-2" pref="74" max="-2" attributes="0"/>
@@ -712,11 +734,12 @@
                                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButtonAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="201" max="32767" attributes="0"/>
+                          <EmptySpace pref="156" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
@@ -1120,7 +1143,7 @@
                                   <Component id="jComboBoxEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jComboBoxCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               <Component id="cepLabel" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -1297,6 +1320,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButton3" max="32767" attributes="0"/>
                                   <Component id="jButton4" pref="136" max="32767" attributes="0"/>
+                                  <Component id="jButton6" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="40" max="32767" attributes="0"/>
                           </Group>
@@ -1309,7 +1333,9 @@
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="220" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="186" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1328,8 +1354,21 @@
                         <Property name="text" type="java.lang.String" value="Editar Ficha de Sala"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JButton" name="jButton6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jButton6"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="jButton7">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Excluir"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanelSessao">
@@ -1405,7 +1444,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="jComboBoxPacienteS" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="326" max="32767" attributes="0"/>
+                          <EmptySpace pref="330" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
