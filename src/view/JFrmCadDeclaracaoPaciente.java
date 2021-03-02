@@ -30,6 +30,8 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     
     
     int turnoPac;
+    int tipodeclaracao;
+    int verificardata;
     
     /**
      * Creates new form JFrmCadDeclaracaoPaciente
@@ -37,6 +39,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     public JFrmCadDeclaracaoPaciente() {
         
         initComponents();
+        botoes();
         
         if (!Beans.isDesignTime()) {
             entityManager.getTransaction().begin(); 
@@ -71,12 +74,12 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBoxtipoDeclaracao = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonGerardeclaracao = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonCriardeclaracao = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
 
@@ -122,12 +125,24 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tiposdeclaracao}"), jComboBoxtipoDeclaracao, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
+        jComboBoxtipoDeclaracao.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxtipoDeclaracaoItemStateChanged(evt);
+            }
+        });
+
         jLabel2.setText("Tipo de declaração que deseja gerar:");
 
-        jButton1.setText("Gerar Declaração");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGerardeclaracao.setText("Gerar Declaração");
+        jButtonGerardeclaracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonGerardeclaracaoActionPerformed(evt);
+            }
+        });
+
+        jDateChooser1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDateChooser1KeyTyped(evt);
             }
         });
 
@@ -137,10 +152,10 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Primeiro, informe o paciente e que tipo de declaração deseja gerar:");
 
-        jButton2.setText("Criar nova declaração");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCriardeclaracao.setText("Criar nova declaração");
+        jButtonCriardeclaracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCriardeclaracaoActionPerformed(evt);
             }
         });
 
@@ -160,48 +175,61 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(168, 168, 168))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(231, 231, 231)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxtipoDeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel3)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addGap(65, 65, 65))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonCriardeclaracao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonGerardeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(168, 168, 168))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(231, 231, 231)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxtipoDeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))))
+                        .addGap(147, 147, 147))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel4)
+                        .addGap(221, 221, 221))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(196, 196, 196)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,17 +245,11 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCriardeclaracao)
+                    .addComponent(jButtonGerardeclaracao))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -239,13 +261,11 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxPacienteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int tipodeclaracao = jComboBoxtipoDeclaracao.getSelectedIndex();
+    private void jButtonGerardeclaracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerardeclaracaoActionPerformed
         
         
         if(tipodeclaracao ==0){
          String caminho = new File("./relatorios/reportHDEXTRA.jrxml").getAbsolutePath();
-            precisadeturno();
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
@@ -264,8 +284,6 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         
         if(tipodeclaracao == 1){
              String caminho = new File("./relatorios/reportADMISSAO.jrxml").getAbsolutePath();
-             nprecisadeturno();
-           
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
@@ -279,16 +297,23 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        pacienteHasTiposdeclaracaoList.clear();
+        declaracaogerada();
+        
+    }//GEN-LAST:event_jButtonGerardeclaracaoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          bean.PacienteHasTiposdeclaracao p = new bean.PacienteHasTiposdeclaracao();
+    private void jButtonCriardeclaracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriardeclaracaoActionPerformed
+        
+        bean.PacienteHasTiposdeclaracao p = new bean.PacienteHasTiposdeclaracao();
         entityManager.persist(p);
         pacienteHasTiposdeclaracaoList.add(p);
         int row = pacienteHasTiposdeclaracaoList.size() - 1;
         masterTable.setRowSelectionInterval(row, row);
         masterTable.scrollRectToVisible(masterTable.getCellRect(row, 0, true));
-    }//GEN-LAST:event_jButton2ActionPerformed
+        ativarescolha();
+        
+        
+    }//GEN-LAST:event_jButtonCriardeclaracaoActionPerformed
 
     private void jComboBoxPacienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPacienteItemStateChanged
       
@@ -324,27 +349,71 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
              }
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
+    private void jComboBoxtipoDeclaracaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxtipoDeclaracaoItemStateChanged
+       
+        
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            tipodeclaracao = jComboBoxtipoDeclaracao.getSelectedIndex();
+    if(tipodeclaracao == 0){
+        precisadeturno();
+    }
+    
+    if(tipodeclaracao == 1){
+        nprecisadeturno();
+        jDateChooser1.setEnabled(true);
+    }
+        
+        }
+        jButtonGerardeclaracao.setEnabled(true);
+    }//GEN-LAST:event_jComboBoxtipoDeclaracaoItemStateChanged
+
+    private void jDateChooser1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser1KeyTyped
+       
+    }//GEN-LAST:event_jDateChooser1KeyTyped
+
     
         private void botoes(){
             jComboBoxPaciente.setEnabled(false);
             jComboBoxtipoDeclaracao.setEnabled(false);
             jDateChooser1.setEnabled(false);
             jDateChooser2.setEnabled(false);
+            jComboBox2.setVisible(false);
+            jTextField1.setVisible(false);
+            jButtonGerardeclaracao.setEnabled(false);
+        }
+        
+        private void ativarescolha(){
+            jComboBoxPaciente.setEnabled(true);
+             jComboBoxtipoDeclaracao.setEnabled(true);
         }
     
         private void precisadeturno(){
             jDateChooser1.setEnabled(true);
+            jDateChooser2.setEnabled(true);
         }
         
         private void nprecisadeturno(){
             jDateChooser1.setEnabled(false);
+            jDateChooser2.setEnabled(false);
             jDateChooser1.setDate(null);
+            jDateChooser2.setDate(null);
+        }
+        
+        private void declaracaogerada(){
+            //pacienteHasTiposdeclaracaoList.clear();
+            jComboBoxPaciente.setSelectedItem(null);
+            jComboBoxtipoDeclaracao.setSelectedItem(null);
+            jButtonGerardeclaracao.setEnabled(false);
+            jButtonCriardeclaracao.setEnabled(true);
+            jDateChooser1.setDate(null);
+            jDateChooser2.setDate(null);
+            
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCriardeclaracao;
+    private javax.swing.JButton jButtonGerardeclaracao;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBoxPaciente;
     private javax.swing.JComboBox<String> jComboBoxtipoDeclaracao;
