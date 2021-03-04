@@ -391,10 +391,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="desktopPane" min="-2" pref="1865" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
-          </Group>
+          <Component id="desktopPane" alignment="0" pref="1879" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -421,7 +418,7 @@
         <Container class="javax.swing.JPanel" name="parentPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="1870" height="1020"/>
+              <AbsoluteConstraints x="0" y="0" width="1880" height="1020"/>
             </Constraint>
           </Constraints>
 
@@ -444,7 +441,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="290" width="1540" height="390"/>
+                      <AbsoluteConstraints x="210" y="290" width="1540" height="390"/>
                     </Constraint>
                   </Constraints>
 
@@ -464,7 +461,7 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="80" minWidth="80" prefWidth="-1" resizable="true">
+                            <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -641,7 +638,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="160" y="720" width="130" height="-1"/>
+                      <AbsoluteConstraints x="210" y="720" width="130" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -651,14 +648,14 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="1410" y="710" width="120" height="-1"/>
+                      <AbsoluteConstraints x="1550" y="710" width="120" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelNumPaciente">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="1530" y="700" width="80" height="30"/>
+                      <AbsoluteConstraints x="1660" y="700" width="80" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -678,7 +675,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="540" y="220" width="210" height="-1"/>
+                      <AbsoluteConstraints x="620" y="220" width="210" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -721,7 +718,7 @@
                                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="238" max="32767" attributes="0"/>
+                                  <EmptySpace pref="248" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
@@ -1417,7 +1414,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="653" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="644" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
@@ -1438,13 +1435,13 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <EmptySpace pref="88" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxSessoes" min="-2" pref="150" max="-2" attributes="0"/>
                               <Component id="jComboBoxPacienteS" min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="635" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="644" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

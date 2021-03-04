@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package view;
-
 import bean.Dia;
 import bean.Estado;
 import bean.Paciente;
@@ -255,8 +254,8 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         if (masterTable.getColumnModel().getColumnCount() > 0) {
             masterTable.getColumnModel().getColumn(0).setResizable(false);
             masterTable.getColumnModel().getColumn(1).setResizable(false);
-            masterTable.getColumnModel().getColumn(2).setMinWidth(80);
-            masterTable.getColumnModel().getColumn(2).setMaxWidth(80);
+            masterTable.getColumnModel().getColumn(2).setMinWidth(100);
+            masterTable.getColumnModel().getColumn(2).setMaxWidth(100);
             masterTable.getColumnModel().getColumn(3).setResizable(false);
             masterTable.getColumnModel().getColumn(3).setPreferredWidth(50);
             masterTable.getColumnModel().getColumn(4).setResizable(false);
@@ -264,7 +263,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         }
 
         pacienteTable.add(masterScrollPane);
-        masterScrollPane.setBounds(120, 290, 1540, 390);
+        masterScrollPane.setBounds(210, 290, 1540, 390);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rins45%.png"))); // NOI18N
         pacienteTable.add(jLabel2);
@@ -327,13 +326,13 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             }
         });
         pacienteTable.add(jButtonAttTable);
-        jButtonAttTable.setBounds(160, 720, 130, 23);
+        jButtonAttTable.setBounds(210, 720, 130, 23);
 
         jLabel7.setText("Total de Pacientes:");
         pacienteTable.add(jLabel7);
-        jLabel7.setBounds(1410, 710, 120, 14);
+        jLabel7.setBounds(1550, 710, 120, 14);
         pacienteTable.add(jLabelNumPaciente);
-        jLabelNumPaciente.setBounds(1530, 700, 80, 30);
+        jLabelNumPaciente.setBounds(1660, 700, 80, 30);
 
         jButton8.setText("Novo Paciente");
         pacienteTable.add(jButton8);
@@ -341,7 +340,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         jButton9.setText("Excluir Paciente Selecionado");
         pacienteTable.add(jButton9);
-        jButton9.setBounds(540, 220, 210, 23);
+        jButton9.setBounds(620, 220, 210, 23);
 
         parentPanel.add(pacienteTable, "card3");
 
@@ -790,7 +789,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                             .addGroup(pacienteUnicPanelLayout.createSequentialGroup()
                                 .addGap(138, 138, 138)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                         .addGroup(pacienteUnicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -901,7 +900,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jPanelSessaoLayout.setHorizontalGroup(
             jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSessaoLayout.createSequentialGroup()
-                .addGap(653, 653, 653)
+                .addGap(644, 644, 644)
                 .addGroup(jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelSessaoLayout.createSequentialGroup()
                         .addGap(222, 222, 222)
@@ -917,12 +916,12 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                             .addComponent(novoButtonSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonEditarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jComboBoxSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxPacienteS, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(635, 635, 635))
+                .addGap(644, 644, 644))
         );
         jPanelSessaoLayout.setVerticalGroup(
             jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -957,7 +956,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         parentPanel.add(jPanelSessao, "card4");
 
         desktopPane.add(parentPanel);
-        parentPanel.setBounds(0, 0, 1870, 1020);
+        parentPanel.setBounds(0, 0, 1880, 1020);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/user.png"))); // NOI18N
         jMenu3.setText("Usuários");
@@ -1106,9 +1105,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1865, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1879, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

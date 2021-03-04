@@ -86,6 +86,8 @@ public class Paciente implements Serializable {
     private List<SessaoHasPaciente> sessaohaspaciente = new ArrayList<SessaoHasPaciente>();
     
     
+    
+    
     @Column(name = "nome")
     private String nome;
     @Column(name = "apelido")
