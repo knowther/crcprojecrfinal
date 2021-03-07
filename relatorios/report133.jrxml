@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report133" language="groovy" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21128135-05cb-4d4f-84e3-5709296e5805">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="30"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -49,7 +49,7 @@ FROM
 						<font fontName="Tahoma" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression><![CDATA[" Declaro para os devidos fins o Sr.(a), " + "<b>" + $F{paciente.nome}.toUpperCase() + "</b>" + ", realizou nesta unidade " + "<b>" + $V{sessao_diasessao_2} + "</b>" + " sessões de hemodiálise no mês de " + "<b>" + new SimpleDateFormat("MMMMM").format($F{sessao.diasessao}).toUpperCase() + "</b>" + " de " + "<b>" +new SimpleDateFormat("YYYY").format($F{sessao.diasessao}).toUpperCase() + "</b>" + " nas datas descriminadas: " + $V{DAY_FORMATTER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[" Declaro para os devidos fins o Sr.(a), " + "<b>" + $F{paciente.nome}.toUpperCase() + "</b>" + ", realizou nesta unidade " + "<b>" + $V{sessao_diasessao_2} + "</b>" + " sessões de hemodiálise no mês de " + "<b>" + new SimpleDateFormat("MMMMM").format($F{sessao.diasessao}).toUpperCase() + "</b>" + " de " + "<b>" +new SimpleDateFormat("YYYY").format($F{sessao.diasessao}).toUpperCase() + "</b>" + " nas datas descriminadas: " + $V{DAY_FORMATTER} + "."]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

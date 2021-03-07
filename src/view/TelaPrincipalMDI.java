@@ -254,10 +254,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         if (masterTable.getColumnModel().getColumnCount() > 0) {
             masterTable.getColumnModel().getColumn(0).setResizable(false);
             masterTable.getColumnModel().getColumn(1).setResizable(false);
-            masterTable.getColumnModel().getColumn(2).setMinWidth(100);
-            masterTable.getColumnModel().getColumn(2).setMaxWidth(100);
-            masterTable.getColumnModel().getColumn(3).setResizable(false);
-            masterTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+            masterTable.getColumnModel().getColumn(3).setPreferredWidth(30);
             masterTable.getColumnModel().getColumn(4).setResizable(false);
             masterTable.getColumnModel().getColumn(5).setResizable(false);
         }
