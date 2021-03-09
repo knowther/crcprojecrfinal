@@ -192,9 +192,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -389,7 +387,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.cpf}"), jFormattedTextFieldCPF, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.cpf}"), jFormattedTextFieldCPF, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.dataNascimento}"), jDateChooser1, org.jdesktop.beansbinding.BeanProperty.create("date"));
@@ -983,26 +981,13 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenu1.setText("Consulta");
         jMenu1.add(jSeparator1);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/heart.png"))); // NOI18N
-        jMenu4.setText("Ocorrências");
-
-        jMenuItem3.setText("Ocorrências da recepção");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem11.setText("Ocorrências");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
-
-        jMenuItem5.setText("Ocorrências");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem5);
-
-        jMenu1.add(jMenu4);
+        jMenu1.add(jMenuItem11);
 
         jMenuBar1.add(jMenu1);
 
@@ -1127,14 +1112,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         JFrmCadDeclaracaoPaciente tela;
@@ -1303,7 +1280,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_ruaFieldActionPerformed
 
     private void jComboBoxEstadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEstadoItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
+        if (parentUnicpanelvisible == 1) {
 
             Estado e = (Estado) jComboBoxEstado.getSelectedItem();
             cidadeQuery = entityManager.createQuery("select c from Cidade c where c.estado = :e order by nome");
@@ -1560,6 +1537,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         botoesUnicpanel();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+         JFrmcadOcorrencia tela;
+        form.abrirFormulario(tela = new JFrmcadOcorrencia(), desktopPane);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
     public int getLinhaSelecionada() {
         return linhaSelecionada;
     }
@@ -1608,6 +1590,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
          jFormattedTextFieldCEP.setEnabled(true);
          jComboBoxTurno.setEnabled(true);
          jComboBoxMedico.setEnabled(true);
+         jComboBoxDia.setEnabled(true);
      }
      
      private void botoesUnicpanel(){
@@ -1735,7 +1718,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -1743,10 +1725,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

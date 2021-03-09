@@ -24,7 +24,7 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "tiposdeclaracao", catalog = "testemodeldb2", schema = "")
+@Table(name = "tiposdeclaracao", catalog = "dbclinicaii", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Tiposdeclaracao.findAll", query = "SELECT t FROM Tiposdeclaracao t")
     , @NamedQuery(name = "Tiposdeclaracao.findByIdtiposdeclaracao", query = "SELECT t FROM Tiposdeclaracao t WHERE t.idtiposdeclaracao = :idtiposdeclaracao")

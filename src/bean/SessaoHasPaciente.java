@@ -26,7 +26,7 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "sessao_has_paciente", catalog = "testemodeldb2", schema = "")
+@Table(name = "sessao_has_paciente", catalog = "dbclinicaii", schema = "")
 public class SessaoHasPaciente implements Serializable {
 
     @Transient

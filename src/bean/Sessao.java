@@ -30,7 +30,7 @@ import static mondrian.olap.fun.vba.Vba.date;
  * @author johnn
  */
 @Entity
-@Table(name = "sessao", catalog = "testemodeldb2", schema = "")
+@Table(name = "sessao", catalog = "dbclinicaii", schema = "")
 @NamedQueries({
     @NamedQuery(name = "Sessao.findAll", query = "SELECT s FROM Sessao s")
     , @NamedQuery(name = "Sessao.findByIdsessao", query = "SELECT s FROM Sessao s WHERE s.idsessao = :idsessao")

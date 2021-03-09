@@ -31,7 +31,7 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "paciente", catalog = "testemodeldb2", schema = "")
+@Table(name = "paciente", catalog = "dbclinicaii", schema = "")
 public class Paciente implements Serializable {
 
     @Transient
@@ -84,6 +84,9 @@ public class Paciente implements Serializable {
     
     @OneToMany (mappedBy = "paciente")
     private List<SessaoHasPaciente> sessaohaspaciente = new ArrayList<SessaoHasPaciente>();
+    
+    @OneToMany (mappedBy = "paciente")
+    private List<Ocorrencias> ocorrencias = new ArrayList<Ocorrencias>();
     
     
     

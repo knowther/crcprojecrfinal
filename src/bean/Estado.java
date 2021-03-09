@@ -27,7 +27,7 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "estado", catalog = "testemodeldb2", schema = "")
+@Table(name = "estado", catalog = "dbclinicaii", schema = "")
 
 public class Estado implements Serializable {
 
@@ -40,6 +40,8 @@ public class Estado implements Serializable {
     @Basic(optional = false)
     @Column(name = "idestado")
     private Integer idestado;
+    @Column(name = "uf")
+    private String uf;
     @Column(name = "nome")
     private String nome;
     
@@ -75,6 +77,16 @@ public class Estado implements Serializable {
         this.nome = nome;
         changeSupport.firePropertyChange("nome", oldNome, nome);
     }
+    
+     public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String nome) {
+        String oldUf = this.uf;
+        this.uf = uf;
+        changeSupport.firePropertyChange("uf", oldUf, uf);
+    }
 
     @Override
     public int hashCode() {
@@ -98,7 +110,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return uf;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
