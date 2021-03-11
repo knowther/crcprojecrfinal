@@ -79,6 +79,12 @@ public class Paciente implements Serializable {
     @ManyToOne
     private Tiposlogradouro tiposlogradouro;
     
+    @ManyToOne
+    private Tipodeinsuficiencia tipodeinsuficiencia;
+    
+    @ManyToOne
+    private Tipodedialise tipodedialise;
+    
     @OneToMany (mappedBy = "paciente")
     private List<Fichasala> fichasala = new ArrayList<Fichasala>();
     
@@ -90,7 +96,8 @@ public class Paciente implements Serializable {
     
     
     
-    
+    @Column(name = "prontuario")
+    private String prontuario;
     @Column(name = "nome")
     private String nome;
     @Column(name = "apelido")
@@ -115,6 +122,12 @@ public class Paciente implements Serializable {
     private String numero;
     @Column(name = "foto")
     private String foto;
+    @Column(name = "rg")
+    private String rg;
+    @Column(name = "unidadedeencaminhamento")
+    private String unidadedeencaminhamento;
+    @Column(name = "complemento")
+    private String complemento;
 
     public Paciente() {
     }
@@ -242,6 +255,18 @@ public class Paciente implements Serializable {
         this.nome = nome;
         changeSupport.firePropertyChange("nome", oldNome, nome);
     }
+    
+   public String getProntuario() {
+        return prontuario;
+    }
+
+    public void setProntuario(String prontuario) {
+        String oldProntuario = this.prontuario;
+        this.prontuario = prontuario;
+        changeSupport.firePropertyChange("prontuario", oldProntuario, prontuario);
+    }
+    
+    
 
     public String getApelido() {
         return apelido;
@@ -345,6 +370,60 @@ public class Paciente implements Serializable {
         this.foto = foto;
         changeSupport.firePropertyChange("foto", oldFoto, foto);
     }
+    
+  public Tipodeinsuficiencia getTipodeinsuficiencia() {
+        return tipodeinsuficiencia;
+    }
+
+    public void setTipodeinsuficiencia(Tipodeinsuficiencia tipodeinsuficiencia) {
+        Tipodeinsuficiencia oldTipodeinsuficiencia = this.tipodeinsuficiencia;
+        this.tipodeinsuficiencia = tipodeinsuficiencia;
+        changeSupport.firePropertyChange("tipodeinsuficiencia", oldTipodeinsuficiencia, tipodeinsuficiencia);
+    }
+    
+    
+     public Tipodedialise getTipodedialise() {
+        return tipodedialise;
+    }
+
+    public void setTipodedialise(Tipodedialise tipodedialise) {
+        Tipodedialise oldTipodedialise = this.tipodedialise;
+        this.tipodedialise = tipodedialise;
+        changeSupport.firePropertyChange("tipodedialise", oldTipodedialise, tipodedialise);
+    }
+    
+    
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        String oldRg = this.rg;
+        this.rg = rg;
+        changeSupport.firePropertyChange("rg", oldRg, rg);
+    }
+    
+    
+    public String getUnidadedeencaminhamento() {
+        return unidadedeencaminhamento;
+    }
+
+    public void setUnidadedeencaminhamento(String unidadedeencaminhamento) {
+        String oldUnidadedeencaminhamento = this.unidadedeencaminhamento;
+        this.unidadedeencaminhamento = unidadedeencaminhamento;
+        changeSupport.firePropertyChange("unidadedeencaminhamento", oldUnidadedeencaminhamento, unidadedeencaminhamento);
+    }
+    
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        String oldComplemento = this.complemento;
+        this.complemento = complemento;
+        changeSupport.firePropertyChange("complemento", oldComplemento, complemento);
+    }
+    
 
     public List<Fichasala> getFichasala() {
         return fichasala;

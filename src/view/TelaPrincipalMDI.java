@@ -106,6 +106,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         sessaoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(sessaoQuery.getResultList());
         tiposlogradouroQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM Tiposlogradouro t");
         tiposlogradouroList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : tiposlogradouroQuery.getResultList();
+        jMenuItem3 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         parentPanel = new javax.swing.JPanel();
         pacienteTable = new javax.swing.JPanel();
@@ -192,7 +193,10 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -204,6 +208,8 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -981,13 +987,33 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenu1.setText("Consulta");
         jMenu1.add(jSeparator1);
 
-        jMenuItem11.setText("Ocorrências");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenu4.setText("Ocorrências");
+
+        jMenuItem5.setText("Consultar Ocorrências");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem11);
+        jMenu4.add(jMenuItem5);
+
+        jMenuItem12.setText("Criar Ocorrências");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem12);
+
+        jMenuItem13.setText("Gerar Ocorrências");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem13);
+
+        jMenu1.add(jMenu4);
 
         jMenuBar1.add(jMenu1);
 
@@ -1537,10 +1563,26 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         botoesUnicpanel();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-         JFrmcadOcorrencia tela;
-        form.abrirFormulario(tela = new JFrmcadOcorrencia(), desktopPane);
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        JFrmVerOcorrencia tela;
+        form.abrirFormulario(tela = new JFrmVerOcorrencia(), desktopPane);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        
+         JFrmGerarOcorrencia tela;
+        form.abrirFormulario(tela = new JFrmGerarOcorrencia(), desktopPane);
+        
+        
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+       
+         JFrmCriarOcorrencia tela;
+        form.abrirFormulario(tela = new JFrmCriarOcorrencia(), desktopPane);
+        
+        
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     public int getLinhaSelecionada() {
         return linhaSelecionada;
@@ -1718,6 +1760,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -1725,9 +1768,12 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

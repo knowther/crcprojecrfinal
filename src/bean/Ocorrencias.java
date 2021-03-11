@@ -8,15 +8,20 @@ package bean;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 /**
@@ -33,9 +38,20 @@ public class Ocorrencias implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idocorrencias")
     private Integer idocorrencias;
+    
+    @Column(name = "dataocorrencia")
+    @Temporal(TemporalType.DATE)
+    private Date dataocorrencia;
+    
+    @Column(name = "ultimadialise")
+    @Temporal(TemporalType.DATE)
+    private Date ultimadialise;
+    
+    
     
     
     @ManyToOne
@@ -62,6 +78,10 @@ public class Ocorrencias implements Serializable {
     @Lob
     @Column(name = "outros")
     private String outros;
+    
+    @Lob
+    @Column(name = "textobase")
+    private String textobase;
 
     public Ocorrencias() {
     }
@@ -155,12 +175,44 @@ public class Ocorrencias implements Serializable {
     public String getOutros() {
         return outros;
     }
-
-    public void setOutros(String outros) {
+    
+      public void setOutros(String outros) {
         String oldOutros = this.outros;
         this.outros = outros;
         changeSupport.firePropertyChange("outros", oldOutros, outros);
     }
+    
+    public Date getDataocorrencia() {
+        return dataocorrencia;
+    }
+    
+    public void setDataocorrencia(Date dataocorrencia) {
+        Date oldDataocorrencia = this.dataocorrencia;
+        this.dataocorrencia = dataocorrencia;
+        changeSupport.firePropertyChange("dataocorrencia", oldDataocorrencia, dataocorrencia);
+    }
+    
+    
+    public Date getUltimadialise() {
+        return ultimadialise;
+    }
+    
+    public void setUltimadialise(Date ultimadialise) {
+        Date oldUltimadialise = this.dataocorrencia;
+        this.ultimadialise = ultimadialise;
+        changeSupport.firePropertyChange("ultimadialise", oldUltimadialise, ultimadialise);
+    }
+    
+ public String getTextobase() {
+        return textobase;
+    }
+    
+      public void setTextobase(String textobase) {
+        String oldTextobase = this.textobase;
+        this.textobase = textobase;
+        changeSupport.firePropertyChange("textobase", oldTextobase, textobase);
+    }
+  
 
     @Override
     public int hashCode() {
