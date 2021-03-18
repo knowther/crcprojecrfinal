@@ -216,6 +216,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         desktopPane.setBackground(java.awt.SystemColor.activeCaptionBorder);
 
+        parentPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
         parentPanel.setLayout(new java.awt.CardLayout());
 
         pacienteTable.setLayout(null);
@@ -790,7 +791,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                             .addGroup(pacienteUnicPanelLayout.createSequentialGroup()
                                 .addGap(138, 138, 138)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
                         .addGroup(pacienteUnicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -818,7 +819,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                             .addComponent(jButtonAlterar)
                             .addComponent(jButton7)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
             .addGroup(pacienteUnicPanelLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -917,7 +918,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                             .addComponent(novoButtonSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonEditarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addGroup(jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jComboBoxSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -951,13 +952,13 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addComponent(jButtonExcluirSessao)))
                 .addGap(74, 74, 74)
                 .addComponent(jComboBoxPacienteS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(386, Short.MAX_VALUE))
         );
 
         parentPanel.add(jPanelSessao, "card4");
 
         desktopPane.add(parentPanel);
-        parentPanel.setBounds(0, 0, 1880, 1020);
+        parentPanel.setBounds(0, 0, 1920, 1080);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/user.png"))); // NOI18N
         jMenu3.setText("Usuários");

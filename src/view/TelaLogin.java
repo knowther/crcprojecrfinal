@@ -7,7 +7,6 @@ package view;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.IntelliJTheme;
-import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

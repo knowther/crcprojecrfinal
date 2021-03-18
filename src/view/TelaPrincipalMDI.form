@@ -426,9 +426,14 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="parentPanel">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1920, 1080]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="1880" height="1020"/>
+              <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
 
@@ -728,7 +733,7 @@
                                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="248" max="32767" attributes="0"/>
+                                  <EmptySpace pref="288" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
@@ -764,7 +769,7 @@
                               </Group>
                               <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="152" max="32767" attributes="0"/>
+                          <EmptySpace pref="212" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
@@ -1447,7 +1452,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="88" max="32767" attributes="0"/>
+                          <EmptySpace pref="128" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxSessoes" min="-2" pref="150" max="-2" attributes="0"/>
@@ -1488,7 +1493,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="jComboBoxPacienteS" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="330" max="32767" attributes="0"/>
+                          <EmptySpace pref="386" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
