@@ -112,7 +112,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         pacienteTable = new javax.swing.JPanel();
         masterScrollPane = new javax.swing.JScrollPane();
         masterTable = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         jTextFieldPesquisaPaciente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -266,10 +265,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         pacienteTable.add(masterScrollPane);
         masterScrollPane.setBounds(210, 290, 1540, 390);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rins45%.png"))); // NOI18N
-        pacienteTable.add(jLabel2);
-        jLabel2.setBounds(1150, -250, 690, 830);
 
         jTextFieldPesquisaPaciente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1748,7 +1743,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
