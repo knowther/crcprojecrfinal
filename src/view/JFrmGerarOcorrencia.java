@@ -29,6 +29,7 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
     public JFrmGerarOcorrencia() {
         initComponents();
         ocorrenciasList.clear();
+        desabilitartudo();
     }
 
     /**
@@ -61,22 +62,22 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         jTextAreaMelhora = new javax.swing.JTextArea();
         jPanelCura = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTextAreaCura = new javax.swing.JTextArea();
         jPanelAbandonoIgnorado = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        jTextAreaAbandonoIgnorado = new javax.swing.JTextArea();
         jPanelTx = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        jTextAreaTX = new javax.swing.JTextArea();
         jPanelObito = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        jTextAreaObito = new javax.swing.JTextArea();
         jPanelTransferencia = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextAreaTransferencia = new javax.swing.JTextArea();
         jPanelOutros = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
+        jTextAreaOutros = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -89,8 +90,39 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
         columnBinding.setColumnName("Paciente");
         columnBinding.setColumnClass(bean.Paciente.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${transferencia}"));
+        columnBinding.setColumnName("Transferencia");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${abandonoignorado}"));
+        columnBinding.setColumnName("Abandonoignorado");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cura}"));
+        columnBinding.setColumnName("Cura");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${melhora}"));
+        columnBinding.setColumnName("Melhora");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${obito}"));
+        columnBinding.setColumnName("Obito");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${outros}"));
+        columnBinding.setColumnName("Outros");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tx}"));
+        columnBinding.setColumnName("Tx");
+        columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTable1PropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -98,27 +130,14 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(jRadioButtonObito);
         jRadioButtonObito.setText("Óbito");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.obito != null}"), jRadioButtonObito, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonObito.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonObitoItemStateChanged(evt);
             }
         });
-        jRadioButtonObito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonObitoActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButtonMelhora);
         jRadioButtonMelhora.setText("Melhora");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.melhora != null}"), jRadioButtonMelhora, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonMelhora.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonMelhoraItemStateChanged(evt);
@@ -127,10 +146,6 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(jRadioButtonOutros);
         jRadioButtonOutros.setText("Outros");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.outros != null}"), jRadioButtonOutros, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonOutros.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonOutrosItemStateChanged(evt);
@@ -139,74 +154,53 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(jRadioButtonAbandonoIgnorado);
         jRadioButtonAbandonoIgnorado.setText("Abandono Ignorado");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.abandonoignirado != null}"), jRadioButtonAbandonoIgnorado, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonAbandonoIgnorado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonAbandonoIgnoradoItemStateChanged(evt);
             }
         });
-        jRadioButtonAbandonoIgnorado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonAbandonoIgnoradoActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButtonTX);
         jRadioButtonTX.setText("Tx (Unid. de Transplante)");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tx != null}"), jRadioButtonTX, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonTX.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonTXItemStateChanged(evt);
             }
         });
-        jRadioButtonTX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonTXActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButtonCura);
         jRadioButtonCura.setText("Cura");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.cura != null}"), jRadioButtonCura, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonCura.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonCuraItemStateChanged(evt);
             }
         });
-        jRadioButtonCura.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonCuraMouseClicked(evt);
+        jRadioButtonCura.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jRadioButtonCuraStateChanged(evt);
             }
         });
-        jRadioButtonCura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonCuraActionPerformed(evt);
+        jRadioButtonCura.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jRadioButtonCuraPropertyChange(evt);
             }
         });
 
         buttonGroup1.add(jRadioButtonTransferencia);
         jRadioButtonTransferencia.setText("Transferência");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.transferencia != null}"), jRadioButtonTransferencia, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
         jRadioButtonTransferencia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonTransferenciaItemStateChanged(evt);
             }
         });
-        jRadioButtonTransferencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonTransferenciaActionPerformed(evt);
+        jRadioButtonTransferencia.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jRadioButtonTransferenciaStateChanged(evt);
+            }
+        });
+        jRadioButtonTransferencia.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jRadioButtonTransferenciaPropertyChange(evt);
             }
         });
 
@@ -259,7 +253,7 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         jTextAreaMelhora.setRows(5);
         jTextAreaMelhora.setTabSize(5);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.melhora}"), jTextAreaMelhora, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.melhora}"), jTextAreaMelhora, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jScrollPane2.setViewportView(jTextAreaMelhora);
@@ -283,14 +277,14 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelMelhora, "card2");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
+        jTextAreaCura.setColumns(20);
+        jTextAreaCura.setLineWrap(true);
+        jTextAreaCura.setRows(5);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.cura}"), jTextArea2, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.cura}"), jTextAreaCura, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jScrollPane3.setViewportView(jTextArea2);
+        jScrollPane3.setViewportView(jTextAreaCura);
 
         javax.swing.GroupLayout jPanelCuraLayout = new javax.swing.GroupLayout(jPanelCura);
         jPanelCura.setLayout(jPanelCuraLayout);
@@ -311,14 +305,14 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelCura, "card3");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
+        jTextAreaAbandonoIgnorado.setColumns(20);
+        jTextAreaAbandonoIgnorado.setLineWrap(true);
+        jTextAreaAbandonoIgnorado.setRows(5);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.abandonoignorado}"), jTextArea3, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.abandonoignorado}"), jTextAreaAbandonoIgnorado, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jScrollPane4.setViewportView(jTextArea3);
+        jScrollPane4.setViewportView(jTextAreaAbandonoIgnorado);
 
         javax.swing.GroupLayout jPanelAbandonoIgnoradoLayout = new javax.swing.GroupLayout(jPanelAbandonoIgnorado);
         jPanelAbandonoIgnorado.setLayout(jPanelAbandonoIgnoradoLayout);
@@ -339,13 +333,13 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelAbandonoIgnorado, "card4");
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
+        jTextAreaTX.setColumns(20);
+        jTextAreaTX.setRows(5);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tx}"), jTextArea4, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tx}"), jTextAreaTX, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jScrollPane5.setViewportView(jTextArea4);
+        jScrollPane5.setViewportView(jTextAreaTX);
 
         javax.swing.GroupLayout jPanelTxLayout = new javax.swing.GroupLayout(jPanelTx);
         jPanelTx.setLayout(jPanelTxLayout);
@@ -366,14 +360,14 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelTx, "card5");
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setLineWrap(true);
-        jTextArea5.setRows(5);
+        jTextAreaObito.setColumns(20);
+        jTextAreaObito.setLineWrap(true);
+        jTextAreaObito.setRows(5);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.obito}"), jTextArea5, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.obito}"), jTextAreaObito, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jScrollPane6.setViewportView(jTextArea5);
+        jScrollPane6.setViewportView(jTextAreaObito);
 
         javax.swing.GroupLayout jPanelObitoLayout = new javax.swing.GroupLayout(jPanelObito);
         jPanelObito.setLayout(jPanelObitoLayout);
@@ -422,14 +416,14 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelTransferencia, "card7");
 
-        jTextArea7.setColumns(20);
-        jTextArea7.setLineWrap(true);
-        jTextArea7.setRows(5);
+        jTextAreaOutros.setColumns(20);
+        jTextAreaOutros.setLineWrap(true);
+        jTextAreaOutros.setRows(5);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.outros}"), jTextArea7, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.outros}"), jTextAreaOutros, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jScrollPane8.setViewportView(jTextArea7);
+        jScrollPane8.setViewportView(jTextAreaOutros);
 
         javax.swing.GroupLayout jPanelOutrosLayout = new javax.swing.GroupLayout(jPanelOutros);
         jPanelOutros.setLayout(jPanelOutrosLayout);
@@ -522,35 +516,6 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButtonTXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTXActionPerformed
-         
-        
-    }//GEN-LAST:event_jRadioButtonTXActionPerformed
-
-    private void jRadioButtonCuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCuraActionPerformed
-       
-        
-    }//GEN-LAST:event_jRadioButtonCuraActionPerformed
-
-    private void jRadioButtonCuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonCuraMouseClicked
- 
-    }//GEN-LAST:event_jRadioButtonCuraMouseClicked
-
-    private void jRadioButtonAbandonoIgnoradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAbandonoIgnoradoActionPerformed
-     
-        
-    }//GEN-LAST:event_jRadioButtonAbandonoIgnoradoActionPerformed
-
-    private void jRadioButtonObitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonObitoActionPerformed
-         
-        
-    }//GEN-LAST:event_jRadioButtonObitoActionPerformed
-
-    private void jRadioButtonTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTransferenciaActionPerformed
-         
-        
-    }//GEN-LAST:event_jRadioButtonTransferenciaActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        String caminho = new File("./relatorios/reportOcorrencia.jrxml").getAbsolutePath();
          
@@ -577,10 +542,11 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxMesItemStateChanged
 
     private void jRadioButtonTransferenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTransferenciaItemStateChanged
-        parentPanel.removeAll();
+          parentPanel.removeAll();
         parentPanel.add(jPanelTransferencia);
         parentPanel.repaint();
         parentPanel.revalidate();
+       // limpartextos();
     }//GEN-LAST:event_jRadioButtonTransferenciaItemStateChanged
 
     private void jRadioButtonMelhoraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonMelhoraItemStateChanged
@@ -588,8 +554,88 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         parentPanel.add(jPanelMelhora);
         parentPanel.repaint();
         parentPanel.revalidate();
-        
+     
     }//GEN-LAST:event_jRadioButtonMelhoraItemStateChanged
+
+    private void jRadioButtonAbandonoIgnoradoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonAbandonoIgnoradoItemStateChanged
+           parentPanel.removeAll();
+        parentPanel.add(jPanelAbandonoIgnorado);
+        parentPanel.repaint();
+        parentPanel.revalidate();
+     
+    }//GEN-LAST:event_jRadioButtonAbandonoIgnoradoItemStateChanged
+
+    private void jRadioButtonObitoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonObitoItemStateChanged
+        parentPanel.removeAll();
+        parentPanel.add(jPanelObito);
+        parentPanel.repaint();
+        parentPanel.revalidate();
+       
+    }//GEN-LAST:event_jRadioButtonObitoItemStateChanged
+
+    private void jRadioButtonTXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTXItemStateChanged
+        parentPanel.removeAll();
+        parentPanel.add(jPanelTx);
+        parentPanel.repaint();
+        parentPanel.revalidate();
+       
+    }//GEN-LAST:event_jRadioButtonTXItemStateChanged
+
+    private void jRadioButtonOutrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonOutrosItemStateChanged
+        parentPanel.removeAll();
+        parentPanel.add(jPanelOutros);
+        parentPanel.repaint();
+        parentPanel.revalidate();
+        
+    }//GEN-LAST:event_jRadioButtonOutrosItemStateChanged
+
+    private void jRadioButtonTransferenciaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jRadioButtonTransferenciaPropertyChange
+     
+    }//GEN-LAST:event_jRadioButtonTransferenciaPropertyChange
+
+    private void jRadioButtonCuraPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jRadioButtonCuraPropertyChange
+      
+    }//GEN-LAST:event_jRadioButtonCuraPropertyChange
+
+    private void jRadioButtonTransferenciaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButtonTransferenciaStateChanged
+         
+    }//GEN-LAST:event_jRadioButtonTransferenciaStateChanged
+
+    private void jRadioButtonCuraStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButtonCuraStateChanged
+           
+    }//GEN-LAST:event_jRadioButtonCuraStateChanged
+
+    private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
+       
+        
+    }//GEN-LAST:event_jTable1PropertyChange
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        buttonGroup1.clearSelection();
+        if(jTextAreaTransferencia.getText().length() > 5){
+            jRadioButtonTransferencia.setSelected(true);
+        }
+        else if(jTextAreaCura.getText().length() > 5){
+            jRadioButtonCura.setSelected(true);
+        }
+        else if(jTextAreaAbandonoIgnorado.getText().length() > 5){
+            jRadioButtonAbandonoIgnorado.setSelected(true);
+        }
+        else if(jTextAreaMelhora.getText().length() > 5){
+            jRadioButtonMelhora.setSelected(true);
+        }
+        else if(jTextAreaObito.getText().length() > 5){
+            jRadioButtonObito.setSelected(true);
+        }
+        else if(jTextAreaTX.getText().length() > 5){
+            jRadioButtonTX.setSelected(true);
+        }
+        else if(jTextAreaOutros.getText().length() > 5){
+            jRadioButtonOutros.setSelected(true);
+        }
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     private void jRadioButtonCuraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonCuraItemStateChanged
         parentPanel.removeAll();
@@ -598,36 +644,8 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         parentPanel.revalidate();
     }//GEN-LAST:event_jRadioButtonCuraItemStateChanged
 
-    private void jRadioButtonAbandonoIgnoradoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonAbandonoIgnoradoItemStateChanged
-           parentPanel.removeAll();
-        parentPanel.add(jPanelAbandonoIgnorado);
-        parentPanel.repaint();
-        parentPanel.revalidate();
-    }//GEN-LAST:event_jRadioButtonAbandonoIgnoradoItemStateChanged
-
-    private void jRadioButtonObitoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonObitoItemStateChanged
-        parentPanel.removeAll();
-        parentPanel.add(jPanelObito);
-        parentPanel.repaint();
-        parentPanel.revalidate();
-    }//GEN-LAST:event_jRadioButtonObitoItemStateChanged
-
-    private void jRadioButtonTXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTXItemStateChanged
-        parentPanel.removeAll();
-        parentPanel.add(jPanelTx);
-        parentPanel.repaint();
-        parentPanel.revalidate();
-    }//GEN-LAST:event_jRadioButtonTXItemStateChanged
-
-    private void jRadioButtonOutrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonOutrosItemStateChanged
-        parentPanel.removeAll();
-        parentPanel.add(jPanelOutros);
-        parentPanel.repaint();
-        parentPanel.revalidate();
-    }//GEN-LAST:event_jRadioButtonOutrosItemStateChanged
-
     
-    private void limpartextos (){
+    /*private void limpartextos (){
       jTextAreaMelhora.setText(null);
       jTextArea2.setText(null);
       jTextArea3.setText(null);
@@ -635,11 +653,11 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
       jTextArea5.setText(null);
       jTextAreaTransferencia.setText(null);
       jTextArea7.setText(null);
-    }
+    }*/
     
         private void desabilitartudo(){
-        jPanel1.setEnabled(false);
-        parentPanel.setEnabled(false);
+        //jPanel1.setEnabled(false);
+       // parentPanel.setEnabled(false);
         jRadioButtonMelhora.setEnabled(false);
         jRadioButtonCura.setEnabled(false);
         jRadioButtonAbandonoIgnorado.setEnabled(false);
@@ -648,7 +666,7 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
         jRadioButtonTX.setEnabled(false);
         jRadioButtonTransferencia.setEnabled(false);
         jTextAreaMelhora.setEnabled(false);
-        jTable1.setVisible(false);
+        //jTable1.setVisible(false);
     }
         
         
@@ -697,12 +715,12 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JTextArea jTextAreaAbandonoIgnorado;
+    private javax.swing.JTextArea jTextAreaCura;
     private javax.swing.JTextArea jTextAreaMelhora;
+    private javax.swing.JTextArea jTextAreaObito;
+    private javax.swing.JTextArea jTextAreaOutros;
+    private javax.swing.JTextArea jTextAreaTX;
     private javax.swing.JTextArea jTextAreaTransferencia;
     private java.util.List<bean.Ocorrencias> ocorrenciasList;
     private javax.persistence.Query ocorrenciasQuery;

@@ -128,6 +128,41 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -140,8 +175,33 @@
                 <BindingParameter name="NAME" value="Paciente"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Paciente.class"/>
               </Subbinding>
+              <Subbinding sourcePath="${transferencia}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${abandonoignorado}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${cura}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${melhora}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${obito}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${outros}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${tx}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
             </BindingProperty>
           </BindingProperties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jTable1PropertyChange"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -219,12 +279,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xd3;bito"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.obito != null}" target="jRadioButtonObito" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonObitoItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonObitoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonMelhora">
@@ -234,9 +290,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Melhora"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.melhora != null}" target="jRadioButtonMelhora" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonMelhoraItemStateChanged"/>
           </Events>
@@ -248,9 +301,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Outros"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.outros != null}" target="jRadioButtonOutros" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonOutrosItemStateChanged"/>
           </Events>
@@ -262,12 +312,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Abandono Ignorado"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.abandonoignirado != null}" target="jRadioButtonAbandonoIgnorado" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonAbandonoIgnoradoItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonAbandonoIgnoradoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonTX">
@@ -277,12 +323,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Tx (Unid. de Transplante)"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.tx != null}" target="jRadioButtonTX" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonTXItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonTXActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonCura">
@@ -292,13 +334,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cura"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.cura != null}" target="jRadioButtonCura" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonCuraItemStateChanged"/>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRadioButtonCuraMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonCuraActionPerformed"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jRadioButtonCuraStateChanged"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jRadioButtonCuraPropertyChange"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonTransferencia">
@@ -308,12 +347,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Transfer&#xea;ncia"/>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selected" source="jTable1" sourcePath="${selectedElement.transferencia != null}" target="jRadioButtonTransferencia" targetPath="selected" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jRadioButtonTransferenciaItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonTransferenciaActionPerformed"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jRadioButtonTransferenciaStateChanged"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jRadioButtonTransferenciaPropertyChange"/>
           </Events>
         </Component>
       </SubComponents>
@@ -425,14 +462,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea2">
+                <Component class="javax.swing.JTextArea" name="jTextAreaCura">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.cura}" target="jTextArea2" targetPath="text" updateStrategy="0" immediately="false">
+                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.cura}" target="jTextAreaCura" targetPath="text" updateStrategy="0" immediately="false">
                       <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                     </BindingProperty>
                   </BindingProperties>
@@ -476,14 +513,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea3">
+                <Component class="javax.swing.JTextArea" name="jTextAreaAbandonoIgnorado">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.abandonoignorado}" target="jTextArea3" targetPath="text" updateStrategy="0" immediately="false">
+                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.abandonoignorado}" target="jTextAreaAbandonoIgnorado" targetPath="text" updateStrategy="0" immediately="false">
                       <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                     </BindingProperty>
                   </BindingProperties>
@@ -527,13 +564,13 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea4">
+                <Component class="javax.swing.JTextArea" name="jTextAreaTX">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.tx}" target="jTextArea4" targetPath="text" updateStrategy="0" immediately="false">
+                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.tx}" target="jTextAreaTX" targetPath="text" updateStrategy="0" immediately="false">
                       <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                     </BindingProperty>
                   </BindingProperties>
@@ -577,14 +614,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea5">
+                <Component class="javax.swing.JTextArea" name="jTextAreaObito">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.obito}" target="jTextArea5" targetPath="text" updateStrategy="0" immediately="false">
+                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.obito}" target="jTextAreaObito" targetPath="text" updateStrategy="0" immediately="false">
                       <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                     </BindingProperty>
                   </BindingProperties>
@@ -679,14 +716,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea7">
+                <Component class="javax.swing.JTextArea" name="jTextAreaOutros">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.outros}" target="jTextArea7" targetPath="text" updateStrategy="0" immediately="false">
+                    <BindingProperty name="text" source="jTable1" sourcePath="${selectedElement.outros}" target="jTextAreaOutros" targetPath="text" updateStrategy="0" immediately="false">
                       <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                     </BindingProperty>
                   </BindingProperties>

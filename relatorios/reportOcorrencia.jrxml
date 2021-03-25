@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportOcorrencia" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="939b5b40-684e-4c5e-84ad-efa73cee30e6">
 	<property name="ireport.zoom" value="1.9487171000000034"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="165"/>
+	<property name="ireport.y" value="280"/>
 	<queryString>
 		<![CDATA[SELECT
      ocorrencias.`idocorrencias` AS idocorrencias,
@@ -175,121 +175,121 @@ FROM
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<detail>
-		<band height="317" splitType="Stretch">
+		<band height="338" splitType="Stretch">
 			<rectangle>
 				<reportElement positionType="Float" x="117" y="8" width="10" height="10" uuid="75fd95d3-d393-458d-8188-9aaa18c7e538"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="11" y="222" width="10" height="10" uuid="b6d6017d-325a-457a-b6c1-3f6d44788d08"/>
+				<reportElement positionType="Float" x="11" y="230" width="10" height="10" uuid="b6d6017d-325a-457a-b6c1-3f6d44788d08"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="30" y="270" width="100" height="20" uuid="cd00736e-d3d3-435c-83b1-7f7d30d07d49"/>
+				<reportElement positionType="Float" x="30" y="278" width="100" height="20" uuid="cd00736e-d3d3-435c-83b1-7f7d30d07d49"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[OUTROS:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="290" width="555" height="20" uuid="4813b4a8-7cd8-4e30-b36b-883b4a444379"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="298" width="555" height="20" uuid="4813b4a8-7cd8-4e30-b36b-883b4a444379"/>
 				<textElement>
 					<paragraph leftIndent="30"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{outros}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="30" y="220" width="100" height="20" uuid="2ef535f3-8783-45e4-8d11-da3c3f3a8b69"/>
+				<reportElement positionType="Float" x="30" y="228" width="100" height="20" uuid="2ef535f3-8783-45e4-8d11-da3c3f3a8b69"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TRANSFERÊNCIA:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="240" width="443" height="20" uuid="c3952038-d736-4ff5-9327-1f4f5f149aa7"/>
+				<reportElement positionType="Float" x="0" y="248" width="443" height="20" uuid="c3952038-d736-4ff5-9327-1f4f5f149aa7"/>
 				<textElement>
 					<paragraph leftIndent="30"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{transferencia}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="13" y="220" width="10" height="20" uuid="3ca10982-eeea-4b82-9f33-00202125ab6d">
+				<reportElement positionType="Float" x="13" y="228" width="10" height="20" uuid="3ca10982-eeea-4b82-9f33-00202125ab6d">
 					<printWhenExpression><![CDATA[($F{transferencia} != null)]]></printWhenExpression>
 				</reportElement>
 				<text><![CDATA[X]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="Float" x="11" y="272" width="10" height="10" uuid="62851941-3f63-474a-b127-f980c3de6efa"/>
+				<reportElement positionType="Float" x="11" y="280" width="10" height="10" uuid="62851941-3f63-474a-b127-f980c3de6efa"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="13" y="270" width="10" height="20" uuid="c7807a38-b02a-41aa-89d6-3bdaa54a607d">
+				<reportElement positionType="Float" x="13" y="278" width="10" height="20" uuid="c7807a38-b02a-41aa-89d6-3bdaa54a607d">
 					<printWhenExpression><![CDATA[($F{outros} != null)]]></printWhenExpression>
 				</reportElement>
 				<text><![CDATA[X]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="Float" x="11" y="173" width="10" height="10" uuid="d0ea2d28-505e-4ed6-bb94-7f3125e35e8d"/>
+				<reportElement positionType="Float" x="11" y="181" width="10" height="10" uuid="d0ea2d28-505e-4ed6-bb94-7f3125e35e8d"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="30" y="171" width="143" height="20" uuid="18ac10a3-4c2e-494e-b5a6-abbba8db3fbf"/>
+				<reportElement positionType="Float" x="30" y="179" width="143" height="20" uuid="18ac10a3-4c2e-494e-b5a6-abbba8db3fbf"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ÓBITO - (CAUSA DO ÓBITO)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="0" y="191" width="555" height="20" uuid="6b055858-14eb-4190-b604-e9c1b4ec5148"/>
+				<reportElement positionType="Float" x="0" y="199" width="555" height="20" uuid="6b055858-14eb-4190-b604-e9c1b4ec5148"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<paragraph leftIndent="30"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obito}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="13" y="171" width="10" height="20" uuid="942036d6-0e4a-46d9-8696-1ecb44bd0efb">
+				<reportElement positionType="Float" x="13" y="179" width="10" height="20" uuid="942036d6-0e4a-46d9-8696-1ecb44bd0efb">
 					<printWhenExpression><![CDATA[($F{obito} != null)]]></printWhenExpression>
 				</reportElement>
 				<text><![CDATA[X]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="120" width="153" height="20" uuid="b306ce9d-d086-4440-8783-fabba4e6e575"/>
+				<reportElement positionType="Float" x="30" y="128" width="153" height="20" uuid="b306ce9d-d086-4440-8783-fabba4e6e575"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TX (UNID. DE TRANSPLANTE):]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="0" y="140" width="555" height="20" uuid="07f18559-9962-4ddc-9924-71a493870636"/>
+				<reportElement x="0" y="148" width="555" height="20" uuid="07f18559-9962-4ddc-9924-71a493870636"/>
 				<textElement>
 					<paragraph leftIndent="30"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tx}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement positionType="Float" x="11" y="123" width="10" height="10" uuid="7c0b59ef-a232-4d1f-abd6-17a656bac106"/>
+				<reportElement positionType="Float" x="11" y="131" width="10" height="10" uuid="7c0b59ef-a232-4d1f-abd6-17a656bac106"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="13" y="121" width="10" height="20" uuid="1fe4e0e2-528a-48bb-a389-3952c66dd5fd">
+				<reportElement positionType="Float" x="13" y="129" width="10" height="20" uuid="1fe4e0e2-528a-48bb-a389-3952c66dd5fd">
 					<printWhenExpression><![CDATA[($F{tx} != null)]]></printWhenExpression>
 				</reportElement>
 				<text><![CDATA[X]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="69" width="125" height="20" uuid="8a9f4318-2d02-4d58-9adf-17c49ae43772"/>
+				<reportElement positionType="Float" x="30" y="77" width="125" height="20" uuid="8a9f4318-2d02-4d58-9adf-17c49ae43772"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ABANDONO IGNORADO:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="89" width="555" height="20" uuid="5335a746-de25-4b5e-8bdf-6d4a25f3e951"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="97" width="555" height="20" uuid="5335a746-de25-4b5e-8bdf-6d4a25f3e951"/>
 				<textElement>
 					<paragraph leftIndent="30"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{abandonoignorado}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement positionType="Float" x="9" y="71" width="10" height="10" uuid="75a21502-a488-43cd-b44f-86222edd8438"/>
+				<reportElement positionType="Float" x="9" y="79" width="10" height="10" uuid="75a21502-a488-43cd-b44f-86222edd8438"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="11" y="69" width="10" height="20" uuid="8ef15651-9c30-430d-b8d9-66b13eb2d496">
+				<reportElement positionType="Float" x="11" y="77" width="10" height="20" uuid="8ef15651-9c30-430d-b8d9-66b13eb2d496">
 					<printWhenExpression><![CDATA[($F{abandonoignorado} != null)]]></printWhenExpression>
 				</reportElement>
 				<text><![CDATA[X]]></text>
@@ -317,7 +317,7 @@ FROM
 				</textElement>
 				<text><![CDATA[MELHORA]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="0" y="26" width="555" height="20" uuid="6bc6e3b5-f7d9-4008-85fe-14e7a22d9da8"/>
 				<textElement>
 					<paragraph leftIndent="30"/>
@@ -331,7 +331,7 @@ FROM
 				</textElement>
 				<text><![CDATA[CURA:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="0" y="46" width="555" height="20" isRemoveLineWhenBlank="true" uuid="104ce94b-6d4b-432a-b0d7-39bc9125917e"/>
 				<textElement>
 					<paragraph leftIndent="30"/>
