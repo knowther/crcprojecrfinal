@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.beans.Beans;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.RollbackException;
+
 /**
  *
  * @author johnn
@@ -16,6 +21,10 @@ public class JFrmVerOcorrencia extends javax.swing.JInternalFrame {
      */
     public JFrmVerOcorrencia() {
         initComponents();
+        if (!Beans.isDesignTime()) {
+            entityManager.getTransaction().begin();
+        }
+       desabilitarcampos();
     }
 
     /**
@@ -28,14 +37,17 @@ public class JFrmVerOcorrencia extends javax.swing.JInternalFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        ClinicaFprojectPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
-        ocorrenciasQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT o FROM Ocorrencias o");
-        ocorrenciasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : ocorrenciasQuery.getResultList();
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
+        ocorrenciasQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT o FROM Ocorrencias o");
+        ocorrenciasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(ocorrenciasQuery.getResultList());
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+
+        setClosable(true);
+        setTitle("Ver Ocorrências");
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ocorrenciasList, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
@@ -92,20 +104,20 @@ public class JFrmVerOcorrencia extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addGap(185, 185, 185)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(68, 68, 68)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -113,9 +125,16 @@ public class JFrmVerOcorrencia extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+ private void habilitaredicao(){
+     
+ }
+ 
+ private void desabilitarcampos (){
+     
+ }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager ClinicaFprojectPUEntityManager;
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

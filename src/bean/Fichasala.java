@@ -49,6 +49,8 @@ public class Fichasala implements Serializable {
     private String ferro;
     @Column(name = "eritropoetina")
     private String eritropoetina;
+    @Column(name = "obs")
+    private String obs;
 
     public Fichasala() {
     }
@@ -71,7 +73,7 @@ public class Fichasala implements Serializable {
         return paciente;
     }
 
-    public void setPacienteIdpaciente(Paciente pacienteIdpaciente) {
+    public void setPaciente(Paciente pacienteIdpaciente) {
         Paciente oldPaciente = this.paciente;
         this.paciente = paciente;
         changeSupport.firePropertyChange("paciente", oldPaciente, paciente);
@@ -105,6 +107,16 @@ public class Fichasala implements Serializable {
         String oldEritropoetina = this.eritropoetina;
         this.eritropoetina = eritropoetina;
         changeSupport.firePropertyChange("eritropoetina", oldEritropoetina, eritropoetina);
+    }
+    
+   public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        String oldObs = this.obs;
+        this.obs = obs;
+        changeSupport.firePropertyChange("obs", oldObs, obs);
     }
 
     @Override

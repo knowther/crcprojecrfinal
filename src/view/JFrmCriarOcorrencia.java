@@ -55,10 +55,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
         ocorrenciasQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT o FROM Ocorrencias o");
-        ocorrenciasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : ocorrenciasQuery.getResultList();
+        ocorrenciasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(ocorrenciasQuery.getResultList());
         buttonGroup1 = new javax.swing.ButtonGroup();
         pacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Paciente p");
-        pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pacienteQuery.getResultList();
+        pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(pacienteQuery.getResultList());
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -66,8 +66,6 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jComboBoxPaci = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         parentPanel = new javax.swing.JPanel();
         jPanelTextoBase = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
@@ -94,7 +92,6 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         jTextAreaOutros = new javax.swing.JTextArea();
         jButtonNovaOcorrencia = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
         jDateChooserDialise = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -105,9 +102,16 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jRadioButtonTX = new javax.swing.JRadioButton();
         jRadioButtonCura = new javax.swing.JRadioButton();
         jRadioButtonTransferencia = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButtonCancelar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
+        setTitle("Gerenciar Ocorrências");
+        setFrameIcon(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -136,14 +140,6 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Selecione o Paciente que deseja registrar a ocorrência:");
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ocorrenciasList, jTable1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
-        columnBinding.setColumnName("Paciente");
-        columnBinding.setColumnClass(bean.Paciente.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        jScrollPane1.setViewportView(jTable1);
-
         parentPanel.setBackground(new java.awt.Color(255, 255, 255));
         parentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)), "Texto da Ocorrência"));
         parentPanel.setLayout(new java.awt.CardLayout());
@@ -162,7 +158,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelTextoBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTextoBaseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelTextoBaseLayout.setVerticalGroup(
@@ -191,7 +187,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelMelhoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMelhoraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelMelhoraLayout.setVerticalGroup(
@@ -219,7 +215,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelCuraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCuraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelCuraLayout.setVerticalGroup(
@@ -235,6 +231,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jTextAreaAbandonoIgnorado.setColumns(20);
         jTextAreaAbandonoIgnorado.setLineWrap(true);
         jTextAreaAbandonoIgnorado.setRows(5);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.abandonoignorado}"), jTextAreaAbandonoIgnorado, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane4.setViewportView(jTextAreaAbandonoIgnorado);
 
         javax.swing.GroupLayout jPanelAbandonoIgnoradoLayout = new javax.swing.GroupLayout(jPanelAbandonoIgnorado);
@@ -243,7 +243,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelAbandonoIgnoradoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAbandonoIgnoradoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelAbandonoIgnoradoLayout.setVerticalGroup(
@@ -258,6 +258,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
 
         jTextAreaTx.setColumns(20);
         jTextAreaTx.setRows(5);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tx}"), jTextAreaTx, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane5.setViewportView(jTextAreaTx);
 
         javax.swing.GroupLayout jPanelTxLayout = new javax.swing.GroupLayout(jPanelTx);
@@ -266,7 +270,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelTxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelTxLayout.setVerticalGroup(
@@ -282,6 +286,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jTextAreaObito.setColumns(20);
         jTextAreaObito.setLineWrap(true);
         jTextAreaObito.setRows(5);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.obito}"), jTextAreaObito, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane6.setViewportView(jTextAreaObito);
 
         javax.swing.GroupLayout jPanelObitoLayout = new javax.swing.GroupLayout(jPanelObito);
@@ -290,7 +298,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelObitoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelObitoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelObitoLayout.setVerticalGroup(
@@ -306,6 +314,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jTextAreaTransferencia.setColumns(20);
         jTextAreaTransferencia.setLineWrap(true);
         jTextAreaTransferencia.setRows(5);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.transferencia}"), jTextAreaTransferencia, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane7.setViewportView(jTextAreaTransferencia);
 
         javax.swing.GroupLayout jPanelTransferenciaLayout = new javax.swing.GroupLayout(jPanelTransferencia);
@@ -314,7 +326,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTransferenciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelTransferenciaLayout.setVerticalGroup(
@@ -330,6 +342,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jTextAreaOutros.setColumns(20);
         jTextAreaOutros.setLineWrap(true);
         jTextAreaOutros.setRows(5);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.outros}"), jTextAreaOutros, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane8.setViewportView(jTextAreaOutros);
 
         javax.swing.GroupLayout jPanelOutrosLayout = new javax.swing.GroupLayout(jPanelOutros);
@@ -338,7 +354,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             jPanelOutrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOutrosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelOutrosLayout.setVerticalGroup(
@@ -351,18 +367,10 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelOutros, "card8");
 
-        jButtonNovaOcorrencia.setText("Criar nova ocorrência");
+        jButtonNovaOcorrencia.setText("Criar Ocorrência");
         jButtonNovaOcorrencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNovaOcorrenciaActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelar.setText("Cancelar Ocorrencia");
-        jButtonCancelar.setPreferredSize(new java.awt.Dimension(135, 23));
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -374,6 +382,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)), "Tipo da Ocorrência"));
 
+        jRadioButtonObito.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonObito);
         jRadioButtonObito.setText("Óbito");
         jRadioButtonObito.addItemListener(new java.awt.event.ItemListener() {
@@ -382,6 +391,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButtonMelhora.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonMelhora);
         jRadioButtonMelhora.setText("Melhora");
         jRadioButtonMelhora.addItemListener(new java.awt.event.ItemListener() {
@@ -390,6 +400,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButtonOutros.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonOutros);
         jRadioButtonOutros.setText("Outros");
         jRadioButtonOutros.addItemListener(new java.awt.event.ItemListener() {
@@ -398,6 +409,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButtonAbandonoIgnorado.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonAbandonoIgnorado);
         jRadioButtonAbandonoIgnorado.setText("Abandono Ignorado");
         jRadioButtonAbandonoIgnorado.addItemListener(new java.awt.event.ItemListener() {
@@ -406,6 +418,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButtonTX.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonTX);
         jRadioButtonTX.setText("Tx (Unid. de Transplante)");
         jRadioButtonTX.addItemListener(new java.awt.event.ItemListener() {
@@ -414,6 +427,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButtonCura.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonCura);
         jRadioButtonCura.setText("Cura");
         jRadioButtonCura.addItemListener(new java.awt.event.ItemListener() {
@@ -432,11 +446,17 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButtonTransferencia.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButtonTransferencia);
         jRadioButtonTransferencia.setText("Transferência");
         jRadioButtonTransferencia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jRadioButtonTransferenciaItemStateChanged(evt);
+            }
+        });
+        jRadioButtonTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTransferenciaActionPerformed(evt);
             }
         });
 
@@ -445,7 +465,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jRadioButtonTransferencia)
@@ -460,8 +480,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButtonTX)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonObito)))
-                .addContainerGap())
+                        .addComponent(jRadioButtonObito))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,78 +499,142 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ocorrenciasList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
+        columnBinding.setColumnName("Paciente");
+        columnBinding.setColumnClass(bean.Paciente.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${transferencia}"));
+        columnBinding.setColumnName("Transferencia");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${abandonoignorado}"));
+        columnBinding.setColumnName("Abandonoignorado");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cura}"));
+        columnBinding.setColumnName("Cura");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${melhora}"));
+        columnBinding.setColumnName("Melhora");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tx}"));
+        columnBinding.setColumnName("Tx");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${obito}"));
+        columnBinding.setColumnName("Obito");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${outros}"));
+        columnBinding.setColumnName("Outros");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButtonCancelar.setText("Cancelar Ocorrencia");
+        jButtonCancelar.setPreferredSize(new java.awt.Dimension(135, 23));
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Editar Ocorrência");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Excluir Ocorrência");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(214, 214, 214))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxPaci, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(23, 23, 23)))
-                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jDateChooserDialise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jButtonNovaOcorrencia)
-                                .addGap(26, 26, 26)
-                                .addComponent(jButtonSalvarocorrencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)))
-                        .addContainerGap())))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSalvarocorrencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(244, 244, 244)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(197, 197, 197)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxPaci, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jDateChooserDialise, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxPaci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxPaci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDateChooserDialise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooserDialise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButtonNovaOcorrencia)
+                    .addComponent(jButtonSalvarocorrencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSalvarocorrencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -561,13 +644,13 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(38, 38, 38))
         );
 
         bindingGroup.bind();
@@ -591,6 +674,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         }
              limpartextos();
              desabilitartudo();
+             buttonGroup1.clearSelection();
     }//GEN-LAST:event_jButtonSalvarocorrenciaActionPerformed
 
     private void jButtonNovaOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovaOcorrenciaActionPerformed
@@ -613,31 +697,45 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         }
         ocorrenciasList.clear();
         ocorrenciasList.addAll(data);
+        limpartextos();
+             desabilitartudo();
+             buttonGroup1.clearSelection();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jRadioButtonObitoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonObitoItemStateChanged
-        jTextAreaObito.setText(" ");
+        limpartextos();
+        jTextAreaObito.setText("Esta ocorrência foi sobre: Óbito ");
+         
     }//GEN-LAST:event_jRadioButtonObitoItemStateChanged
 
     private void jRadioButtonMelhoraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonMelhoraItemStateChanged
-       jTextAreaMelhora.setText(" ");
-
+       limpartextos();
+        jTextAreaMelhora.setText("Esta ocorrência foi sobre: Melhora");
+         
     }//GEN-LAST:event_jRadioButtonMelhoraItemStateChanged
 
     private void jRadioButtonOutrosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonOutrosItemStateChanged
-        jTextAreaOutros.setText(" ");
+        limpartextos();
+        jTextAreaOutros.setText("Esta ocorrência foi sobre: Outros ");
+         
     }//GEN-LAST:event_jRadioButtonOutrosItemStateChanged
 
     private void jRadioButtonAbandonoIgnoradoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonAbandonoIgnoradoItemStateChanged
-       jTextAreaAbandonoIgnorado.setText(" ");
+       limpartextos();
+       jTextAreaAbandonoIgnorado.setText("Esta ocorrência foi sobre: Abandono ou Ignorado ");
+        
     }//GEN-LAST:event_jRadioButtonAbandonoIgnoradoItemStateChanged
 
     private void jRadioButtonTXItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTXItemStateChanged
-        jTextAreaTx.setText(" ");
+        limpartextos();
+        jTextAreaTx.setText("Esta ocorrência foi sobre: Tx(Transplante)");
+         
     }//GEN-LAST:event_jRadioButtonTXItemStateChanged
 
     private void jRadioButtonCuraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonCuraItemStateChanged
-        jTextAreaCura.setText(" ");
+        limpartextos();
+        jTextAreaCura.setText("Esta ocorrência foi sobre: Cura ");
+         
     }//GEN-LAST:event_jRadioButtonCuraItemStateChanged
 
     private void jRadioButtonCuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonCuraMouseClicked
@@ -649,8 +747,61 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRadioButtonCuraActionPerformed
 
     private void jRadioButtonTransferenciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTransferenciaItemStateChanged
-        jTextAreaTransferencia.setText(" ");
+        
     }//GEN-LAST:event_jRadioButtonTransferenciaItemStateChanged
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jRadioButtonTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTransferenciaActionPerformed
+      limpartextos();
+        jTextAreaTransferencia.setText("Esta ocorrência foi sobre: Transferência ");
+         
+    }//GEN-LAST:event_jRadioButtonTransferenciaActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        
+    }//GEN-LAST:event_jTable1MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       habilitarparaEdicao();
+       buttonGroup1.clearSelection();
+        if(jTextAreaTransferencia.getText().length() > 5){
+            jRadioButtonTransferencia.setSelected(true);
+        }
+        else if(jTextAreaCura.getText().length() > 5){
+            jRadioButtonCura.setSelected(true);
+        }
+        else if(jTextAreaAbandonoIgnorado.getText().length() > 5){
+            jRadioButtonAbandonoIgnorado.setSelected(true);
+        }
+        else if(jTextAreaMelhora.getText().length() > 5){
+            jRadioButtonMelhora.setSelected(true);
+        }
+        else if(jTextAreaObito.getText().length() > 5){
+            jRadioButtonObito.setSelected(true);
+        }
+        else if(jTextAreaTx.getText().length() > 5){
+            jRadioButtonTX.setSelected(true);
+        }
+        else if(jTextAreaOutros.getText().length() > 5){
+            jRadioButtonOutros.setSelected(true);
+        }        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int[] selected = jTable1.getSelectedRows();
+        java.util.List<bean.Ocorrencias> toRemove = new ArrayList<bean.Ocorrencias>(selected.length);
+        for (int idx = 0; idx < selected.length; idx++) {
+            bean.Ocorrencias o = ocorrenciasList.get(jTable1.convertRowIndexToModel(selected[idx]));
+            toRemove.add(o);
+            entityManager.remove(o);
+        }
+        ocorrenciasList.removeAll(toRemove);
+        jButtonSalvarocorrencia.setEnabled(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     private void limpartextos (){
@@ -669,8 +820,16 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         parentPanel.setEnabled(false);
         jButtonSalvarocorrencia.setEnabled(false);
         jTextAreaMelhora.setEnabled(false);
-        jTable1.setVisible(false);
+        jTable1.setEnabled(true);
          jDateChooserDialise.setEnabled(false);
+         jButtonNovaOcorrencia.setEnabled(true);
+          jRadioButtonMelhora.setEnabled(false);
+        jRadioButtonCura.setEnabled(false);
+        jRadioButtonAbandonoIgnorado.setEnabled(false);
+        jRadioButtonObito.setEnabled(false);
+        jRadioButtonOutros.setEnabled(false);
+        jRadioButtonTX.setEnabled(false);
+        jRadioButtonTransferencia.setEnabled(false);
     }
     
     private void habilitartudo(){
@@ -680,13 +839,40 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         jButtonSalvarocorrencia.setEnabled(true);
         jTextAreaMelhora.setEnabled(true);
         jDateChooserDialise.setEnabled(true);
+        jTable1.setEnabled(false);
+        jButtonNovaOcorrencia.setEnabled(false);
+         jRadioButtonMelhora.setEnabled(true);
+        jRadioButtonCura.setEnabled(true);
+        jRadioButtonAbandonoIgnorado.setEnabled(true);
+        jRadioButtonObito.setEnabled(true);
+        jRadioButtonOutros.setEnabled(true);
+        jRadioButtonTX.setEnabled(true);
+        jRadioButtonTransferencia.setEnabled(true);
     }
-    
+     private void habilitarparaEdicao(){
+        jComboBoxPaci.setEnabled(false);
+        jDateChooser1.setEnabled(true);
+        parentPanel.setEnabled(true);
+        jButtonSalvarocorrencia.setEnabled(true);
+        jTextAreaMelhora.setEnabled(true);
+        jDateChooserDialise.setEnabled(true);
+        jButtonNovaOcorrencia.setEnabled(false);
+        jRadioButtonMelhora.setEnabled(true);
+        jRadioButtonCura.setEnabled(true);
+        jRadioButtonAbandonoIgnorado.setEnabled(true);
+        jRadioButtonObito.setEnabled(true);
+        jRadioButtonOutros.setEnabled(true);
+        jRadioButtonTX.setEnabled(true);
+        jRadioButtonTransferencia.setEnabled(true);
+        jTable1.setEnabled(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.persistence.EntityManager entityManager;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonNovaOcorrencia;
     private javax.swing.JButton jButtonSalvarocorrencia;

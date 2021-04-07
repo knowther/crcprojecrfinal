@@ -128,6 +128,8 @@ public class Paciente implements Serializable {
     private String unidadedeencaminhamento;
     @Column(name = "complemento")
     private String complemento;
+    @Column (name = "precisadeclaracao")
+    private Short precisadeclaracao;
 
     public Paciente() {
     }
@@ -424,6 +426,15 @@ public class Paciente implements Serializable {
         changeSupport.firePropertyChange("complemento", oldComplemento, complemento);
     }
     
+    public Short getPrecisadeclaracao() {
+        return precisadeclaracao;
+    }
+
+    public void setPrecisadeclaracao(Short precisadeclaracao) {
+        Short oldPrecisadeclaracao = this.precisadeclaracao;
+        this.precisadeclaracao = precisadeclaracao;
+        changeSupport.firePropertyChange("precisadeclaracao", oldPrecisadeclaracao, precisadeclaracao);
+    }
 
     public List<Fichasala> getFichasala() {
         return fichasala;
@@ -432,6 +443,8 @@ public class Paciente implements Serializable {
     public void setFichasala(List<Fichasala> fichasala) {
         this.fichasala = fichasala;
     }
+    
+    
     
     
 

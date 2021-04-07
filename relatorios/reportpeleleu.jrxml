@@ -10,6 +10,7 @@
      fichasala.`heparina` AS heparina,
      fichasala.`ferro` AS ferro,
      fichasala.`eritropoetina` AS eritropoetina,
+     fichasala.`obs` AS obs,
      paciente.`idpaciente` AS `paciente.idpaciente`,
      paciente.`dia_iddia` AS `paciente.dia`,
      paciente.`turno_idturno` AS `paciente.turno`,
@@ -34,6 +35,9 @@ FROM
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="eritropoetina" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obs" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="paciente.idpaciente" class="java.lang.Integer"/>
@@ -467,6 +471,17 @@ FROM
 						<font fontName="Tahoma" size="16" isBold="true" isItalic="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{heparina}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="51" y="126" width="750" height="20" uuid="4874671d-fc0b-491f-aa86-e047298c8010"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="548" y="104" width="100" height="20" uuid="83e930b2-ee88-4f34-a20b-539f6d22c1e9"/>
+					<textFieldExpression><![CDATA[$F{ferro}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

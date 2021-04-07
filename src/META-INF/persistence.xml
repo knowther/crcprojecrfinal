@@ -22,6 +22,7 @@
     <class>bean.Ocorrencias</class>
     <class>bean.Tipodeinsuficiencia</class>
     <class>bean.Tipodedialise</class>
+    <class>bean.Test</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbclinicaii?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

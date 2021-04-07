@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -206,18 +207,19 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jButtonCriardeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(jButtonGerardeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonGerardeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(58, 58, 58)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(148, 148, 148)
+                            .addComponent(jButtonCriardeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -252,7 +254,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
                 .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButtonGerardeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -265,24 +267,10 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxPacienteActionPerformed
 
     private void jButtonGerardeclaracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerardeclaracaoActionPerformed
-        
+        tipodeclaracao = jComboBoxtipoDeclaracao.getSelectedIndex();
         
         if(tipodeclaracao ==0){
-         String documents = new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
-             try {
-                 JasperReport relatorio = JasperCompileManager.compileReport(documents);
-                 JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
-                 Map parametros = new HashMap();
-                 parametros.put("DATA_PROCEDIMENTO", jDateChooser1.getDate());
-                 parametros.put("HORA_PROCEDIMENTO", jDateChooser2.getDate());
-                 JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
-                 JasperViewer view = new JasperViewer(print, false);
-                 view.setVisible(true);
-                 
-             } catch (JRException ex) {
-                 Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         
+         declaracaoComum();
         }
         
         if(tipodeclaracao == 1){
@@ -300,7 +288,38 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
         }
+         if(tipodeclaracao == 2){
+                JFrmtipoProcedimento proc = new JFrmtipoProcedimento(new JFrame(), true);
+                proc.setVisible(true);
+              String caminho = new File("./relatorios/reportCompadecimento.jrxml").getAbsolutePath();
+             try {
+                 JasperReport relatorio = JasperCompileManager.compileReport(caminho);
+                 JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
+                 Map parametros = new HashMap();
+                 parametros.put("DATA_PROCEDIMENTO", jDateChooser1.getDate());
+                 parametros.put("HORA_PROCEDIMENTO", jDateChooser2.getDate());
+                 parametros.put("PROCEDIMENTO_REALIZADO", proc.pegarprocedimento());
+                 JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
+                 JasperViewer view = new JasperViewer(print, false);
+                 view.setVisible(true);
+                 
+             } catch (JRException ex) {
+                 Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+             }
+                     }
+         if (tipodeclaracao ==3){
+                 declaracaoComum();
+             }
+             if(tipodeclaracao == 4){
+                 declaracaoComum();
+             }
+             if(tipodeclaracao == 5){
+                 declaracaoComum();
+             }
+
         declaracaogerada();
+        
+        
         
     }//GEN-LAST:event_jButtonGerardeclaracaoActionPerformed
 
@@ -364,7 +383,15 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         nprecisadeturno();
         jDateChooser1.setEnabled(true);
     }
-        
+       if(tipodeclaracao == 3){
+        precisadeturno();
+    } 
+       if(tipodeclaracao == 4){
+        precisadeturno();
+    }
+       if(tipodeclaracao == 5){
+        precisadeturno();
+    }
         }
         jButtonGerardeclaracao.setEnabled(true);
     }//GEN-LAST:event_jComboBoxtipoDeclaracaoItemStateChanged
@@ -377,7 +404,22 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxtipoDeclaracaoActionPerformed
 
-    
+        private void declaracaoComum(){
+            String caminho = new File("./relatorios/reportHDEXTRA.jrxml").getAbsolutePath();
+             try {
+                 JasperReport relatorio = JasperCompileManager.compileReport(caminho);
+                 JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
+                 Map parametros = new HashMap();
+                 parametros.put("DATA_PROCEDIMENTO", jDateChooser1.getDate());
+                 parametros.put("HORA_PROCEDIMENTO", jDateChooser2.getDate());
+                 JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
+                 JasperViewer view = new JasperViewer(print, false);
+                 view.setVisible(true);
+                 
+             } catch (JRException ex) {
+                 Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        }
         private void botoes(){
             jComboBoxPaciente.setEnabled(false);
             jComboBoxtipoDeclaracao.setEnabled(false);

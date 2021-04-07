@@ -42,7 +42,8 @@ public class Tiposdeclaracao implements Serializable {
     private Integer idtiposdeclaracao;
     @Column(name = "tipodadeclaracao")
     private String tipodadeclaracao;
-
+    @Column(name = "compadecimento")
+    private Short compadecimento;
     public Tiposdeclaracao() {
     }
 
@@ -70,6 +71,17 @@ public class Tiposdeclaracao implements Serializable {
         changeSupport.firePropertyChange("tipodadeclaracao", oldTipodadeclaracao, tipodadeclaracao);
     }
 
+     public Short getCompadecimento() {
+        return compadecimento;
+    }
+
+    public void setCompadecimento(Short compadecimento) {
+        Short oldCompadecimento = this.compadecimento;
+        this.compadecimento = compadecimento;
+        changeSupport.firePropertyChange("compadecimento", oldCompadecimento, compadecimento);
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
