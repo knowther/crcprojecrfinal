@@ -104,7 +104,7 @@ public class Frequenciahd implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Frequenciahd[ idfrequenciahd=" + idfrequenciahd + " ]";
+        return frequencia;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

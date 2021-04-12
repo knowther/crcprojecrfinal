@@ -95,7 +95,7 @@ public class Tiposanguineo implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Tiposanguineo[ idtiposanguineo=" + idtiposanguineo + " ]";
+        return nometipo;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

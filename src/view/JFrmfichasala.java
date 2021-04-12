@@ -68,6 +68,9 @@ public class JFrmfichasala extends javax.swing.JInternalFrame {
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
         columnBinding.setColumnName("Paciente");
         columnBinding.setColumnClass(bean.Paciente.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente.pesoseco}"));
+        columnBinding.setColumnName("Peso Seco");
+        columnBinding.setColumnClass(Float.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${eritropoetina}"));
         columnBinding.setColumnName("Eritropoetina");
         columnBinding.setColumnClass(String.class);
@@ -77,15 +80,9 @@ public class JFrmfichasala extends javax.swing.JInternalFrame {
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${heparina}"));
         columnBinding.setColumnName("Heparina");
         columnBinding.setColumnClass(Float.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idfichasala}"));
-        columnBinding.setColumnName("Idfichasala");
-        columnBinding.setColumnClass(Integer.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${obs}"));
         columnBinding.setColumnName("Obs");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente.pesoseco}"));
-        columnBinding.setColumnName("Paciente.pesoseco");
-        columnBinding.setColumnClass(Float.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,6 +180,11 @@ public class JFrmfichasala extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Voltar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +193,7 @@ public class JFrmfichasala extends javax.swing.JInternalFrame {
             }
         });
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.0"))));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTable2, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.paciente.pesoseco}"), jFormattedTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -335,10 +337,19 @@ evt.consume();
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         parentPanel.removeAll();
-            parentPanel.add(jPanel1);
-            parentPanel.repaint();
-            parentPanel.revalidate();
+        
+        entityManager.getTransaction().rollback();
+        entityManager.getTransaction().begin();
+        java.util.Collection data = fichasalaQuery.getResultList();
+        for (Object entity : data) {
+            entityManager.refresh(entity);
+        }
+        fichasalaList.clear();
+        fichasalaList.addAll(data);
+        parentPanel.removeAll();
+        parentPanel.add(jPanel1);
+        parentPanel.repaint();
+        parentPanel.revalidate();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jFormattedTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyTyped
@@ -367,6 +378,17 @@ evt.consume();
             fichasalaList.addAll(merged);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         entityManager.getTransaction().rollback();
+        entityManager.getTransaction().begin();
+        java.util.Collection data = fichasalaQuery.getResultList();
+        for (Object entity : data) {
+            entityManager.refresh(entity);
+        }
+        fichasalaList.clear();
+        fichasalaList.addAll(data);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

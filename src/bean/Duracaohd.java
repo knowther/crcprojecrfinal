@@ -92,7 +92,7 @@ public class Duracaohd implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Duracaohd[ idduracaohd=" + idduracaohd + " ]";
+        return duracao;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

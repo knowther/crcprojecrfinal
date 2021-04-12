@@ -153,11 +153,6 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                       </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -169,6 +164,10 @@
                       <Subbinding sourcePath="${paciente}">
                         <BindingParameter name="NAME" value="Paciente"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="bean.Paciente.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${paciente.pesoseco}">
+                        <BindingParameter name="NAME" value="Peso Seco"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
                       </Subbinding>
                       <Subbinding sourcePath="${eritropoetina}">
                         <BindingParameter name="NAME" value="Eritropoetina"/>
@@ -182,17 +181,9 @@
                         <BindingParameter name="NAME" value="Heparina"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${idfichasala}">
-                        <BindingParameter name="NAME" value="Idfichasala"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                      </Subbinding>
                       <Subbinding sourcePath="${obs}">
                         <BindingParameter name="NAME" value="Obs"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                      </Subbinding>
-                      <Subbinding sourcePath="${paciente.pesoseco}">
-                        <BindingParameter name="NAME" value="Paciente.pesoseco"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
                       </Subbinding>
                     </BindingProperty>
                   </BindingProperties>
@@ -382,6 +373,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
@@ -394,7 +388,7 @@
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#0.0" subtype="-1" type="0"/>
+                  <Format format="#0.00" subtype="-1" type="0"/>
                 </Property>
               </Properties>
               <BindingProperties>

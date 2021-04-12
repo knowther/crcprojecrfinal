@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report133" language="groovy" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21128135-05cb-4d4f-84e3-5709296e5805">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="30"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="336"/>
 	<queryString>
 		<![CDATA[SELECT
      sessao_has_paciente.`idsessao_has_paciente` AS idsessaoHasPaciente,
@@ -44,7 +44,7 @@ FROM
 		<groupHeader>
 			<band height="51">
 				<textField evaluationTime="Page" pattern="" isBlankWhenNull="false">
-					<reportElement mode="Transparent" x="0" y="12" width="555" height="39" forecolor="#000000" backcolor="#FFFFFF" uuid="3df07601-8ce2-4289-ae52-25fe9308be1c"/>
+					<reportElement mode="Transparent" x="17" y="12" width="518" height="39" forecolor="#000000" backcolor="#FFFFFF" uuid="3df07601-8ce2-4289-ae52-25fe9308be1c"/>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="html">
 						<font fontName="Tahoma" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
@@ -94,7 +94,7 @@ FROM
 			<staticText>
 				<reportElement x="0" y="25" width="555" height="28" uuid="61cdf2a1-5b2c-4e06-8d2c-09de3c636ab6"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="18" isBold="true" isItalic="false" isUnderline="false"/>
+					<font fontName="Times New Roman" size="24" isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Clínica do Rim do Carpina - Unidade II]]></text>
 			</staticText>
