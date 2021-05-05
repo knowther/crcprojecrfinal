@@ -24,6 +24,8 @@
     <class>bean.Tipodedialise</class>
     <class>bean.Test</class>
     <class>bean.Termos</class>
+    <class>bean.Tipotodolist</class>
+    <class>bean.Todolist</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbclinicaii?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

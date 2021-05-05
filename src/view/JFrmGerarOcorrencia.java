@@ -424,6 +424,7 @@ public class JFrmGerarOcorrencia extends javax.swing.JInternalFrame {
 
         parentPanel.add(jPanelOutros, "card8");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8_print_18px.png"))); // NOI18N
         jButton1.setText("Imprimir Ocorrências");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -25,12 +25,12 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author johnn
  */
-public class JFrmCadfichasala extends javax.swing.JInternalFrame {
+public class JFrmCadDeclaracaovacinacovid extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JFrmCadfichasala
+     * Creates new form JFrmCadDeclaracaovacinacovid
      */
-    public JFrmCadfichasala() {
+    public JFrmCadDeclaracaovacinacovid() {
         initComponents();
     }
 
@@ -47,25 +47,25 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
         ClinicaFprojectPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
         cidadeQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT c FROM Cidade c");
         cidadeList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(cidadeQuery.getResultList());
+        pacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM Paciente p");
+        pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(pacienteQuery.getResultList());
         diaQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT d FROM Dia d");
         diaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(diaQuery.getResultList());
-        fichasalaQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT f FROM Fichasala f");
-        fichasalaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(fichasalaQuery.getResultList());
         turnoQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT t FROM Turno t");
         turnoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(turnoQuery.getResultList());
-        pacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM Paciente p");
-        pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pacienteQuery.getResultList();
+        estadoQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT e FROM Estado e");
+        estadoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : estadoQuery.getResultList();
         jComboBoxTurno = new javax.swing.JComboBox<>();
-        jComboBoxDia = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBoxDia = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
+        setResizable(true);
+        setTitle("Declaração para Vacinação de Pacientes com COVID-19");
 
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, turnoList, jComboBoxTurno);
         bindingGroup.addBinding(jComboBoxBinding);
@@ -76,6 +76,14 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
             }
         });
 
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTable1);
+
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, diaList, jComboBoxDia);
         bindingGroup.addBinding(jComboBoxBinding);
 
@@ -84,85 +92,57 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
                 jComboBoxDiaItemStateChanged(evt);
             }
         });
-        jComboBoxDia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxDiaActionPerformed(evt);
-            }
-        });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, fichasalaList, jTable1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente}"));
-        columnBinding.setColumnName("Paciente");
-        columnBinding.setColumnClass(bean.Paciente.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paciente.apelido}"));
-        columnBinding.setColumnName("Apelido");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setText("Gerar Fichas de Sala");
+        jButton1.setText("Imprimir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jDateChooser1.setDateFormatString("MM/yyyy");
-
-        jLabel1.setText("Dia:");
-
-        jLabel2.setText("Turno:");
-
-        jLabel3.setText("Data da Ficha:");
+        jLabel1.setText("Data do Relatório:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(114, 114, 114))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(172, Short.MAX_VALUE))
+                        .addContainerGap(96, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                        .addGap(118, 118, 118)
+                        .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(183, 183, 183))))
+                        .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addGap(89, 89, 89))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(jButton1)
-                .addGap(59, 59, 59))
+                .addGap(22, 22, 22))
         );
 
         bindingGroup.bind();
@@ -171,8 +151,7 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxDiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDiaItemStateChanged
-        
-         if (evt.getStateChange() == ItemEvent.SELECTED) {
+    if (evt.getStateChange() == ItemEvent.SELECTED) {
 
            Dia d = (Dia) jComboBoxDia.getSelectedItem();
           turnoQuery = ClinicaFprojectPUEntityManager.createQuery("select t from Turno t where t.dia = :d");
@@ -183,27 +162,24 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxDiaItemStateChanged
 
     private void jComboBoxTurnoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxTurnoItemStateChanged
-       
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
+       if (evt.getStateChange() == ItemEvent.SELECTED) {
 
            Turno t = (Turno) jComboBoxTurno.getSelectedItem();
-          fichasalaQuery = ClinicaFprojectPUEntityManager.createQuery("select f from Fichasala f INNER JOIN f.paciente where f.paciente.turno = :t");
-           fichasalaQuery.setParameter("t", t);
-          fichasalaList.clear();
-            fichasalaList.addAll(fichasalaQuery.getResultList());
+          pacienteQuery = ClinicaFprojectPUEntityManager.createQuery("select p from Paciente p where p.turno = :t");
+           pacienteQuery.setParameter("t", t);
+          pacienteList.clear();
+            pacienteList.addAll(pacienteQuery.getResultList());
          }
-        
     }//GEN-LAST:event_jComboBoxTurnoItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-      String caminho = new File("./relatorios/reportpeleleu.jrxml").getAbsolutePath();
+        String caminho = new File("C://ArquivosCrsys/relatorios/reportdeclaracaovacina.jrxml").getAbsolutePath();
          
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
-                 JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(fichasalaList, false);
+                 JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteList, false);
                  Map parametros = new HashMap();
-                 parametros.put("MES_FICHA", jDateChooser1.getDate());
+                 parametros.put("DATA_1", jDateChooser1.getDate());
                  JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
                  JasperViewer view = new JasperViewer(print, false);
                  view.setVisible(true);
@@ -211,13 +187,8 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
              } catch (JRException ex) {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxDiaActionPerformed
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager ClinicaFprojectPUEntityManager;
@@ -225,15 +196,13 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
     private javax.persistence.Query cidadeQuery;
     private java.util.List<bean.Dia> diaList;
     private javax.persistence.Query diaQuery;
-    private java.util.List<bean.Fichasala> fichasalaList;
-    private javax.persistence.Query fichasalaQuery;
+    private java.util.List<bean.Estado> estadoList;
+    private javax.persistence.Query estadoQuery;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxDia;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private java.util.List<bean.Paciente> pacienteList;

@@ -676,6 +676,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagens/icons8_print_18px.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Imprimir Ocorr&#xea;ncias"/>
       </Properties>
       <Events>

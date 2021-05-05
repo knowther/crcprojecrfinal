@@ -130,7 +130,27 @@ public class Paciente implements Serializable {
     private String complemento;
     @Column (name = "precisadeclaracao")
     private Short precisadeclaracao;
+    @Column (name = "declaracaoacompanhante")
+    private Short declaracaoacompanhante;
+    
+    @Column(name = "nomedamae")
+    private String nomedamae;
+    
+    @Column(name = "idade")
+    private String idade;
+    
+    @Column(name = "raca")
+    private String raca;
 
+    @Column(name = "logradouro")
+    private String logradouro;
+    
+    @Column(name = "cidadenome")
+    private String cidadenome;
+    
+    @Column(name = "estado")
+    private String estadonome;
+    
     public Paciente() {
     }
 
@@ -436,6 +456,77 @@ public class Paciente implements Serializable {
         changeSupport.firePropertyChange("precisadeclaracao", oldPrecisadeclaracao, precisadeclaracao);
     }
 
+     public Short getDeclaracaoacompanhante() {
+        return declaracaoacompanhante;
+    }
+
+    public void setDeclaracaoacompanhante(Short declaracaoacompanhante) {
+        Short oldDeclaracaoacompanhante = this.declaracaoacompanhante;
+        this.declaracaoacompanhante = declaracaoacompanhante;
+        changeSupport.firePropertyChange("declaracaoacompanhante", oldDeclaracaoacompanhante, declaracaoacompanhante);
+    }
+    
+    public String getNomedamae() {
+        return nomedamae;
+    }
+
+    public void setNomedamae(String nomedamae) {
+        String oldNomedamae = this.nomedamae;
+        this.nomedamae = nomedamae;
+        changeSupport.firePropertyChange("nomedamae", oldNomedamae, nomedamae);
+    }
+    
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        String oldRaca = this.raca;
+        this.raca = raca;
+        changeSupport.firePropertyChange("raca", oldRaca, raca);
+    }
+    
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        String oldIdade = this.idade;
+        this.idade = idade;
+        changeSupport.firePropertyChange("idade", oldIdade, idade);
+    }
+    
+     public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        String oldLogradouro = this.logradouro;
+        this.logradouro = logradouro;
+        changeSupport.firePropertyChange("logradouro", oldLogradouro, logradouro);
+    }
+    
+    public String getCidadenome() {
+        return cidadenome;
+    }
+
+    public void setCidadeNome(String cidadenome) {
+        String oldCidadenome = this.cidadenome;
+        this.cidadenome = cidadenome;
+        changeSupport.firePropertyChange("cidadenome", oldCidadenome, cidadenome);
+    }
+    
+     public String getEstadonome() {
+        return estadonome;
+    }
+
+    public void setEstadoNome(String cidadenome) {
+        String oldEstadonome = this.estadonome;
+        this.estadonome = estadonome;
+        changeSupport.firePropertyChange("estadonome", oldEstadonome, estadonome);
+    }
+    
+    
     public List<Fichasala> getFichasala() {
         return fichasala;
     }
