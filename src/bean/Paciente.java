@@ -148,7 +148,7 @@ public class Paciente implements Serializable {
     @Column(name = "cidadenome")
     private String cidadenome;
     
-    @Column(name = "estado")
+    @Column(name = "estadonome")
     private String estadonome;
     
     public Paciente() {
@@ -507,7 +507,7 @@ public class Paciente implements Serializable {
     }
     
     public String getCidadenome() {
-        return cidadenome;
+       return cidadenome;
     }
 
     public void setCidadeNome(String cidadenome) {
@@ -520,7 +520,7 @@ public class Paciente implements Serializable {
         return estadonome;
     }
 
-    public void setEstadoNome(String cidadenome) {
+    public void setEstadoNome(String estadonome) {
         String oldEstadonome = this.estadonome;
         this.estadonome = estadonome;
         changeSupport.firePropertyChange("estadonome", oldEstadonome, estadonome);

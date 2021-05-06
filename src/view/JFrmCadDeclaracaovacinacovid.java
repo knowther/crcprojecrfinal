@@ -7,6 +7,7 @@ package view;
 
 import bean.Dia;
 import bean.Turno;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.HashMap;
@@ -109,16 +110,15 @@ public class JFrmCadDeclaracaovacinacovid extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(96, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))))
                 .addGap(89, 89, 89))
             .addGroup(layout.createSequentialGroup()
                 .addGap(242, 242, 242)
@@ -147,7 +147,7 @@ public class JFrmCadDeclaracaovacinacovid extends javax.swing.JInternalFrame {
 
         bindingGroup.bind();
 
-        pack();
+        setBounds(0, 0, 586, 428);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxDiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDiaItemStateChanged
@@ -188,7 +188,10 @@ public class JFrmCadDeclaracaovacinacovid extends javax.swing.JInternalFrame {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+public void setPosicao() {
+    Dimension d = this.getDesktopPane().getSize();
+    this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2); 
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager ClinicaFprojectPUEntityManager;

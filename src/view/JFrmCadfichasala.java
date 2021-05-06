@@ -197,7 +197,7 @@ public class JFrmCadfichasala extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-      String caminho = new File("./relatorios/reportpeleleu.jrxml").getAbsolutePath();
+      String caminho = new File("C://ArquivosCrsys//relatorios//reportpeleleu.jrxml").getAbsolutePath();
          
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);

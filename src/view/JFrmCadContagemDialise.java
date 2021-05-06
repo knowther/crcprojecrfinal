@@ -6,6 +6,7 @@
 package view;
 
 import bean.Dia;
+import bean.Paciente;
 import bean.Turno;
 import java.awt.event.ItemEvent;
 import java.io.File;
@@ -34,6 +35,8 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
     public JFrmCadContagemDialise() {
         initComponents();
         AutoCompleteDecorator.decorate(jComboBoxPaciente);
+        jRadioButtonTodos.setSelected(true);
+        jButton1.setEnabled(false);
     }
 
     /**
@@ -55,7 +58,7 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
         fichasalaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(fichasalaQuery.getResultList());
         turnoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM Turno t");
         turnoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(turnoQuery.getResultList());
-        pacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Paciente p");
+        pacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Paciente p where precisadeclaracao =1");
         pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(pacienteQuery.getResultList());
         sessaoHasPacienteQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT s FROM SessaoHasPaciente s");
         sessaoHasPacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(sessaoHasPacienteQuery.getResultList());
@@ -64,8 +67,8 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
         jTableDeclaracao = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButtonTodos = new javax.swing.JRadioButton();
+        jRadioButtonunic = new javax.swing.JRadioButton();
         jComboBoxPaciente = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jComboBoxTurno = new javax.swing.JComboBox<>();
@@ -73,6 +76,8 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBoxMes = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -87,7 +92,7 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
         jTableBinding.bind();
         jScrollPane1.setViewportView(jTableDeclaracao);
 
-        jButton1.setText("Gerar Fichas de Sala");
+        jButton1.setText("Gerar declarações");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -96,11 +101,11 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)), "Paciente"));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Todos pacientes");
+        buttonGroup1.add(jRadioButtonTodos);
+        jRadioButtonTodos.setText("Todos pacientes");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Paciente específico");
+        buttonGroup1.add(jRadioButtonunic);
+        jRadioButtonunic.setText("Paciente específico");
 
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteList, jComboBoxPaciente);
         bindingGroup.addBinding(jComboBoxBinding);
@@ -114,8 +119,8 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButtonunic)
+                    .addComponent(jRadioButtonTodos)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -125,9 +130,9 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(jRadioButtonTodos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(jRadioButtonunic)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -165,6 +170,8 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Dia:");
 
+        jLabel3.setText("Data da declaração:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -173,16 +180,20 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(168, 168, 168)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -196,8 +207,12 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -206,10 +221,11 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(162, 162, 162))
@@ -231,14 +247,14 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47))
+                .addGap(54, 54, 54))
         );
 
         bindingGroup.bind();
 
-        pack();
+        setBounds(0, 0, 881, 558);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxDiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDiaItemStateChanged
@@ -265,32 +281,45 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-      String caminho = new File("./relatorios/report133.jrxml").getAbsolutePath();
+      String caminho = new File("C://ArquivosCrsys//relatorios//report133.jrxml").getAbsolutePath();
          
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(sessaoHasPacienteList, false);
-                 JasperPrint print = JasperFillManager.fillReport(relatorio, null, dados);
+                  Map parametros = new HashMap();
+                 parametros.put("DATA_1", jDateChooser1.getDate());
+                 JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
                  JasperViewer view = new JasperViewer(print, false);
                  view.setVisible(true);
                  
              } catch (JRException ex) {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
-        
+         jButton1.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxMesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMesItemStateChanged
-        
+        if(jRadioButtonTodos.isSelected()){
          Turno t = (Turno) jComboBoxTurno.getSelectedItem();
            int m = jComboBoxMes.getSelectedIndex();
-          sessaoHasPacienteQuery = entityManager.createQuery("select s from SessaoHasPaciente s where s.paciente.turno = :t and month(s.sessao.diasessao) = :m");
+          sessaoHasPacienteQuery = entityManager.createQuery("select s from SessaoHasPaciente s where s.paciente.precisadeclaracao = 1 and s.paciente.turno = :t and month(s.sessao.diasessao) = :m");
            sessaoHasPacienteQuery.setParameter("t", t);
            sessaoHasPacienteQuery.setParameter("m", m);
           sessaoHasPacienteList.clear();
             sessaoHasPacienteList.addAll(sessaoHasPacienteQuery.getResultList());
-             
-
+        }
+        if(jRadioButtonunic.isSelected()){
+            Turno t = (Turno) jComboBoxTurno.getSelectedItem();
+            Paciente p = (Paciente) jComboBoxPaciente.getSelectedItem();
+           int m = jComboBoxMes.getSelectedIndex();
+          sessaoHasPacienteQuery = entityManager.createQuery("select s from SessaoHasPaciente s where s.paciente.precisadeclaracao = 1 and s.paciente.turno = :t and month(s.sessao.diasessao) = :m and s.paciente = :p");
+           sessaoHasPacienteQuery.setParameter("t", t);
+           sessaoHasPacienteQuery.setParameter("m", m);
+           sessaoHasPacienteQuery.setParameter("p", p);
+          sessaoHasPacienteList.clear();
+            sessaoHasPacienteList.addAll(sessaoHasPacienteQuery.getResultList());
+        }
+        jButton1.setEnabled(true);
     }//GEN-LAST:event_jComboBoxMesItemStateChanged
     
 
@@ -308,12 +337,14 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jComboBoxMes;
     private javax.swing.JComboBox<String> jComboBoxPaciente;
     private javax.swing.JComboBox<String> jComboBoxTurno;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButtonTodos;
+    private javax.swing.JRadioButton jRadioButtonunic;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDeclaracao;
     private java.util.List<bean.Paciente> pacienteList;
