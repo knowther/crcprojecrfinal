@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f753294-eaf1-4b19-977e-d27235ae03a8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="30"/>
+	<property name="ireport.y" value="7"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -201,9 +201,6 @@ order by turno_idturno]]>
 		<field name="turno_nome" class="java.lang.String"/>
 		<field name="dia_iddia" class="java.lang.Integer"/>
 		<field name="dia_nome" class="java.lang.String"/>
-		<variable name="variable1" class="java.lang.Integer" resetType="Group" resetGroup="turno_idturno" calculation="Sum">
-			<variableExpression><![CDATA[$F{paciente_nome}]]></variableExpression>
-		</variable>
 		<group name="dia_iddia">
 			<groupExpression><![CDATA[$F{dia_iddia}]]></groupExpression>
 		</group>
@@ -297,12 +294,13 @@ FROM
 	<field name="turno_idturno" class="java.lang.Integer"/>
 	<field name="turno_dia_iddia" class="java.lang.Integer"/>
 	<field name="turno_nome" class="java.lang.String"/>
+	<variable name="turno_count" class="java.lang.Integer" resetType="Column" calculation="Sum"/>
+	<variable name="paciente_nome_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{paciente_nome}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
@@ -312,14 +310,14 @@ FROM
 	<detail>
 		<band height="211" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 7" style="table 7" x="0" y="0" width="360" height="140" uuid="21847a45-1835-4b5e-9d85-4b3510e79944"/>
+				<reportElement key="table 7" style="table 7" x="0" y="0" width="555" height="211" uuid="21847a45-1835-4b5e-9d85-4b3510e79944"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="tabledata" uuid="6ed9e697-cff3-4cd4-8910-ffd0b6a975e5">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="0597d60e-e813-4017-9ea9-da8e32092518">
 						<jr:groupHeader groupName="dia_iddia">
-							<jr:cell style="table 7_TH" height="30" rowSpan="1">
+							<jr:cell style="table" height="30" rowSpan="1">
 								<textField>
 									<reportElement x="0" y="0" width="90" height="30" uuid="38cb81f6-1f5f-405e-b293-4d8638d66cfc"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -344,18 +342,24 @@ FROM
 							<jr:cell style="table 7_TH" height="0" rowSpan="1"/>
 						</jr:groupFooter>
 						<jr:groupFooter groupName="turno_idturno">
-							<jr:cell style="table 6_CH" height="30" rowSpan="1"/>
+							<jr:cell style="table 6_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="30" uuid="2188780c-6b34-4bd5-9510-6f0fef096122"/>
+									<textElement verticalAlignment="Middle"/>
+									<text><![CDATA[Total Pacientes:]]></text>
+								</staticText>
+							</jr:cell>
 						</jr:groupFooter>
 						<jr:detailCell style="table 7_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="11" y="1" width="66" height="20" uuid="45b5c6c9-dafd-45a1-8ef1-9be0c9ed191c"/>
+								<reportElement x="8" y="1" width="82" height="20" uuid="45b5c6c9-dafd-45a1-8ef1-9be0c9ed191c"/>
 								<textFieldExpression><![CDATA[$F{cidade_nome}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="0ed94732-31d8-464c-9e33-2691a9299798">
 						<jr:groupHeader groupName="dia_iddia">
-							<jr:cell style="table 7_TH" height="30" rowSpan="1"/>
+							<jr:cell style="table" height="30" rowSpan="1"/>
 						</jr:groupHeader>
 						<jr:groupHeader groupName="turno_idturno">
 							<jr:cell style="table 7_TH" height="30" rowSpan="1"/>
@@ -378,7 +382,7 @@ FROM
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="41" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

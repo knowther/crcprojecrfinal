@@ -23,6 +23,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -284,7 +285,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         }
         
         if(tipodeclaracao == 1){
-             String caminho = new File("./relatorios/reportADMISSAO.jrxml").getAbsolutePath();
+             String caminho = new File("C://ArquivosCrsys/relatorios/reportADMISSAO.jrxml").getAbsolutePath();
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
@@ -301,7 +302,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
          if(tipodeclaracao == 2){
                 JFrmtipoProcedimento proc = new JFrmtipoProcedimento(new JFrame(), true);
                 proc.setVisible(true);
-              String caminho = new File("./relatorios/reportCompadecimento.jrxml").getAbsolutePath();
+              String caminho = new File("C://ArquivosCrsys/relatorios/reportCompadecimento.jrxml").getAbsolutePath();
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);
@@ -393,6 +394,9 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
         nprecisadeturno();
         jDateChooser1.setEnabled(true);
     }
+    if(tipodeclaracao == 2){
+        precisadeturno();
+    }
        if(tipodeclaracao == 3){
         precisadeturno();
     } 
@@ -401,6 +405,9 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     }
        if(tipodeclaracao == 5){
         precisadeturno();
+    }
+       if(tipodeclaracao == 6){
+        nprecisadeturno();
     }
         }
         jButtonGerardeclaracao.setEnabled(true);
@@ -415,7 +422,7 @@ public class JFrmCadDeclaracaoPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxtipoDeclaracaoActionPerformed
 
         private void declaracaoComum(){
-            String caminho = new File("./relatorios/reportHDEXTRA.jrxml").getAbsolutePath();
+            String caminho = new File("C://ArquivosCrsys/relatorios/reportHDEXTRA.jrxml").getAbsolutePath();
              try {
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteHasTiposdeclaracaoList, false);

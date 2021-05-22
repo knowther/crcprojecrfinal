@@ -5,8 +5,18 @@
  */
 package view;
 
+import java.awt.Dimension;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +39,9 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
      */
     public JFrmCadDeclaAcompanhante() {
         initComponents();
+        jDateChooser1.getJCalendar().setPreferredSize(new Dimension(250, 200));
+        jDateChooser2.getJCalendar().setPreferredSize(new Dimension(250, 200));
+        jDateChooser3.getJCalendar().setPreferredSize(new Dimension(250, 200));
     }
 
     /**
@@ -76,6 +89,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         jDateChooser14 = new com.toedter.calendar.JDateChooser();
         jDateChooser15 = new com.toedter.calendar.JDateChooser();
         jDateChooser16 = new com.toedter.calendar.JDateChooser();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -118,12 +132,21 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
 
         jLabel16.setText("Data 16:");
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(34, 34, 34)
                 .addComponent(jButton1)
                 .addGap(155, 155, 155))
             .addGroup(layout.createSequentialGroup()
@@ -223,7 +246,9 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
                     .addComponent(jDateChooser15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(49, 49, 49))
         );
 
@@ -261,10 +286,136 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
              }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        int lastDay = cal.getActualMaximum(Calendar.DATE);
+        
+        cal.setTime(date);
+        
+        int i = 0;
+        Date dataSemana = null;
+         dataSemana = cal.getTime();
+        Date [] dates = new Date [lastDay +1];
+         do{
+             i++;
+             cal.set(Calendar.DAY_OF_MONTH, i);
+             
+            Date dataCatch = cal.getTime();
+            if(cal.get(Calendar.DAY_OF_WEEK) == 2){
+            dates [i] = dataCatch; }
+            else if(cal.get(Calendar.DAY_OF_WEEK) == 4){
+              dates [i] = dataCatch;  
+            }
+            else if(cal.get(Calendar.DAY_OF_WEEK) == 6){
+              dates [i] = dataCatch;  
+            }
+            //System.out.println(dates[i]);
+              //System.out.println(dates[i]);
+                     }while(i < lastDay);
+        List<Date> list = new ArrayList<>(Arrays.asList(dates));
+            
+             while (list.remove(null));
+        
+        
+         
+         String caminho = new File("C://ArquivosCrsys/relatorios/reportAcompanhante.jrxml").getAbsolutePath();
+        try {
+                 JasperReport relatorio = JasperCompileManager.compileReport(caminho);
+                 JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteList, false);
+                 Map parametros = new HashMap();
+                 int totDias = list.size();
+                 if (totDias == 12){
+                 parametros.put("DATA_1", list.get(0));
+                 parametros.put("DATA_2", list.get(1));
+                 parametros.put("DATA_3", list.get(2));
+                 parametros.put("DATA_4", list.get(3));
+                 parametros.put("DATA_5", list.get(4));
+                 parametros.put("DATA_6", list.get(5));
+                 parametros.put("DATA_7", list.get(6));
+                 parametros.put("DATA_8", list.get(7));
+                 parametros.put("DATA_9", list.get(8));
+                 parametros.put("DATA_10", list.get(9));
+                 parametros.put("DATA_11", list.get(10));
+                 parametros.put("DATA_12", list.get(11));
+                // parametros.put("DATA_13", list.get(12));
+                // parametros.put("DATA_14", list.get(13));
+                // parametros.put("DATA_15", list.get(15));
+                 
+                 }else if (totDias == 13){
+                 parametros.put("DATA_1", list.get(0));
+                 parametros.put("DATA_2", list.get(1));
+                 parametros.put("DATA_3", list.get(2));
+                 parametros.put("DATA_4", list.get(3));
+                 parametros.put("DATA_5", list.get(4));
+                 parametros.put("DATA_6", list.get(5));
+                 parametros.put("DATA_7", list.get(6));
+                 parametros.put("DATA_8", list.get(7));
+                 parametros.put("DATA_9", list.get(8));
+                 parametros.put("DATA_10", list.get(9));
+                 parametros.put("DATA_11", list.get(10));
+                 parametros.put("DATA_12", list.get(11));
+                 parametros.put("DATA_13", list.get(12));
+                 }else if (totDias == 14){
+                 parametros.put("DATA_1", list.get(0));
+                 parametros.put("DATA_2", list.get(1));
+                 parametros.put("DATA_3", list.get(2));
+                 parametros.put("DATA_4", list.get(3));
+                 parametros.put("DATA_5", list.get(4));
+                 parametros.put("DATA_6", list.get(5));
+                 parametros.put("DATA_7", list.get(6));
+                 parametros.put("DATA_8", list.get(7));
+                 parametros.put("DATA_9", list.get(8));
+                 parametros.put("DATA_10", list.get(9));
+                 parametros.put("DATA_11", list.get(10));
+                 parametros.put("DATA_12", list.get(11));
+                 parametros.put("DATA_13", list.get(12));
+                 parametros.put("DATA_14", list.get(13));
+                 }else if (totDias == 15){
+                   parametros.put("DATA_1", list.get(0));
+                 parametros.put("DATA_2", list.get(1));
+                 parametros.put("DATA_3", list.get(2));
+                 parametros.put("DATA_4", list.get(3));
+                 parametros.put("DATA_5", list.get(4));
+                 parametros.put("DATA_6", list.get(5));
+                 parametros.put("DATA_7", list.get(6));
+                 parametros.put("DATA_8", list.get(7));
+                 parametros.put("DATA_9", list.get(8));
+                 parametros.put("DATA_10", list.get(9));
+                 parametros.put("DATA_11", list.get(10));
+                 parametros.put("DATA_12", list.get(11));
+                 parametros.put("DATA_13", list.get(12));
+                 parametros.put("DATA_14", list.get(13));
+                 parametros.put("DATA_15", list.get(15));  
+                 }
+                 
+                 JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
+                 JasperViewer view = new JasperViewer(print, false);
+                 view.setVisible(true);
+                 
+             } catch (JRException ex) {
+                 Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
+private String getDateTime() {
+	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date date = new Date();
+	return dateFormat.format(date);
+}
+   
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager ClinicaFprojectPUEntityManager;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser10;
     private com.toedter.calendar.JDateChooser jDateChooser11;

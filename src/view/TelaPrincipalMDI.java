@@ -110,6 +110,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         parentPanel = new javax.swing.JPanel();
         pacienteTable = new javax.swing.JPanel();
@@ -185,18 +186,18 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jTextFieldprcdeclacompanhante = new javax.swing.JTextField();
         jPanelSessoes = new javax.swing.JPanel();
-        jButtonExcluirSessao1 = new javax.swing.JButton();
-        jComboBoxPacienteS1 = new javax.swing.JComboBox<>();
+        jButtonExcluirSessao = new javax.swing.JButton();
+        jComboBoxPacienteS = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableSessao1 = new javax.swing.JTable();
+        jTableSessao = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
-        jButton14 = new javax.swing.JButton();
-        novoButtonSessao1 = new javax.swing.JButton();
-        jButtonEditarSessao1 = new javax.swing.JButton();
+        jButtonCancelS = new javax.swing.JButton();
+        novoButtonSessao = new javax.swing.JButton();
+        jButtonEditarSessao = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jButtonSalvarSessao1 = new javax.swing.JButton();
-        jComboBoxMes1 = new javax.swing.JComboBox<>();
-        jComboBoxSessoes1 = new javax.swing.JComboBox<>();
+        jButtonSalvarSessao = new javax.swing.JButton();
+        jComboBoxMes = new javax.swing.JComboBox<>();
+        jComboBoxSessoes = new javax.swing.JComboBox<>();
         jPanelFichasala = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableFicha = new javax.swing.JTable();
@@ -212,26 +213,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanelSessao = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jButtonExcluirSessao = new javax.swing.JButton();
-        jComboBoxPacienteS = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableSessao = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        novoButtonSessao = new javax.swing.JButton();
-        jButtonEditarSessao = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jButtonSalvarSessao = new javax.swing.JButton();
-        jComboBoxMes = new javax.swing.JComboBox<>();
-        jComboBoxSessoes = new javax.swing.JComboBox<>();
-        jButton13 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -244,6 +225,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
@@ -252,9 +236,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
 
@@ -267,6 +249,8 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jMenuItem15.setText("jMenuItem15");
 
         jMenuItem17.setText("jMenuItem17");
+
+        jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Utilitário da Clínica do Rim do Carpina");
@@ -436,11 +420,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pacienteTableLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(pacienteTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pacienteTableLayout.createSequentialGroup()
-                        .addComponent(masterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(575, Short.MAX_VALUE))
+                        .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
+                        .addContainerGap(571, Short.MAX_VALUE))
                     .addGroup(pacienteTableLayout.createSequentialGroup()
                         .addComponent(jButtonAttTable, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -466,12 +450,12 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                     .addComponent(jButton8)
                     .addComponent(jButton9))
                 .addGap(26, 26, 26)
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(pacienteTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonAttTable)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addGap(307, 307, 307)
                 .addComponent(jLabelNumPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
@@ -939,8 +923,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldprcdeclaracao.setText("0");
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.precisadeclaracao}"), jTextFieldprcdeclaracao, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -994,7 +976,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldprcdeclacompanhante)
                             .addComponent(jTextFieldprcdeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanelDadosPessoaisLayout.setVerticalGroup(
             jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1006,10 +988,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jTextFieldprcdeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(jTextFieldprcdeclaracao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
@@ -1024,26 +1007,26 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButton7))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         parentPanel2.add(jPanelDadosPessoais, "card2");
 
         jPanelSessoes.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButtonExcluirSessao1.setText("Excluir");
-        jButtonExcluirSessao1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExcluirSessao.setText("Excluir");
+        jButtonExcluirSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExcluirSessao1ActionPerformed(evt);
+                jButtonExcluirSessaoActionPerformed(evt);
             }
         });
 
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, jComboBoxPacienteS1);
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, jComboBoxPacienteS);
         bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableSessao1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.paciente}"), jComboBoxPacienteS1, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableSessao, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.paciente}"), jComboBoxPacienteS, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sessaoHasPacienteList, jTableSessao1);
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sessaoHasPacienteList, jTableSessao);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${sessao}"));
         columnBinding.setColumnName("Sessao");
         columnBinding.setColumnClass(bean.Sessao.class);
@@ -1052,61 +1035,61 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         columnBinding.setColumnClass(bean.Paciente.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jTableSessao1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableSessao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableSessao1MouseClicked(evt);
+                jTableSessaoMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTableSessao1);
+        jScrollPane2.setViewportView(jTableSessao);
 
         jLabel11.setText("Selecione aqui o dia da Sessão:");
 
-        jButton14.setText("Cancelar");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelS.setText("Cancelar");
+        jButtonCancelS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jButtonCancelSActionPerformed(evt);
             }
         });
 
-        novoButtonSessao1.setText("Novo");
-        novoButtonSessao1.addActionListener(new java.awt.event.ActionListener() {
+        novoButtonSessao.setText("Novo");
+        novoButtonSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoButtonSessao1ActionPerformed(evt);
+                novoButtonSessaoActionPerformed(evt);
             }
         });
 
-        jButtonEditarSessao1.setText("Editar");
-        jButtonEditarSessao1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditarSessao.setText("Editar");
+        jButtonEditarSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditarSessao1ActionPerformed(evt);
+                jButtonEditarSessaoActionPerformed(evt);
             }
         });
 
         jLabel12.setText("Selecione o mês da Sessao:");
 
-        jButtonSalvarSessao1.setText("Salvar");
-        jButtonSalvarSessao1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvarSessao.setText("Salvar");
+        jButtonSalvarSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarSessao1ActionPerformed(evt);
+                jButtonSalvarSessaoActionPerformed(evt);
             }
         });
 
-        jComboBoxMes1.setMaximumRowCount(12);
-        jComboBoxMes1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
-        jComboBoxMes1.addItemListener(new java.awt.event.ItemListener() {
+        jComboBoxMes.setMaximumRowCount(12);
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        jComboBoxMes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxMes1ItemStateChanged(evt);
+                jComboBoxMesItemStateChanged(evt);
             }
         });
-        jComboBoxMes1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxMes1ActionPerformed(evt);
+                jComboBoxMesActionPerformed(evt);
             }
         });
 
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sessaoList, jComboBoxSessoes1);
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sessaoList, jComboBoxSessoes);
         bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableSessao1, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.sessao}"), jComboBoxSessoes1, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableSessao, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.sessao}"), jComboBoxSessoes, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanelSessoesLayout = new javax.swing.GroupLayout(jPanelSessoes);
@@ -1120,24 +1103,24 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addGap(222, 222, 222)
                         .addGroup(jPanelSessoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxMes1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelSessoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jComboBoxSessoes1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(268, 268, 268))
                     .addGroup(jPanelSessoesLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelSessoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonSalvarSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonExcluirSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(novoButtonSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEditarSessao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                        .addComponent(jComboBoxPacienteS1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 139, Short.MAX_VALUE))))
+                            .addComponent(jButtonSalvarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonExcluirSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(novoButtonSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEditarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCancelS))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxPacienteS, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelSessoesLayout.setVerticalGroup(
             jPanelSessoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1148,24 +1131,24 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelSessoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSessoes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxMes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(jPanelSessoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelSessoesLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(novoButtonSessao1)
+                        .addComponent(novoButtonSessao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEditarSessao1)
+                        .addComponent(jButtonEditarSessao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton14)
+                        .addComponent(jButtonCancelS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSalvarSessao1)
+                        .addComponent(jButtonSalvarSessao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonExcluirSessao1)))
+                        .addComponent(jButtonExcluirSessao)))
                 .addGap(209, 209, 209)
-                .addComponent(jComboBoxPacienteS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxPacienteS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1273,7 +1256,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                                 .addComponent(jFormattedTextField4, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanelFichasalaLayout.setVerticalGroup(
             jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1298,7 +1281,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addGroup(jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
         );
@@ -1363,245 +1346,17 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         parentPanel.add(pacienteUnicPanel, "card2");
 
-        jPanelSessao.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton10.setText("Sessões");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
-        jButton11.setText("Editar Ficha de Sala");
-
-        jButton12.setText("jButton6");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jButton10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton12)
-                .addContainerGap(186, Short.MAX_VALUE))
-        );
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-
-        jButtonExcluirSessao.setText("Excluir");
-        jButtonExcluirSessao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExcluirSessaoActionPerformed(evt);
-            }
-        });
-
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, jComboBoxPacienteS);
-        bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableSessao, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.paciente}"), jComboBoxPacienteS, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sessaoHasPacienteList, jTableSessao);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${sessao}"));
-        columnBinding.setColumnName("Sessao");
-        columnBinding.setColumnClass(bean.Sessao.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        jTableSessao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableSessaoMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTableSessao);
-
-        jLabel9.setText("Selecione aqui o dia da Sessão:");
-
-        jButton5.setText("Cancelar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        novoButtonSessao.setText("Novo");
-        novoButtonSessao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoButtonSessaoActionPerformed(evt);
-            }
-        });
-
-        jButtonEditarSessao.setText("Editar");
-        jButtonEditarSessao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditarSessaoActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Selecione o mês da Sessao:");
-
-        jButtonSalvarSessao.setText("Salvar");
-        jButtonSalvarSessao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalvarSessaoActionPerformed(evt);
-            }
-        });
-
-        jComboBoxMes.setMaximumRowCount(12);
-        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o mês", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
-        jComboBoxMes.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxMesItemStateChanged(evt);
-            }
-        });
-
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sessaoList, jComboBoxSessoes);
-        bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTableSessao, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.sessao}"), jComboBoxSessoes, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonSalvarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonExcluirSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(novoButtonSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEditarSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jComboBoxSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxPacienteS, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(novoButtonSessao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEditarSessao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSalvarSessao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonExcluirSessao)))
-                .addGap(83, 83, 83)
-                .addComponent(jComboBoxPacienteS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(190, 190, 190))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(209, 209, 209))
-        );
-
-        jButton13.setText("Voltar");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelSessaoLayout = new javax.swing.GroupLayout(jPanelSessao);
-        jPanelSessao.setLayout(jPanelSessaoLayout);
-        jPanelSessaoLayout.setHorizontalGroup(
-            jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSessaoLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSessaoLayout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(404, 404, 404))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSessaoLayout.createSequentialGroup()
-                        .addComponent(jButton13)
-                        .addGap(511, 511, 511))))
-        );
-        jPanelSessaoLayout.setVerticalGroup(
-            jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelSessaoLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(jPanelSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(jButton13)
-                .addGap(231, 231, 231))
-        );
-
-        parentPanel.add(jPanelSessao, "card4");
-
         desktopPane.setLayer(parentPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1884, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1673,6 +1428,37 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/group.png"))); // NOI18N
+        jMenu5.setText("Cadastros");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Pacientes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem1);
+
+        jMenuItem7.setText("Médicos");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu5);
+
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8_add_list_16px.png"))); // NOI18N
         jMenu8.setText("Relatórios");
 
@@ -1730,36 +1516,18 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu8);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/group.png"))); // NOI18N
-        jMenu5.setText("Cadastros");
-        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu10.setText("Sessões");
+        jMenu10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu5MouseClicked(evt);
+                jMenu10MouseClicked(evt);
             }
         });
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+        jMenu10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
+                jMenu10ActionPerformed(evt);
             }
         });
-
-        jMenuItem1.setText("Pacientes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem1);
-
-        jMenuItem7.setText("Médicos");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMenu10);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/cog.png"))); // NOI18N
         jMenu2.setText("Configurações");
@@ -1842,7 +1610,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5MouseClicked
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-
+   
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
@@ -1856,7 +1624,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void masterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masterTableMouseClicked
-
+       
         int ls = masterTable.getSelectedRow();
         linhaSelecionada = ls;
         if (evt.getClickCount() == 2){
@@ -1965,15 +1733,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelFotoMouseClicked
 
     private void jButtonPesquisaProfissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaProfissaoActionPerformed
-           JFrmConsultaProfissao frm = new JFrmConsultaProfissao(new JFrame(), true);
-        frm.setLocationRelativeTo(null);
-        frm.setVisible(true);
-        
-        if (frm.isConfirmar()) {
-            
-            Profissao p = frm.getProfissao();
-            jComboBoxProfissao.setSelectedItem(p);
-        }
+           
     }//GEN-LAST:event_jButtonPesquisaProfissaoActionPerformed
 
     private void ruaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruaFieldActionPerformed
@@ -2048,7 +1808,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         parentPanel2.repaint();
         parentPanel2.revalidate();
         sessaoHasPacienteList.clear();
-        jComboBoxMes1.setSelectedIndex(0);
+        jComboBoxMes.setSelectedIndex(0);
         parentUnicpanelvisible = 0;
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -2150,10 +1910,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
     JFrmfichasala tela;
         form.abrirFormulario(tela = new JFrmfichasala(), desktopPane);
@@ -2178,63 +1934,31 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxPacienteActionPerformed
 
-    private void jComboBoxMesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMesItemStateChanged
+    private void jButtonExcluirSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirSessaoActionPerformed
+       int[] selected = jTableSessao.getSelectedRows();
+        List<bean.SessaoHasPaciente> toRemove = new ArrayList<bean.SessaoHasPaciente>(selected.length);
+        for (int idx = 0; idx < selected.length; idx++) {
+            bean.SessaoHasPaciente s = sessaoHasPacienteList.get(jTableSessao.convertRowIndexToModel(selected[idx]));
+            toRemove.add(s);
+            entityManager.remove(s);
+        }
+        sessaoHasPacienteList.removeAll(toRemove);
+    }//GEN-LAST:event_jButtonExcluirSessaoActionPerformed
 
-        int m = jComboBoxMes.getSelectedIndex();
-        Paciente p = (Paciente) jComboBoxPaciente.getSelectedItem();
-        System.out.println(m);
-        sessaoQuery = entityManager.createQuery("SELECT s from Sessao s where month(diasessao) = :m");
-        sessaoQuery.setParameter("m", m);
-        sessaoList.clear();
-        sessaoList.addAll(sessaoQuery.getResultList());
+    private void jTableSessaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSessaoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableSessaoMouseClicked
 
-        sessaoHasPacienteQuery = entityManager.createQuery("SELECT s from SessaoHasPaciente s where month(sessao.diasessao) = :m and s.paciente = :p ");
-        sessaoHasPacienteQuery.setParameter("m", m);
-        sessaoHasPacienteQuery.setParameter("p", p);
+    private void jButtonCancelSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelSActionPerformed
+       entityManager.getTransaction().rollback();
+        entityManager.getTransaction().begin();
+        java.util.Collection data = sessaoHasPacienteQuery.getResultList();
+        for (Object entity : data) {
+            entityManager.refresh(entity);
+        }
         sessaoHasPacienteList.clear();
-        sessaoHasPacienteList.addAll(sessaoHasPacienteQuery.getResultList());
-        novoButtonSessao.setEnabled(true);
-
-        if( m == 0){
-            novoButtonSessao.setEnabled(false);
-            jButtonEditarSessao.setEnabled(false);
-        }
-
-        if(sessaoList.isEmpty() == true){
-            novoButtonSessao.setEnabled(false);
-            jButtonEditarSessao.setEnabled(false);
-            jButtonExcluirSessao.setEnabled(false);
-            jButtonSalvarSessao.setEnabled(false);
-        }
-
-    }//GEN-LAST:event_jComboBoxMesItemStateChanged
-
-    private void jButtonSalvarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarSessaoActionPerformed
-
-        try {
-            entityManager.getTransaction().commit();
-            entityManager.getTransaction().begin();
-        } catch (RollbackException rex) {
-            rex.printStackTrace();
-            entityManager.getTransaction().begin();
-            List<bean.SessaoHasPaciente> merged = new ArrayList<bean.SessaoHasPaciente>(sessaoHasPacienteList.size());
-            for (bean.SessaoHasPaciente s : sessaoHasPacienteList) {
-                merged.add(entityManager.merge(s));
-            }
-            sessaoHasPacienteList.clear();
-            sessaoHasPacienteList.addAll(merged);
-
-            //enables
-
-        }
-
-    }//GEN-LAST:event_jButtonSalvarSessaoActionPerformed
-
-    private void jButtonEditarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSessaoActionPerformed
-
-        jComboBoxSessoes.setEnabled(true);
-
-    }//GEN-LAST:event_jButtonEditarSessaoActionPerformed
+        sessaoHasPacienteList.addAll(data);
+    }//GEN-LAST:event_jButtonCancelSActionPerformed
 
     private void novoButtonSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonSessaoActionPerformed
         bean.SessaoHasPaciente s = new bean.SessaoHasPaciente();
@@ -2251,91 +1975,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jButtonSalvarSessao.setEnabled(true);
     }//GEN-LAST:event_novoButtonSessaoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
-        entityManager.getTransaction().rollback();
-        entityManager.getTransaction().begin();
-        java.util.Collection data = sessaoHasPacienteQuery.getResultList();
-        for (Object entity : data) {
-            entityManager.refresh(entity);
-        }
-        sessaoHasPacienteList.clear();
-        sessaoHasPacienteList.addAll(data);
-
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jTableSessaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSessaoMouseClicked
-
-        jButtonEditarSessao.setEnabled(true);
-        jButtonExcluirSessao.setEnabled(true);
-    }//GEN-LAST:event_jTableSessaoMouseClicked
-
-    private void jButtonExcluirSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirSessaoActionPerformed
-
-        int[] selected = jTableSessao.getSelectedRows();
-        List<bean.SessaoHasPaciente> toRemove = new ArrayList<bean.SessaoHasPaciente>(selected.length);
-        for (int idx = 0; idx < selected.length; idx++) {
-            bean.SessaoHasPaciente s = sessaoHasPacienteList.get(jTableSessao.convertRowIndexToModel(selected[idx]));
-            toRemove.add(s);
-            entityManager.remove(s);
-        }
-        sessaoHasPacienteList.removeAll(toRemove);
-
-    }//GEN-LAST:event_jButtonExcluirSessaoActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-         parentPanel.removeAll();
-            parentPanel.add(pacienteUnicPanel);
-            parentPanel.repaint();
-            parentPanel.revalidate();
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButtonExcluirSessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirSessao1ActionPerformed
-       int[] selected = jTableSessao.getSelectedRows();
-        List<bean.SessaoHasPaciente> toRemove = new ArrayList<bean.SessaoHasPaciente>(selected.length);
-        for (int idx = 0; idx < selected.length; idx++) {
-            bean.SessaoHasPaciente s = sessaoHasPacienteList.get(jTableSessao.convertRowIndexToModel(selected[idx]));
-            toRemove.add(s);
-            entityManager.remove(s);
-        }
-        sessaoHasPacienteList.removeAll(toRemove);
-    }//GEN-LAST:event_jButtonExcluirSessao1ActionPerformed
-
-    private void jTableSessao1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSessao1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableSessao1MouseClicked
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-       entityManager.getTransaction().rollback();
-        entityManager.getTransaction().begin();
-        java.util.Collection data = sessaoHasPacienteQuery.getResultList();
-        for (Object entity : data) {
-            entityManager.refresh(entity);
-        }
-        sessaoHasPacienteList.clear();
-        sessaoHasPacienteList.addAll(data);
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void novoButtonSessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonSessao1ActionPerformed
-        bean.SessaoHasPaciente s = new bean.SessaoHasPaciente();
-        entityManager.persist(s);
-        sessaoHasPacienteList.add(s);
-        int row = sessaoHasPacienteList.size() - 1;
-        jTableSessao1.setRowSelectionInterval(row, row);
-        jTableSessao1.scrollRectToVisible(jTableSessao1.getCellRect(row, 0, true));
-        jComboBoxPacienteS1.setSelectedItem(jComboBoxPaciente.getSelectedItem());
-
-        //enables
+    private void jButtonEditarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSessaoActionPerformed
         jComboBoxSessoes.setEnabled(true);
-        jButtonExcluirSessao.setEnabled(true);
-        jButtonSalvarSessao.setEnabled(true);
-    }//GEN-LAST:event_novoButtonSessao1ActionPerformed
+    }//GEN-LAST:event_jButtonEditarSessaoActionPerformed
 
-    private void jButtonEditarSessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarSessao1ActionPerformed
-        jComboBoxSessoes.setEnabled(true);
-    }//GEN-LAST:event_jButtonEditarSessao1ActionPerformed
-
-    private void jButtonSalvarSessao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarSessao1ActionPerformed
+    private void jButtonSalvarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarSessaoActionPerformed
          try {
             entityManager.getTransaction().commit();
             entityManager.getTransaction().begin();
@@ -2352,10 +1996,10 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             //enables
 
         }
-    }//GEN-LAST:event_jButtonSalvarSessao1ActionPerformed
+    }//GEN-LAST:event_jButtonSalvarSessaoActionPerformed
 
-    private void jComboBoxMes1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMes1ItemStateChanged
-       int m = jComboBoxMes1.getSelectedIndex();
+    private void jComboBoxMesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxMesItemStateChanged
+       int m = jComboBoxMes.getSelectedIndex();
         Paciente p = (Paciente) jComboBoxPaciente.getSelectedItem();
         System.out.println(m);
         sessaoQuery = entityManager.createQuery("SELECT s from Sessao s where month(diasessao) = :m order by s.diasessao");
@@ -2381,7 +2025,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             jButtonExcluirSessao.setEnabled(false);
             jButtonSalvarSessao.setEnabled(false);
         }
-    }//GEN-LAST:event_jComboBoxMes1ItemStateChanged
+    }//GEN-LAST:event_jComboBoxMesItemStateChanged
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         sessaoHasPacienteList.clear();
@@ -2391,9 +2035,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             parentPanel2.revalidate();
     }//GEN-LAST:event_jButton15ActionPerformed
 
-    private void jComboBoxMes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMes1ActionPerformed
+    private void jComboBoxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxMes1ActionPerformed
+    }//GEN-LAST:event_jComboBoxMesActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         String caracteres=".0987654321";
@@ -2471,6 +2115,16 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jCheckBox2MouseClicked
 
+    private void jMenu10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu10ActionPerformed
+       // JFrmSessoes tela;
+       // form.abrirFormulario(tela = new JFrmSessoes(), desktopPane);
+    }//GEN-LAST:event_jMenu10ActionPerformed
+
+    private void jMenu10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu10MouseClicked
+        JFrmSessoes tela;
+        form.abrirFormulario(tela = new JFrmSessoes(), desktopPane);
+    }//GEN-LAST:event_jMenu10MouseClicked
+
     public int getLinhaSelecionada() {
         return linhaSelecionada;
     }
@@ -2502,6 +2156,10 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
          jComboBoxDia.setEnabled(false);
          jCheckBox1.setEnabled(false);
          jCheckBox2.setEnabled(false);
+         jButtonEditarSessao.setEnabled(false);
+         jButtonSalvarSessao.setEnabled(false);
+         jButtonCancelS.setEnabled(false);
+         jButtonExcluirSessao.setEnabled(false);
      }
      
      private void habilitarBotoes(){
@@ -2623,29 +2281,21 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.persistence.Query fichasalaQuery;
     private javax.swing.JLabel fotoLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAttTable;
+    private javax.swing.JButton jButtonCancelS;
     private javax.swing.JButton jButtonEditarSessao;
-    private javax.swing.JButton jButtonEditarSessao1;
     private javax.swing.JButton jButtonExcluirSessao;
-    private javax.swing.JButton jButtonExcluirSessao1;
     private javax.swing.JButton jButtonPesquisaProfissao;
     private javax.swing.JButton jButtonSalvarSessao;
-    private javax.swing.JButton jButtonSalvarSessao1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -2654,13 +2304,10 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxMedico;
     private javax.swing.JComboBox<String> jComboBoxMes;
-    private javax.swing.JComboBox<String> jComboBoxMes1;
     private javax.swing.JComboBox<String> jComboBoxPaciente;
     private javax.swing.JComboBox<String> jComboBoxPacienteS;
-    private javax.swing.JComboBox<String> jComboBoxPacienteS1;
     private javax.swing.JComboBox<String> jComboBoxProfissao;
     private javax.swing.JComboBox<String> jComboBoxSessoes;
-    private javax.swing.JComboBox<String> jComboBoxSessoes1;
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
@@ -2669,7 +2316,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCEP;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2687,15 +2333,16 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFoto;
     private javax.swing.JLabel jLabelNumPaciente;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2723,25 +2370,19 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelDadosPessoais;
     private javax.swing.JPanel jPanelFichasala;
-    private javax.swing.JPanel jPanelSessao;
     private javax.swing.JPanel jPanelSessoes;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButtonApelido;
     private javax.swing.JRadioButton jRadioButtonNome;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTable jTableFicha;
     private javax.swing.JTable jTableSessao;
-    private javax.swing.JTable jTableSessao1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextFieldApelido;
@@ -2756,7 +2397,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JTextField nomeField;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JButton novoButtonSessao;
-    private javax.swing.JButton novoButtonSessao1;
     private javax.swing.JTextField numeroField;
     private javax.swing.JLabel númeroLabel;
     private javax.swing.JPanel pacienteTable;

@@ -40,6 +40,7 @@ public class JFrmCriarOcorrencia extends javax.swing.JInternalFrame {
         }
         AutoCompleteDecorator.decorate(jComboBoxPaci);
        jDateChooser1.getJCalendar().setPreferredSize(new Dimension(250, 200));
+       jDateChooserDialise.getJCalendar().setPreferredSize(new Dimension(250, 200));
        desabilitartudo();
     }
 
