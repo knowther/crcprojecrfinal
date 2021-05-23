@@ -239,7 +239,7 @@ public class JFrmCadDeclaracaovacinacovid extends javax.swing.JInternalFrame {
           pacienteList.clear();
             pacienteList.addAll(pacienteQuery.getResultList());
          }
-        if(jRadioButtonUnic.isSelected()){
+        else if(jRadioButtonUnic.isSelected()){
                Paciente p = (Paciente) jComboBoxPaciente.getSelectedItem();
             pacienteQuery = ClinicaFprojectPUEntityManager.createQuery("select p from Paciente p where p = :p");
            pacienteQuery.setParameter("p", p);

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAcompanhante" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c420314c-034c-4141-b91e-abaab863e99c">
 	<property name="ireport.zoom" value="1.24184264611831"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="373"/>
+	<property name="ireport.y" value="477"/>
 	<parameter name="DATA_1" class="java.util.Date"/>
 	<parameter name="DATA_2" class="java.util.Date"/>
 	<parameter name="DATA_3" class="java.util.Date"/>
@@ -51,11 +51,7 @@ FROM
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="50">
-				<break>
-					<reportElement x="0" y="33" width="100" height="1" printWhenGroupChanges="paciente_idpaciente" uuid="ab590744-36e3-45e8-9a1f-d03bbafb5406"/>
-				</break>
-			</band>
+			<band height="50"/>
 		</groupFooter>
 	</group>
 	<background>
@@ -348,7 +344,4 @@ FROM
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
