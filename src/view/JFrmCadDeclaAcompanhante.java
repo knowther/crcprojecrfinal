@@ -31,13 +31,15 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
  * @author johnn
  */
 public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
-
+        int dias;
+        //private int dia;
     /**
      * Creates new form JFrmCadDeclaAcompanhante
      */
@@ -45,6 +47,8 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         initComponents();
        jRadioButtonTodos.setSelected(true);
        jComboBoxPaciente.setEnabled(false);
+       AutoCompleteDecorator.decorate(jComboBoxPaciente);
+       
     }
 
     /**
@@ -121,6 +125,12 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
 
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteList, jComboBoxPaciente);
         bindingGroup.addBinding(jComboBoxBinding);
+
+        jComboBoxPaciente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxPacienteItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,6 +228,9 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
            pacienteQuery.setParameter("p", p);
           pacienteList.clear();
             pacienteList.addAll(pacienteQuery.getResultList());
+           //dias = p.getDiaInt();
+            // System.out.println(dias);
+           
         }
          String caminho = new File("C://ArquivosCrsys/relatorios/reportAcompanhante.jrxml").getAbsolutePath();
         try {
@@ -297,7 +310,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
         
-        
+        jButton2.setEnabled(false);
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -324,19 +337,26 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
           //  pacienteList.addAll(pacienteQuery.getResultList()); 
         
        // }
+       jButton2.setEnabled(true);
     }//GEN-LAST:event_jComboBoxTurnoItemStateChanged
 
     private void jRadioButtonTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTodosActionPerformed
         jComboBoxPaciente.setEnabled(false);
         jComboBoxDia.setEnabled(true);
         jComboBoxTurno.setEnabled(true);
+        jButton2.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonTodosActionPerformed
 
     private void jRadioButtonUnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonUnicActionPerformed
         jComboBoxPaciente.setEnabled(true);
         jComboBoxDia.setEnabled(false);
         jComboBoxTurno.setEnabled(false);
+        jButton2.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonUnicActionPerformed
+
+    private void jComboBoxPacienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPacienteItemStateChanged
+       jButton2.setEnabled(true);
+    }//GEN-LAST:event_jComboBoxPacienteItemStateChanged
 
 private String getDateTime() {
 	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
