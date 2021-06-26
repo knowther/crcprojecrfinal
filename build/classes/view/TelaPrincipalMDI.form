@@ -588,14 +588,14 @@
                                   <Component id="jButton9" min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="880" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="masterScrollPane" pref="1298" max="32767" attributes="0"/>
-                                  <EmptySpace pref="571" max="32767" attributes="0"/>
+                                  <Component id="masterScrollPane" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="566" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jButtonAttTable" min="-2" pref="130" max="-2" attributes="0"/>
@@ -651,7 +651,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="masterTable">
                       <Properties>
-                        <Property name="autoResizeMode" type="int" value="0"/>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="-1" minWidth="-1" prefWidth="340" resizable="false">
@@ -766,6 +765,7 @@
                 </Container>
                 <Component class="javax.swing.JTextField" name="jTextFieldPesquisaPaciente">
                   <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPesquisaPacienteActionPerformed"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldPesquisaPacienteKeyReleased"/>
                   </Events>
                 </Component>
@@ -1134,7 +1134,7 @@
                                       <Component id="jButtonAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

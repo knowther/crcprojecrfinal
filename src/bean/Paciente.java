@@ -133,8 +133,8 @@ public class Paciente implements Serializable {
     @Column (name = "declaracaoacompanhante")
     private Short declaracaoacompanhante;
     
-    @Transient
-    private int diaInt;
+    //@Transient
+    //private int diaInt;
     
     @Column(name = "nomedamae")
     private String nomedamae;
@@ -538,13 +538,13 @@ public class Paciente implements Serializable {
         this.fichasala = fichasala;
     }
 
-    public int getDiaInt() {
-        return dia.getIddia();
-    }
+    //public int getDiaInt() {
+      //  return dia.getIddia();
+    //}
 
-    public void setDiaInt(int diaInt) {
-        this.diaInt = diaInt;
-    }
+   // public void setDiaInt(int diaInt) {
+    //    this.diaInt = diaInt;
+    //}
     
     
     

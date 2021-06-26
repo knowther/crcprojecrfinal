@@ -265,7 +265,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         pacienteTable.setBackground(new java.awt.Color(255, 255, 255));
 
-        masterTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         masterTable.getTableHeader().setReorderingAllowed(false);
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, masterTable);
@@ -333,6 +332,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             masterTable.getColumnModel().getColumn(8).setPreferredWidth(350);
         }
 
+        jTextFieldPesquisaPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPesquisaPacienteActionPerformed(evt);
+            }
+        });
         jTextFieldPesquisaPaciente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldPesquisaPacienteKeyReleased(evt);
@@ -418,13 +422,13 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(120, 120, 120)
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 880, Short.MAX_VALUE))
             .addGroup(pacienteTableLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
                 .addGroup(pacienteTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pacienteTableLayout.createSequentialGroup()
-                        .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
-                        .addContainerGap(571, Short.MAX_VALUE))
+                        .addComponent(masterScrollPane)
+                        .addGap(566, 566, 566))
                     .addGroup(pacienteTableLayout.createSequentialGroup()
                         .addComponent(jButtonAttTable, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -507,7 +511,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -1007,7 +1011,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButton7))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         parentPanel2.add(jPanelDadosPessoais, "card2");
@@ -1352,11 +1356,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1884, Short.MAX_VALUE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1884, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1069, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1624,7 +1628,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void masterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masterTableMouseClicked
-       
+        
         int ls = masterTable.getSelectedRow();
         linhaSelecionada = ls;
         if (evt.getClickCount() == 2){
@@ -2124,6 +2128,10 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         JFrmSessoes tela;
         form.abrirFormulario(tela = new JFrmSessoes(), desktopPane);
     }//GEN-LAST:event_jMenu10MouseClicked
+
+    private void jTextFieldPesquisaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaPacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPesquisaPacienteActionPerformed
 
     public int getLinhaSelecionada() {
         return linhaSelecionada;

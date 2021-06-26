@@ -47,7 +47,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         initComponents();
        jRadioButtonTodos.setSelected(true);
        jComboBoxPaciente.setEnabled(false);
-       AutoCompleteDecorator.decorate(jComboBoxPaciente);
+       //AutoCompleteDecorator.decorate(jComboBoxPaciente);
        
     }
 
@@ -75,6 +75,8 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         jComboBoxTurno = new javax.swing.JComboBox<>();
         jRadioButtonTodos = new javax.swing.JRadioButton();
         jRadioButtonUnic = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jComboBoxPaciente = new javax.swing.JComboBox<>();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -123,12 +125,20 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
             }
         });
 
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteList, jTable1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("nome");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTable1);
+
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, pacienteList, jComboBoxPaciente);
         bindingGroup.addBinding(jComboBoxBinding);
 
-        jComboBoxPaciente.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxPacienteItemStateChanged(evt);
+        jComboBoxPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPacienteActionPerformed(evt);
             }
         });
 
@@ -151,8 +161,11 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioButtonUnic)
                             .addComponent(jRadioButtonTodos)
-                            .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addComponent(jComboBoxPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +186,9 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
                     .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jButton2)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -193,6 +208,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         int i = 0;
         Date dataSemana = null;
          dataSemana = cal.getTime();
+//         int whatday = 
         Date [] dates = new Date [lastDay +1];
          do{
              i++;
@@ -354,9 +370,9 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         jButton2.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonUnicActionPerformed
 
-    private void jComboBoxPacienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPacienteItemStateChanged
-       jButton2.setEnabled(true);
-    }//GEN-LAST:event_jComboBoxPacienteItemStateChanged
+    private void jComboBoxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPacienteActionPerformed
+        jButton2.setEnabled(true);
+    }//GEN-LAST:event_jComboBoxPacienteActionPerformed
 
 private String getDateTime() {
 	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -378,6 +394,8 @@ private String getDateTime() {
     private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JRadioButton jRadioButtonTodos;
     private javax.swing.JRadioButton jRadioButtonUnic;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private java.util.List<bean.Paciente> pacienteList;
     private javax.persistence.Query pacienteQuery;
     private java.util.List<bean.Turno> turnoList;

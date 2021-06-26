@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportdeclaracaovacina" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b4c17a8-d715-459f-a4bd-9e7a635a5dbe">
 	<property name="ireport.zoom" value="1.610510000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="446"/>
+	<property name="ireport.y" value="720"/>
 	<queryString>
 		<![CDATA[SELECT
      paciente.`idpaciente` AS paciente_idpaciente,
@@ -60,11 +60,7 @@ FROM
 			<band height="9"/>
 		</groupHeader>
 		<groupFooter>
-			<band height="17">
-				<break>
-					<reportElement x="0" y="13" width="100" height="1" printWhenGroupChanges="paciente" uuid="a1663437-172f-4fe4-84b2-8590e144ad57"/>
-				</break>
-			</band>
+			<band height="3"/>
 		</groupFooter>
 	</group>
 	<background>
@@ -79,41 +75,25 @@ FROM
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="79" splitType="Stretch">
+		<band height="62" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="15" width="555" height="20" uuid="7795f372-7e6a-4612-9949-73968782c1df"/>
+				<reportElement x="0" y="3" width="555" height="20" uuid="7795f372-7e6a-4612-9949-73968782c1df"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ANEXO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="40" width="471" height="39" uuid="003b5eea-f863-4bdf-8b6c-0c75b4d08488"/>
+				<reportElement x="49" y="23" width="471" height="39" uuid="003b5eea-f863-4bdf-8b6c-0c75b4d08488"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[FORMULÁRIO DE VACINAÇÃO CONTRA A COVID-19/2021 PARA OS GRUPOS DE 18 À 59 ANOS COM COMORBIDADES]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="107" y="1" width="100" height="20" uuid="c75ab7b7-6e2e-4987-8b2a-f4df918ebf2b"/>
-				<text><![CDATA[paciente_bairro]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="122" y="1" width="100" height="20" uuid="f77f38d5-253b-4e12-bed5-970469d8e164"/>
-				<text><![CDATA[cidade_idcidade]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="216" y="1" width="100" height="20" uuid="33c8b1dd-1096-4b67-aae3-8129aca9ee50"/>
-				<text><![CDATA[estado_nome]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="132" y="1" width="100" height="20" uuid="c0680c05-0110-45e1-8a2f-7a8ea45a2c20"/>
-				<text><![CDATA[cidade_nome]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="615" splitType="Stretch">
+		<band height="607" splitType="Stretch">
 			<staticText>
 				<reportElement x="47" y="2" width="238" height="20" uuid="c5e19242-6f79-4ad1-8cfd-198013a30d52"/>
 				<textElement>
@@ -504,7 +484,7 @@ FROM
 				<text><![CDATA[.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="54" y="476" width="146" height="20" uuid="410e9620-f99a-4f59-a628-a2ed69c9baa1"/>
+				<reportElement x="54" y="472" width="146" height="20" uuid="410e9620-f99a-4f59-a628-a2ed69c9baa1"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -518,28 +498,28 @@ FROM
 				<text><![CDATA[X]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="506" width="455" height="20" uuid="0107bc11-97a3-4525-8a5b-cd105dfccbe2"/>
+				<reportElement x="47" y="498" width="455" height="20" uuid="0107bc11-97a3-4525-8a5b-cd105dfccbe2"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[___________________________________________________________________________________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="59" y="521" width="430" height="20" uuid="6f8b8850-882a-4b27-8900-f108e323d35d"/>
+				<reportElement x="59" y="513" width="430" height="20" uuid="6f8b8850-882a-4b27-8900-f108e323d35d"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[***Assinatura do Profissional responsável, com carimbo, atestando a veracidade das informações]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="541" width="461" height="23" uuid="932b30dc-5046-4455-86b6-d717b3a8c0ca"/>
+				<reportElement x="47" y="533" width="461" height="23" uuid="932b30dc-5046-4455-86b6-d717b3a8c0ca"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[**Especificar comorbidade indicada de acordo com CID, observando os grupos contemplados na Fase I e II da Nota Técnica 11/2021.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="564" width="459" height="32" uuid="16c84f10-23fe-4664-ac46-b2ec340efc2f"/>
+				<reportElement x="47" y="556" width="459" height="32" uuid="16c84f10-23fe-4664-ac46-b2ec340efc2f"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
@@ -547,7 +527,7 @@ FROM
 Unidade de saúde de natureza pública: Médico e Enfermeiro podem atestar. O profissional de enfermagem para assinar a declaração deve consultar os sistemas de informação/prontuário do paciente e colocar o carimbo da unidade com CNES.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="595" width="455" height="20" uuid="cbb68332-c87e-457c-9174-888a1bba6897"/>
+				<reportElement x="47" y="587" width="455" height="20" uuid="cbb68332-c87e-457c-9174-888a1bba6897"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
