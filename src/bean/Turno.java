@@ -16,6 +16,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -25,7 +28,7 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "turno", catalog = "clinica_crc", schema = "")
+@Table(name = "turno", catalog = "dbclinicaii", schema = "")
 public class Turno implements Serializable {
 
     @Transient
@@ -36,28 +39,51 @@ public class Turno implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idturno")
-    private Integer id;
-    @Column(name = "nome")
-    private String nome;
+    private Integer idturno;
+    @Basic(optional = false)
+    
+   @ManyToOne
+    private Dia dia;
     
     @OneToMany(mappedBy = "turno")
-    private List<Paciente> pacientes = new ArrayList<>();
+    private List<Paciente> pacientes = new ArrayList<Paciente>();
+    
+    
+    @Basic(optional = false)
+    @Column(name = "nome")
+    private String nome;
 
     public Turno() {
     }
 
-    public Turno(Integer id) {
-        this.id = id;
+    public Turno(Integer idturno) {
+        this.idturno = idturno;
     }
 
-    public Integer getId() {
-        return id;
+    public Turno(Integer idturno, int diaIddia, String nome) {
+        this.idturno = idturno;
+        this.dia = dia;
+        this.nome = nome;
     }
 
-    public void setId(Integer id) {
-        Integer oldId = this.id;
-        this.id = id;
-        changeSupport.firePropertyChange("id", oldId, id);
+    public Integer getIdturno() {
+        return idturno;
+    }
+
+    public void setIdturno(Integer idturno) {
+        Integer oldIdturno = this.idturno;
+        this.idturno = idturno;
+        changeSupport.firePropertyChange("idturno", oldIdturno, idturno);
+    }
+
+    public Dia getDia() {
+        return dia;
+    }
+
+    public void setDia(Dia dia) {
+        Dia oldDia = this.dia;
+        this.dia= dia;
+        changeSupport.firePropertyChange("dia", oldDia, dia);
     }
 
     public String getNome() {
@@ -70,18 +96,10 @@ public class Turno implements Serializable {
         changeSupport.firePropertyChange("nome", oldNome, nome);
     }
 
-    public List<Paciente> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idturno != null ? idturno.hashCode() : 0);
         return hash;
     }
 
@@ -92,7 +110,7 @@ public class Turno implements Serializable {
             return false;
         }
         Turno other = (Turno) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idturno == null && other.idturno != null) || (this.idturno != null && !this.idturno.equals(other.idturno))) {
             return false;
         }
         return true;

@@ -8,8 +8,6 @@ package bean;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -27,8 +24,12 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "profissao", catalog = "clinica_crc", schema = "")
-
+@Table(name = "profissao", catalog = "dbclinicaii", schema = "")
+@NamedQueries({
+    @NamedQuery(name = "Profissao.findAll", query = "SELECT p FROM Profissao p")
+    , @NamedQuery(name = "Profissao.findByIdprofissao", query = "SELECT p FROM Profissao p WHERE p.idprofissao = :idprofissao")
+    , @NamedQuery(name = "Profissao.findByNome", query = "SELECT p FROM Profissao p WHERE p.nome = :nome")
+    , @NamedQuery(name = "Profissao.findByCodigo", query = "SELECT p FROM Profissao p WHERE p.codigo = :codigo")})
 public class Profissao implements Serializable {
 
     @Transient
@@ -44,9 +45,6 @@ public class Profissao implements Serializable {
     private String nome;
     @Column(name = "codigo")
     private String codigo;
-    
-    @OneToMany(mappedBy = "profissao")
-    private List<Paciente> pessoas = new ArrayList<Paciente>();
 
     public Profissao() {
     }
@@ -107,7 +105,7 @@ public class Profissao implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return "bean.Profissao[ idprofissao=" + idprofissao + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -117,15 +115,5 @@ public class Profissao implements Serializable {
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.removePropertyChangeListener(listener);
     }
-
-    public List<Paciente> getPessoas() {
-        return pessoas;
-    }
-
-    public void setPessoas(List<Paciente> pessoas) {
-        this.pessoas = pessoas;
-    }
-    
-    
     
 }

@@ -13,7 +13,11 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -23,7 +27,8 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "estado", catalog = "clinica_crc", schema = "")
+@Table(name = "estado", catalog = "dbclinicaii", schema = "")
+
 public class Estado implements Serializable {
 
     @Transient
@@ -31,19 +36,21 @@ public class Estado implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idestado")
     private Integer idestado;
+    @Column(name = "uf")
+    private String uf;
     @Column(name = "nome")
     private String nome;
+    
+    @OneToMany(mappedBy = "estado")
+    private List<Paciente> pacientes = new ArrayList<Paciente>();
+    
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> cidade = new ArrayList<Cidade>();
 
-    
-    @OneToMany(mappedBy = "estado")
-    private List<Cidade> cidades = new ArrayList<>();
-    
-    @OneToMany(mappedBy = "estado")
-    private List<Paciente> pacientes = new ArrayList<>();
-    
     public Estado() {
     }
 
@@ -70,6 +77,16 @@ public class Estado implements Serializable {
         this.nome = nome;
         changeSupport.firePropertyChange("nome", oldNome, nome);
     }
+    
+     public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String nome) {
+        String oldUf = this.uf;
+        this.uf = uf;
+        changeSupport.firePropertyChange("uf", oldUf, uf);
+    }
 
     @Override
     public int hashCode() {
@@ -93,7 +110,7 @@ public class Estado implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return uf;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -102,22 +119,6 @@ public class Estado implements Serializable {
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.removePropertyChangeListener(listener);
-    }
-
-    public List<Cidade> getCidades() {
-        return cidades;
-    }
-
-    public void setCidades(List<Cidade> cidades) {
-        this.cidades = cidades;
-    }
-
-    public List<Paciente> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
     }
     
 }

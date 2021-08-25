@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -17,7 +17,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,18 +25,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import bean.Cidade;
-import bean.Estado;
-import bean.Medico;
-import bean.Profissao;
-import bean.Turno;
 
 /**
  *
  * @author johnn
  */
 @Entity
-@Table(name = "paciente", catalog = "clinica_crc", schema = "")
+@Table(name = "paciente", catalog = "dbclinicaii", schema = "")
 public class Paciente implements Serializable {
 
     @Transient
@@ -49,68 +43,127 @@ public class Paciente implements Serializable {
     @Basic(optional = false)
     @Column(name = "idpaciente")
     private Integer idpaciente;
+    
+    @ManyToOne
+    private Dia dia;
+    
+    
+    @ManyToOne
+    private Turno turno;
+    
+    
+    @ManyToOne
+    private Medico medico;
+    
+    
+    @ManyToOne
+    private Tiposanguineo tiposanguineo;
+    
+    @ManyToOne
+    private Duracaohd duracaohd;
+    
+    @ManyToOne
+    private Frequenciahd frequenciahd;
+    
+    @ManyToOne
+    private Estado estado;
+    
+    @ManyToOne
+    private Cidade cidade;
+    
+    
+    @ManyToOne
+    private Profissao profissao;
+    
+    
+    @ManyToOne
+    private Tiposlogradouro tiposlogradouro;
+    
+    @ManyToOne
+    private Tipodeinsuficiencia tipodeinsuficiencia;
+    
+    @ManyToOne
+    private Tipodedialise tipodedialise;
+    
+    @OneToMany (mappedBy = "paciente")
+    private List<Fichasala> fichasala = new ArrayList<Fichasala>();
+    
+    @OneToMany (mappedBy = "paciente")
+    private List<SessaoHasPaciente> sessaohaspaciente = new ArrayList<SessaoHasPaciente>();
+    
+    @OneToMany (mappedBy = "paciente")
+    private List<Ocorrencias> ocorrencias = new ArrayList<Ocorrencias>();
+    
+    
+    
+    @Column(name = "prontuario")
+    private String prontuario;
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "apelido")
+    private String apelido;
     @Column(name = "bairro")
     private String bairro;
     @Column(name = "cep")
     private String cep;
     @Column(name = "cpf")
     private String cpf;
-    @Column(name = "dataNascimento")
+    @Column(name = "datanascimento")
     @Temporal(TemporalType.DATE)
-    private Date dataNascimento;
-    @Column(name = "foto")
-    private String foto;
-    @Column(name = "nome")
-    private String nome;
+    private Date datanascimento;
+    @Column(name = "datainiciohd")
+    @Temporal(TemporalType.DATE)
+    private Date datainiciohd;
+      @Column(name = "pesoseco")
+    private Float pesoseco;
+    @Column(name = "endereco")
+    private String endereco;
     @Column(name = "numero")
     private String numero;
-    @Column(name = "rua")
-    private String rua;
-    @Column(name = "apelido")
-    private String apelido;
-  
-    @ManyToOne
-    private Cidade cidade;
+    @Column(name = "foto")
+    private String foto;
+    @Column(name = "rg")
+    private String rg;
+    @Column(name = "unidadedeencaminhamento")
+    private String unidadedeencaminhamento;
+    @Column(name = "complemento")
+    private String complemento;
+    @Column (name = "precisadeclaracao")
+    private Short precisadeclaracao;
+    @Column (name = "declaracaoacompanhante")
+    private Short declaracaoacompanhante;
     
-    @ManyToOne
-    private Estado estado;
+    //@Transient
+    //private int diaInt;
     
-    @ManyToOne
-    private Profissao profissao;
+    @Column(name = "nomedamae")
+    private String nomedamae;
     
-    @ManyToOne
-    private Turno turno;
+    @Column(name = "idade")
+    private String idade;
+    
+    @Column(name = "raca")
+    private String raca;
 
-    @ManyToOne
-    private Medico medico;
+    @Column(name = "logradouro")
+    private String logradouro;
     
+<<<<<<< HEAD
   
     
   
    
+=======
+    @Column(name = "cidadenome")
+    private String cidadenome;
+    
+    @Column(name = "estadonome")
+    private String estadonome;
+>>>>>>> Changes
     
     public Paciente() {
     }
 
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-       Medico oldMedico = this.medico;
-        this.medico = medico;
-      changeSupport.firePropertyChange("medico", oldMedico, medico);
-    }
-    
- public Turno getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Turno turno) {
-         Turno oldTurno = this.turno;
-        this.turno = turno;
-        changeSupport.firePropertyChange("turno", oldTurno, turno);
-    }
     public Paciente(Integer idpaciente) {
         this.idpaciente = idpaciente;
     }
@@ -123,6 +176,138 @@ public class Paciente implements Serializable {
         Integer oldIdpaciente = this.idpaciente;
         this.idpaciente = idpaciente;
         changeSupport.firePropertyChange("idpaciente", oldIdpaciente, idpaciente);
+    }
+
+    public Dia getDia() {
+        return dia;
+    }
+
+    public void setDia(Dia dia) {
+        Dia oldDia = this.dia;
+        this.dia = dia;
+        changeSupport.firePropertyChange("dia", oldDia, dia);
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        Turno oldTurno = this.turno;
+        this.turno = turno;
+        changeSupport.firePropertyChange("turno", oldTurno, turno);
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        Medico oldMedico = this.medico;
+        this.medico = medico;
+        changeSupport.firePropertyChange("medico", oldMedico, medico);
+    }
+
+    public Tiposanguineo getTiposanguineo() {
+        return tiposanguineo;
+    }
+
+    public void setTiposanguineo(Tiposanguineo tiposanguineo) {
+        Tiposanguineo oldTiposanguineo = this.tiposanguineo;
+        this.tiposanguineo = tiposanguineo;
+        changeSupport.firePropertyChange("tiposanguineo", oldTiposanguineo, tiposanguineo);
+    }
+
+    public Duracaohd getDuracaohd() {
+        return duracaohd;
+    }
+
+    public void setDuracaohd(Duracaohd duracaohdIdduracaohd) {
+        Duracaohd oldDuracaohd = this.duracaohd;
+        this.duracaohd = duracaohd;
+        changeSupport.firePropertyChange("duracaohd", oldDuracaohd, duracaohd);
+    }
+
+    public Frequenciahd getFrequenciahd() {
+        return frequenciahd;
+    }
+
+    public void setFrequenciahd(Frequenciahd frequenciahdIdfrequenciahd) {
+        Frequenciahd oldFrequenciahd = this.frequenciahd;
+        this.frequenciahd = frequenciahd;
+        changeSupport.firePropertyChange("frequenciahd", oldFrequenciahd, frequenciahd);
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        Estado oldEstado = this.estado;
+        this.estado = estado;
+        changeSupport.firePropertyChange("estado", oldEstado, estado);
+    }
+    
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        Cidade oldCidade = this.cidade;
+        this.cidade = cidade;
+        changeSupport.firePropertyChange("cidade", oldCidade, cidade);
+    }
+
+    public Profissao getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(Profissao profissao) {
+        Profissao oldProfissao = this.profissao;
+        this.profissao = profissao;
+        changeSupport.firePropertyChange("profissaoIdprofissao", oldProfissao, profissao);
+    }
+
+    public Tiposlogradouro getTiposlogradouro() {
+        return tiposlogradouro;
+    }
+
+    public void setTiposlogradouro(Tiposlogradouro tiposlogradouro) {
+        Tiposlogradouro oldTiposlogradouro = this.tiposlogradouro;
+        this.tiposlogradouro = tiposlogradouro;
+        changeSupport.firePropertyChange("tiposlogradouro", oldTiposlogradouro, tiposlogradouro);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        String oldNome = this.nome;
+        this.nome = nome;
+        changeSupport.firePropertyChange("nome", oldNome, nome);
+    }
+    
+   public String getProntuario() {
+        return prontuario;
+    }
+
+    public void setProntuario(String prontuario) {
+        String oldProntuario = this.prontuario;
+        this.prontuario = prontuario;
+        changeSupport.firePropertyChange("prontuario", oldProntuario, prontuario);
+    }
+    
+    
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        String oldApelido = this.apelido;
+        this.apelido = apelido;
+        changeSupport.firePropertyChange("apelido", oldApelido, apelido);
     }
 
     public String getBairro() {
@@ -155,14 +340,57 @@ public class Paciente implements Serializable {
         changeSupport.firePropertyChange("cpf", oldCpf, cpf);
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
+    public Date getDatanascimento() {
+        return datanascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
-        Date oldDataNascimento = this.dataNascimento;
-        this.dataNascimento = dataNascimento;
-        changeSupport.firePropertyChange("dataNascimento", oldDataNascimento, dataNascimento);
+    public void setDatanascimento(Date datanascimento) {
+        Date oldDatanascimento = this.datanascimento;
+        this.datanascimento = datanascimento;
+        changeSupport.firePropertyChange("datanascimento", oldDatanascimento, datanascimento);
+    }
+
+    public Date getDatainiciohd() {
+        return datainiciohd;
+    }
+
+    public void setDatainiciohd(Date datainiciohd) {
+       Date oldDatainiciohd = this.datainiciohd;
+        this.datainiciohd = datainiciohd;
+        changeSupport.firePropertyChange("datainiciohd", oldDatainiciohd, datainiciohd);
+    }
+
+    public Float getPesoseco() {
+        return pesoseco;
+    }
+
+    public void setPesoseco(Float pesoseco) {
+        Float oldPesoseco = this.pesoseco;
+        this.pesoseco = pesoseco;
+        changeSupport.firePropertyChange("pesoseco", oldPesoseco, pesoseco);
+    }
+    
+    
+    
+    
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        String oldEndereco = this.endereco;
+        this.endereco = endereco;
+        changeSupport.firePropertyChange("endereco", oldEndereco, endereco);
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        String oldNumero = this.numero;
+        this.numero = numero;
+        changeSupport.firePropertyChange("numero", oldNumero, numero);
     }
 
     public String getFoto() {
@@ -174,86 +402,164 @@ public class Paciente implements Serializable {
         this.foto = foto;
         changeSupport.firePropertyChange("foto", oldFoto, foto);
     }
-
-    public String getNome() {
-        return nome;
+    
+  public Tipodeinsuficiencia getTipodeinsuficiencia() {
+        return tipodeinsuficiencia;
     }
 
-    public void setNome(String nome) {
-        String oldNome = this.nome;
-        this.nome = nome;
-        changeSupport.firePropertyChange("nome", oldNome, nome);
+    public void setTipodeinsuficiencia(Tipodeinsuficiencia tipodeinsuficiencia) {
+        Tipodeinsuficiencia oldTipodeinsuficiencia = this.tipodeinsuficiencia;
+        this.tipodeinsuficiencia = tipodeinsuficiencia;
+        changeSupport.firePropertyChange("tipodeinsuficiencia", oldTipodeinsuficiencia, tipodeinsuficiencia);
+    }
+    
+    
+     public Tipodedialise getTipodedialise() {
+        return tipodedialise;
     }
 
-    public String getNumero() {
-        return numero;
+    public void setTipodedialise(Tipodedialise tipodedialise) {
+        Tipodedialise oldTipodedialise = this.tipodedialise;
+        this.tipodedialise = tipodedialise;
+        changeSupport.firePropertyChange("tipodedialise", oldTipodedialise, tipodedialise);
+    }
+    
+    
+    public String getRg() {
+        return rg;
     }
 
-    public void setNumero(String número) {
-        String oldNúmero = this.numero;
-        this.numero = número;
-        changeSupport.firePropertyChange("numero", oldNúmero, número);
+    public void setRg(String rg) {
+        String oldRg = this.rg;
+        this.rg = rg;
+        changeSupport.firePropertyChange("rg", oldRg, rg);
+    }
+    
+    
+    public String getUnidadedeencaminhamento() {
+        return unidadedeencaminhamento;
     }
 
-    public String getRua() {
-        return rua;
+    public void setUnidadedeencaminhamento(String unidadedeencaminhamento) {
+        String oldUnidadedeencaminhamento = this.unidadedeencaminhamento;
+        this.unidadedeencaminhamento = unidadedeencaminhamento;
+        changeSupport.firePropertyChange("unidadedeencaminhamento", oldUnidadedeencaminhamento, unidadedeencaminhamento);
+    }
+    
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setRua(String rua) {
-        String oldRua = this.rua;
-        this.rua = rua;
-        changeSupport.firePropertyChange("rua", oldRua, rua);
+    public void setComplemento(String complemento) {
+        String oldComplemento = this.complemento;
+        this.complemento = complemento;
+        changeSupport.firePropertyChange("complemento", oldComplemento, complemento);
+    }
+    
+    public Short getPrecisadeclaracao() {
+        return precisadeclaracao;
     }
 
-   public Cidade getCidade() {
-        return cidade;
+    public void setPrecisadeclaracao(Short precisadeclaracao) {
+        Short oldPrecisadeclaracao = this.precisadeclaracao;
+        this.precisadeclaracao = precisadeclaracao;
+        changeSupport.firePropertyChange("precisadeclaracao", oldPrecisadeclaracao, precisadeclaracao);
     }
 
-    public void setCidade(Cidade cidade) {
-        Cidade oldCidade = this.cidade;
-        this.cidade = cidade;
-        changeSupport.firePropertyChange("cidade", oldCidade, cidade);
+     public Short getDeclaracaoacompanhante() {
+        return declaracaoacompanhante;
     }
 
-    public Estado getEstado() {
-        return estado;
+    public void setDeclaracaoacompanhante(Short declaracaoacompanhante) {
+        Short oldDeclaracaoacompanhante = this.declaracaoacompanhante;
+        this.declaracaoacompanhante = declaracaoacompanhante;
+        changeSupport.firePropertyChange("declaracaoacompanhante", oldDeclaracaoacompanhante, declaracaoacompanhante);
+    }
+    
+    public String getNomedamae() {
+        return nomedamae;
     }
 
-    public void setEstado(Estado estado) {
-        Estado oldEstado = this.estado;
-        this.estado = estado;
-        changeSupport.firePropertyChange("estado", oldEstado, estado);
+    public void setNomedamae(String nomedamae) {
+        String oldNomedamae = this.nomedamae;
+        this.nomedamae = nomedamae;
+        changeSupport.firePropertyChange("nomedamae", oldNomedamae, nomedamae);
+    }
+    
+    public String getRaca() {
+        return raca;
     }
 
-    public Profissao getProfissao() {
-        return profissao;
+    public void setRaca(String raca) {
+        String oldRaca = this.raca;
+        this.raca = raca;
+        changeSupport.firePropertyChange("raca", oldRaca, raca);
+    }
+    
+    public String getIdade() {
+        return idade;
     }
 
-    public void setProfissao(Profissao profissao) {
-        Profissao oldProfissao = this.profissao;
-        this.profissao = profissao;
-        changeSupport.firePropertyChange("profissao", oldProfissao, profissao);
+    public void setIdade(String idade) {
+        String oldIdade = this.idade;
+        this.idade = idade;
+        changeSupport.firePropertyChange("idade", oldIdade, idade);
+    }
+    
+     public String getLogradouro() {
+        return logradouro;
     }
 
-    public String getApelido() {
-        return apelido;
+    public void setLogradouro(String logradouro) {
+        String oldLogradouro = this.logradouro;
+        this.logradouro = logradouro;
+        changeSupport.firePropertyChange("logradouro", oldLogradouro, logradouro);
+    }
+    
+    public String getCidadenome() {
+       return cidadenome;
     }
 
-    public void setApelido(String apelido) {
-        String oldApelido = this.apelido;
-        this.apelido = apelido;
-        changeSupport.firePropertyChange("apelido", oldApelido, apelido);
-        
+    public void setCidadeNome(String cidadenome) {
+        String oldCidadenome = this.cidadenome;
+        this.cidadenome = cidadenome;
+        changeSupport.firePropertyChange("cidadenome", oldCidadenome, cidadenome);
+    }
+    
+     public String getEstadonome() {
+        return estadonome;
     }
 
+    public void setEstadoNome(String estadonome) {
+        String oldEstadonome = this.estadonome;
+        this.estadonome = estadonome;
+        changeSupport.firePropertyChange("estadonome", oldEstadonome, estadonome);
+    }
+    
+    
+<<<<<<< HEAD
+=======
+    public List<Fichasala> getFichasala() {
+        return fichasala;
+    }
+>>>>>>> Changes
+
+    public void setFichasala(List<Fichasala> fichasala) {
+        this.fichasala = fichasala;
+    }
+
+    //public int getDiaInt() {
+      //  return dia.getIddia();
+    //}
+
+   // public void setDiaInt(int diaInt) {
+    //    this.diaInt = diaInt;
+    //}
+    
+    
     
     
 
-
-    
-    
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;

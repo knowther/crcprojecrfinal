@@ -17,6 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -26,7 +28,8 @@ import javax.persistence.Transient;
  * @author johnn
  */
 @Entity
-@Table(name = "cidade", catalog = "clinica_crc", schema = "")
+@Table(name = "cidade", catalog = "dbclinicaii", schema = "")
+
 public class Cidade implements Serializable {
 
     @Transient
@@ -43,9 +46,10 @@ public class Cidade implements Serializable {
     
     @ManyToOne
     private Estado estado;
-    
+
     @OneToMany(mappedBy = "cidade")
-    private List<Paciente> pacientes = new ArrayList<>();
+    private List<Paciente> pacientes = new ArrayList<Paciente>();
+    
 
     public Cidade() {
     }
@@ -78,15 +82,11 @@ public class Cidade implements Serializable {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
-            Estado oldEstado = this.estado;
+    public void setEstado(Estado estadoIdestado) {
+        Estado oldEstado = this.estado;
         this.estado = estado;
-        changeSupport.firePropertyChange("estado", oldEstado, estado);
+        changeSupport.firePropertyChange("estadoIdestado", oldEstado, estado);
     }
-
-    
-    
-    
 
     @Override
     public int hashCode() {
@@ -119,14 +119,6 @@ public class Cidade implements Serializable {
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.removePropertyChangeListener(listener);
-    }
-
-    public List<Paciente> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
     }
     
 }
