@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -62,7 +63,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         ClinicaFprojectPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("ClinicaFprojectPU").createEntityManager();
-        pacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM Paciente p");
+        pacienteQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT p FROM Paciente p order by p.nome");
         pacienteList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : pacienteQuery.getResultList();
         diaQuery = java.beans.Beans.isDesignTime() ? null : ClinicaFprojectPUEntityManager.createQuery("SELECT d FROM Dia d");
         diaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : diaQuery.getResultList();
@@ -208,8 +209,10 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         int i = 0;
         Date dataSemana = null;
          dataSemana = cal.getTime();
-//         int whatday = 
+         int whatday = jComboBoxDia.getSelectedIndex();
+         
         Date [] dates = new Date [lastDay +1];
+        if(whatday == 0){
          do{
              i++;
              cal.set(Calendar.DAY_OF_MONTH, i);
@@ -226,6 +229,26 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
             //System.out.println(dates[i]);
               //System.out.println(dates[i]);
                      }while(i < lastDay);
+        }
+        else{
+            do{
+             i++;
+             cal.set(Calendar.DAY_OF_MONTH, i);
+             
+            Date dataCatch = cal.getTime();
+            if(cal.get(Calendar.DAY_OF_WEEK) == 3){
+            dates [i] = dataCatch; }
+            else if(cal.get(Calendar.DAY_OF_WEEK) == 5){
+              dates [i] = dataCatch;  
+            }
+            else if(cal.get(Calendar.DAY_OF_WEEK) == 7){
+              dates [i] = dataCatch;  
+            }
+            //System.out.println(dates[i]);
+              //System.out.println(dates[i]);
+                     }while(i < lastDay);
+            
+        }
         List<Date> list = new ArrayList<>(Arrays.asList(dates));
             
              while (list.remove(null));
@@ -250,6 +273,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
         }
          String caminho = new File("C://ArquivosCrsys/relatorios/reportAcompanhante.jrxml").getAbsolutePath();
         try {
+                
                  JasperReport relatorio = JasperCompileManager.compileReport(caminho);
                  JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(pacienteList, false);
                  Map parametros = new HashMap();
@@ -320,13 +344,17 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
                  
                  JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
                  JasperViewer view = new JasperViewer(print, false);
-                 view.setVisible(true);
+                 JDialog tela = new JDialog();
+                 tela.setBounds(view.getBounds());
+                 tela.getContentPane().add(view.getContentPane());
+                 tela.setModal(true);
+                 tela.setVisible(true);
                  
              } catch (JRException ex) {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);
              }
         
-        jButton2.setEnabled(false);
+        //jButton2.setEnabled(false);
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -339,6 +367,7 @@ public class JFrmCadDeclaAcompanhante extends javax.swing.JInternalFrame {
            turnoQuery.setParameter("d", d);
           turnoList.clear();
             turnoList.addAll(turnoQuery.getResultList());
+            
          }
     }//GEN-LAST:event_jComboBoxDiaItemStateChanged
 

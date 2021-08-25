@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -327,7 +328,12 @@ public class JFrmCadContagemDialise extends javax.swing.JInternalFrame {
                  parametros.put("DATA_1", jDateChooser1.getDate());
                  JasperPrint print = JasperFillManager.fillReport(relatorio, parametros, dados);
                  JasperViewer view = new JasperViewer(print, false);
-                 view.setVisible(true);
+                 JDialog tela = new JDialog();
+                tela.setBounds(view.getBounds());
+                tela.getContentPane().add(view.getContentPane());
+                tela.setModal(true);
+                tela.setVisible(true);
+                 
                  
              } catch (JRException ex) {
                  Logger.getLogger(JFrmCadDeclaracaoPaciente.class.getName()).log(Level.SEVERE, null, ex);

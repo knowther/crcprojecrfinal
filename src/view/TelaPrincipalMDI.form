@@ -584,8 +584,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="455" max="-2" attributes="0"/>
                                   <Component id="jButton8" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" pref="210" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="880" max="32767" attributes="0"/>
@@ -623,12 +621,9 @@
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="jTextFieldPesquisaPaciente" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="masterScrollPane" pref="406" max="32767" attributes="0"/>
+                          <Component id="masterScrollPane" pref="381" max="32767" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonAttTable" min="-2" max="-2" attributes="0"/>
@@ -849,11 +844,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Novo Paciente"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButton9">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Excluir Paciente Selecionado"/>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -879,22 +872,14 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel13" min="-2" pref="292" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel14" min="-2" pref="156" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="jLabel13" min="-2" pref="292" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jLabel14" alignment="1" min="-2" pref="292" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="parentPanel2" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -2023,6 +2008,8 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
                                           <Component id="jScrollPane3" min="-2" pref="369" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxPacienteS1" min="-2" pref="333" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
@@ -2045,7 +2032,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="121" max="32767" attributes="0"/>
+                                  <EmptySpace pref="119" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2077,9 +2064,17 @@
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="95" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane3" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                  <EmptySpace pref="115" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jScrollPane3" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jComboBoxPacienteS1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2241,16 +2236,30 @@
                             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyTyped"/>
                           </Events>
                         </Component>
+                        <Component class="javax.swing.JComboBox" name="jComboBoxPacienteS1">
+                          <BindingProperties>
+                            <BindingProperty name="elements" source="list" target="jComboBoxPacienteS1" targetPath="elements" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                          </AuxValues>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel13">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                  </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.nome}" target="jLabel13" targetPath="text" updateStrategy="0" immediately="false"/>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                  </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.apelido}" target="jLabel14" targetPath="text" updateStrategy="0" immediately="false"/>
                   </BindingProperties>

@@ -27,9 +27,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.persistence.RollbackException;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
@@ -127,7 +125,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabelNumPaciente = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         pacienteUnicPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -211,6 +208,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jComboBoxPacienteS1 = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -388,8 +386,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         jLabel7.setText("Total de Pacientes:");
 
         jButton8.setText("Novo Paciente");
-
-        jButton9.setText("Excluir Paciente Selecionado");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pacienteTableLayout = new javax.swing.GroupLayout(pacienteTable);
         pacienteTable.setLayout(pacienteTableLayout);
@@ -419,9 +420,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addComponent(jTextFieldPesquisaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pacienteTableLayout.createSequentialGroup()
                         .addGap(455, 455, 455)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 880, Short.MAX_VALUE))
             .addGroup(pacienteTableLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
@@ -450,11 +449,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jTextFieldPesquisaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pacienteTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9))
+                .addComponent(jButton8)
                 .addGap(26, 26, 26)
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(pacienteTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonAttTable)
@@ -511,7 +508,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -1235,6 +1232,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, jComboBoxPacienteS1);
+        bindingGroup.addBinding(jComboBoxBinding);
+
         javax.swing.GroupLayout jPanelFichasalaLayout = new javax.swing.GroupLayout(jPanelFichasala);
         jPanelFichasala.setLayout(jPanelFichasalaLayout);
         jPanelFichasalaLayout.setHorizontalGroup(
@@ -1243,7 +1243,9 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addGroup(jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFichasalaLayout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jComboBoxPacienteS1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelFichasalaLayout.createSequentialGroup()
                         .addGap(243, 243, 243)
                         .addGroup(jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1260,7 +1262,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                                 .addComponent(jFormattedTextField4, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanelFichasalaLayout.setVerticalGroup(
             jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1285,15 +1287,24 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                 .addGroup(jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGroup(jPanelFichasalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFichasalaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFichasalaLayout.createSequentialGroup()
+                        .addComponent(jComboBoxPacienteS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101))))
         );
 
         parentPanel2.add(jPanelFichasala, "card4");
 
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.nome}"), jLabel13, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.apelido}"), jLabel14, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1308,17 +1319,12 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
                         .addGroup(pacienteUnicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pacienteUnicPanelLayout.createSequentialGroup()
                                 .addGap(31, 31, 31)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pacienteUnicPanelLayout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pacienteUnicPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(pacienteUnicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pacienteUnicPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pacienteUnicPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(107, 107, 107)))))
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(parentPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pacienteUnicPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1356,11 +1362,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1884, Short.MAX_VALUE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1884, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(parentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1069, Short.MAX_VALUE)
+            .addComponent(parentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1593,7 +1599,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JFrmCadPaciente tela;
+            JFrmCadPaciente tela;
         form.abrirFormulario(tela = new JFrmCadPaciente(), desktopPane);
         
         // TODO add your handling code here:
@@ -1628,7 +1634,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6ActionPerformed
 
     private void masterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masterTableMouseClicked
-        
+    
         int ls = masterTable.getSelectedRow();
         linhaSelecionada = ls;
         if (evt.getClickCount() == 2){
@@ -1835,6 +1841,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             parentPanel2.add(jPanelSessoes);
             parentPanel2.repaint();
             parentPanel2.revalidate();
+            jComboBoxPacienteS1.setSelectedItem(jComboBoxPaciente.getSelectedItem());
             desabilitarBotoes();
             //Enabled botões
             jComboBoxPacienteS.setVisible(false);
@@ -2133,6 +2140,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPesquisaPacienteActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        JFrmCadPaciente tela;
+        form.abrirFormulario(tela = new JFrmCadPaciente(), desktopPane);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     public int getLinhaSelecionada() {
         return linhaSelecionada;
     }
@@ -2296,7 +2308,6 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonAttTable;
     private javax.swing.JButton jButtonCancelS;
@@ -2314,6 +2325,7 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxMes;
     private javax.swing.JComboBox<String> jComboBoxPaciente;
     private javax.swing.JComboBox<String> jComboBoxPacienteS;
+    private javax.swing.JComboBox<String> jComboBoxPacienteS1;
     private javax.swing.JComboBox<String> jComboBoxProfissao;
     private javax.swing.JComboBox<String> jComboBoxSessoes;
     private javax.swing.JComboBox<String> jComboBoxTurno;

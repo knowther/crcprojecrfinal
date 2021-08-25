@@ -7,31 +7,16 @@ package view;
 
 import bean.Dia;
 import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ItemEvent;
-import java.awt.image.BufferedImage;
 import java.beans.Beans;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.persistence.RollbackException;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import static javax.swing.LayoutStyle.getInstance;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -97,6 +82,8 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
         turnoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : turnoQuery.getResultList();
         fichasalaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Fichasala f");
         fichasalaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : fichasalaQuery.getResultList();
+        estadoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT e FROM Estado e");
+        estadoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : estadoQuery.getResultList();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         cpfLabel = new javax.swing.JLabel();
@@ -253,7 +240,7 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(fotoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                        .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(nomeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,7 +264,7 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
                             .addComponent(jButtonPesquisaProfissao)
                             .addComponent(jComboBoxProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -304,6 +291,9 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
         númeroLabel.setText("Número:");
 
         estadoIdestadoLabel.setText("Estado:");
+
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estadoList, jComboBoxEstado);
+        bindingGroup.addBinding(jComboBoxBinding);
 
         jComboBoxEstado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -807,6 +797,8 @@ public class JFrmCadPaciente extends javax.swing.JInternalFrame {
     private javax.persistence.Query diaQuery;
     private javax.persistence.EntityManager entityManager;
     private javax.swing.JLabel estadoIdestadoLabel;
+    private java.util.List<bean.Estado> estadoList;
+    private javax.persistence.Query estadoQuery;
     private java.util.List<bean.Fichasala> fichasalaList;
     private javax.persistence.Query fichasalaQuery;
     private javax.swing.JLabel fotoLabel;

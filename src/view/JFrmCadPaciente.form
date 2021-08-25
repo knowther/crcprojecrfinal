@@ -99,6 +99,24 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;bean.Fichasala&gt;"/>
       </AuxValues>
     </Component>
+    <Component class="javax.persistence.Query" name="estadoQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT e FROM Estado e"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="estadoList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="estadoQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;bean.Estado&gt;"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
@@ -252,7 +270,7 @@
                           <Group type="102" attributes="0">
                               <Component id="fotoLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelFoto" pref="260" max="32767" attributes="0"/>
+                              <Component id="jLabelFoto" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="nomeLabel" min="-2" max="-2" attributes="0"/>
@@ -280,7 +298,7 @@
                                   <Component id="jComboBoxProfissao" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextFieldFoto" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldFoto" min="-2" pref="0" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -537,6 +555,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxEstado">
+              <BindingProperties>
+                <BindingProperty name="elements" source="estadoList" target="jComboBoxEstado" targetPath="elements" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxEstadoItemStateChanged"/>
               </Events>
